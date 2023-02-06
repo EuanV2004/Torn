@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 3
-  stoppingDistance: 0.55
+  stoppingDistance: 0.52
   wallLayer:
     serializedVersion: 2
     m_Bits: 8
