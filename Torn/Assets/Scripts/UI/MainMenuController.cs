@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuController : MonoBehaviour
+namespace Torn.UI
 {
-    public void StartGame(int sceneIndex) 
+    public class MainMenuController : MonoBehaviour
     {
-        SceneManager.LoadScene(sceneIndex);
+        public void StartGame(int sceneIndex) 
+        {
+            SceneManager.LoadScene(sceneIndex);
+        }
     }
 }
