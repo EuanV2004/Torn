@@ -575,8 +575,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsNeededForGoodEnding: 5
-  goodEnding: {fileID: 0}
-  badEnding: {fileID: 0}
+  goodEnding: {fileID: 1831942465}
+  badEnding: {fileID: 1844962037}
 --- !u!1 &890607720
 GameObject:
   m_ObjectHideFlags: 0
