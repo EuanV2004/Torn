@@ -20,6 +20,8 @@ namespace Torn.Interact
 
         public string collectableID = "";   // ID of the collectable
 
+        public bool interactedWith;
+
         /*// Start is called before the first frame update
         void Start()
         {

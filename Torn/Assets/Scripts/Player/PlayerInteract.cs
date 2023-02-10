@@ -84,21 +84,15 @@ namespace Torn.Interact
                             break;
                         }
                     // If the interactable is part of the environment
-                    case InteractType.Environment:
-                        {
-                            
-
-                            break;
-                        }
                     case InteractType.Puzzle:
                         {
-
+                            interacted.GetComponent<Interactable>().interactedWith = true;
 
                             break;
                         }
                 }
 
-                if (interacted.GetComponent<Interactable>().GetInteractType() != InteractType.Environment)
+                if (interacted.GetComponent<Interactable>().GetInteractType() == InteractType.Collectable || interacted.GetComponent<Interactable>().GetInteractType() == InteractType.Consumable)
                 {
                     interacted.gameObject.SetActive(false);     // Set the game object to inactive (DO NOT delete because of collection list
                     itemCollider = null;    // Reset itemCollider
