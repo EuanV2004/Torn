@@ -10,7 +10,8 @@ namespace Torn.Interact
     {
         Collectable,
         Consumable,
-        Environment
+        Environment,
+        Puzzle
     }
 
     public class Interactable : MonoBehaviour

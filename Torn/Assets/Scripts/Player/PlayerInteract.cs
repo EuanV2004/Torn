@@ -86,20 +86,13 @@ namespace Torn.Interact
                     // If the interactable is part of the environment
                     case InteractType.Environment:
                         {
-                            // Check if the collider is a trigger
-                            if (!interacted.gameObject.GetComponent<Collider2D>().isTrigger || interacted.gameObject.layer == 8)
-                            {
-                                // Set rotation to x = 0, y = 0, z = 0 
-                                interacted.gameObject.transform.localRotation = Quaternion.identity;
+                            
 
-                                interacted.gameObject.layer = 7;  // Set layer to OpenDoor
+                            break;
+                        }
+                    case InteractType.Puzzle:
+                        {
 
-                                //interacted.gameObject.GetComponent<Collider2D>().isTrigger = true;  // Set door to trigger
-                            }
-                            else
-                            {
-                                interacted.gameObject.layer = 8;  // Set layer to CloseDoor
-                            }
 
                             break;
                         }
