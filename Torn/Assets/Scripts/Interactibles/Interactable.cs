@@ -10,7 +10,8 @@ namespace Torn.Interact
     {
         Collectable,
         Consumable,
-        Environment
+        Environment,
+        Puzzle
     }
 
     public class Interactable : MonoBehaviour
@@ -18,6 +19,8 @@ namespace Torn.Interact
         public InteractType itemType;   // Type of the interactable
 
         public string collectableID = "";   // ID of the collectable
+
+        public bool interactedWith;
 
         /*// Start is called before the first frame update
         void Start()

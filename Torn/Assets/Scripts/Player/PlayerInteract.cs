@@ -84,28 +84,15 @@ namespace Torn.Interact
                             break;
                         }
                     // If the interactable is part of the environment
-                    case InteractType.Environment:
+                    case InteractType.Puzzle:
                         {
-                            // Check if the collider is a trigger
-                            if (!interacted.gameObject.GetComponent<Collider2D>().isTrigger || interacted.gameObject.layer == 8)
-                            {
-                                // Set rotation to x = 0, y = 0, z = 0 
-                                interacted.gameObject.transform.localRotation = Quaternion.identity;
-
-                                interacted.gameObject.layer = 7;  // Set layer to OpenDoor
-
-                                //interacted.gameObject.GetComponent<Collider2D>().isTrigger = true;  // Set door to trigger
-                            }
-                            else
-                            {
-                                interacted.gameObject.layer = 8;  // Set layer to CloseDoor
-                            }
+                            interacted.GetComponent<Interactable>().interactedWith = true;
 
                             break;
                         }
                 }
 
-                if (interacted.GetComponent<Interactable>().GetInteractType() != InteractType.Environment)
+                if (interacted.GetComponent<Interactable>().GetInteractType() == InteractType.Collectable || interacted.GetComponent<Interactable>().GetInteractType() == InteractType.Consumable)
                 {
                     interacted.gameObject.SetActive(false);     // Set the game object to inactive (DO NOT delete because of collection list
                     itemCollider = null;    // Reset itemCollider
