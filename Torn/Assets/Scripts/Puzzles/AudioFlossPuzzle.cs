@@ -24,7 +24,7 @@ namespace Torn.Puzzles
                 InteractWithAudioFloss();
             }
 
-            if (userOrder.Count > noteOrder.Count) {
+            if (userOrder.Count > 4) {
                 StartCoroutine(BeginNoteCheck());
             }
         }
