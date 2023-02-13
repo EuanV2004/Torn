@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Torn.Interact
 {
@@ -18,7 +19,7 @@ namespace Torn.Interact
         // Start is called before the first frame update
         void Start()
         {
-            pills.AddConsumable(10);    // Player starts with 10 pills
+            pills.AddConsumable(0);    // Player starts with 10 pills
         }
 
         // Update is called once per frame
@@ -90,6 +91,20 @@ namespace Torn.Interact
 
                             break;
                         }
+                    
+                    case InteractType.Audio:
+                        {
+                            SceneManager.LoadScene("AudioPuzzle");
+                            
+                            break;
+                        }
+
+                    case InteractType.Clothes:
+                        {
+                            SceneManager.LoadScene("ClothesPuzzle");
+                            
+                            break;
+                        }
                 }
 
                 if (interacted.GetComponent<Interactable>().GetInteractType() == InteractType.Collectable || interacted.GetComponent<Interactable>().GetInteractType() == InteractType.Consumable)
@@ -107,6 +122,7 @@ namespace Torn.Interact
             if (Input.GetKeyDown(consumeKey) && pills.GetCurrentCount() != 0)   // Check if the player has pressed the consume key and there are pills to consume
             {
                 pills.UseConsumable();  // Consume pills
+                SceneManager.LoadScene("Home");
             }
         }
     }

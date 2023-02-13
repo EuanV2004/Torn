@@ -12,11 +12,13 @@ namespace Torn.Player
         int wallStopper = 1;
         private Rigidbody2D rb;
         private float gravityScale;   
+        private Animator animator;
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
             gravityScale = rb.gravityScale;
+            animator = GetComponent<Animator>();
         }
 
         void Update()
@@ -28,14 +30,20 @@ namespace Torn.Player
                 if (CheckIfPlayerShouldStop(Vector2.right) == true)
                 {
                     wallStopper = 0;
+                    animator.SetBool("isWalking", false);
                 }
                 else
                 {
                     wallStopper = 1;
+                    animator.SetBool("isWalking", true);
                 }
 
                 transform.position += transform.right * Time.deltaTime * movementSpeed * wallStopper; // Time.deltaTime, it does not depend on the performance of your computer
                 transform.rotation = Quaternion.Euler(0, 0, 0); // set the rotation of game object
+            }
+            else
+            {
+                animator.SetBool("isWalking", false);
             }
             if (Input.GetKey(KeyCode.A))
             {
@@ -44,15 +52,23 @@ namespace Torn.Player
                 if (CheckIfPlayerShouldStop(Vector2.left) == true)
                 {
                     wallStopper = 0;
+                    animator.SetBool("isWalking", false);
                 }
                 else
                 {
                     wallStopper = 1;
+                    animator.SetBool("isWalking", true);
                 }
 
                 transform.position += transform.right * Time.deltaTime * movementSpeed * wallStopper;
                 transform.rotation = Quaternion.Euler(0, 180, 0); //change y rotation to 180
             }
+
+            if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+            {
+                animator.SetBool("isWalking", false);
+            }
+            
         }
 
         private bool CheckIfPlayerShouldStop(Vector2 direction)

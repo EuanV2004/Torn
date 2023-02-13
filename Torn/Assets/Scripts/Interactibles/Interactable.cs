@@ -11,7 +11,9 @@ namespace Torn.Interact
         Collectable,
         Consumable,
         Environment,
-        Puzzle
+        Puzzle,
+        Audio,
+        Clothes
     }
 
     public class Interactable : MonoBehaviour

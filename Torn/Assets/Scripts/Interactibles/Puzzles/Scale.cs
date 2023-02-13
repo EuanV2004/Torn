@@ -14,6 +14,10 @@ namespace Torn.Interact {
         public GameObject scaleArm;
         public GameObject leftSide;
         public GameObject rightSide;
+        private int i = 0;
+
+        [SerializeField] private GameObject pillPrefab;
+        [SerializeField] private Transform pillParent;
 
         Vector3 startLeftPos, startRightPos;
 
@@ -79,6 +83,16 @@ namespace Torn.Interact {
                     rightObject.GetComponent<Cloths>().scalePlate.transform.position.x,
                     rightObject.GetComponent<Cloths>().scalePlate.transform.position.y + 0.8f,
                     rightObject.GetComponent<Cloths>().scalePlate.transform.position.z);*/
+
+            if (leftTotal < 10 && rightTotal < 10)
+            {
+                if (i >= 1)
+                {
+                    var pill = Instantiate(pillPrefab, transform.position, Quaternion.identity);
+                    pill.transform.parent = pillParent;
+                    i++;
+                }
+            }
         }
 
         void UpdateText()

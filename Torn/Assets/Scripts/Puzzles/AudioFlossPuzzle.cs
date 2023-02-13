@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Torn.Puzzles
 {
@@ -83,6 +84,7 @@ namespace Torn.Puzzles
 
                 userOrder.Clear();
                 print("<Next even happens>");
+                SceneManager.LoadScene("Home");
             }
             else {
                 print("Order is incorrect!");
