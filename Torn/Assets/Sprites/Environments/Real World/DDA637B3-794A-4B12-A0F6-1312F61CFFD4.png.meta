@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cdc5ad5dbba122f4db0cb6ec34536f0c
+guid: 610ee6f14f4b4a148accb9ef8585a697
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Grave_0
+      name: DDA637B3-794A-4B12-A0F6-1312F61CFFD4_0
       rect:
         serializedVersion: 2
-        x: 37
-        y: 812
-        width: 582
-        height: 730
+        x: 1
+        y: 360
+        width: 634
+        height: 859
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6e7fe1c38ab49349b0eab654a479f59
-      internalID: -1934521172
+      spriteID: 679c58f9d08633e4bb5e83eaae2858da
+      internalID: -667821162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grave_1
+      name: DDA637B3-794A-4B12-A0F6-1312F61CFFD4_1
       rect:
         serializedVersion: 2
-        x: 799
-        y: 808
-        width: 521
-        height: 765
+        x: 688
+        y: 381
+        width: 686
+        height: 853
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8e88268ccaf6234cbf2cbc27eaec1f4
-      internalID: -486958956
+      spriteID: e030092ad0a36574d98506a641f19f43
+      internalID: -1427669522
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grave_2
+      name: DDA637B3-794A-4B12-A0F6-1312F61CFFD4_2
       rect:
         serializedVersion: 2
-        x: 1470
-        y: 796
-        width: 648
-        height: 759
+        x: 1402
+        y: 390
+        width: 757
+        height: 870
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,50 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 959efa1fa0a525149ad863be525014d1
-      internalID: 210026183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grave_3
-      rect:
-        serializedVersion: 2
-        x: 203
-        y: 40
-        width: 809
-        height: 613
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bb93354af3ab3a940a769a223a2b2a09
-      internalID: 1183386691
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grave_4
-      rect:
-        serializedVersion: 2
-        x: 1212
-        y: 30
-        width: 824
-        height: 601
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d81608735ec5dbb47afe994905a44eaa
-      internalID: -1776814097
+      spriteID: b5dfa410adc54a14bba27f4b94f7a6a2
+      internalID: 1392423355
       vertices: []
       indices: 
       edges: []
@@ -220,11 +178,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Grave_4: -1776814097
-      Grave_0: -1934521172
-      Grave_2: 210026183
-      Grave_3: 1183386691
-      Grave_1: -486958956
+      DDA637B3-794A-4B12-A0F6-1312F61CFFD4_1: -1427669522
+      DDA637B3-794A-4B12-A0F6-1312F61CFFD4_0: -667821162
+      DDA637B3-794A-4B12-A0F6-1312F61CFFD4_2: 1392423355
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
