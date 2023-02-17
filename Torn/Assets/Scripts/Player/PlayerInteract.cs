@@ -16,10 +16,13 @@ namespace Torn.Interact
 
         public Collider2D itemCollider = new Collider2D();  // Holds the collider of the interactable
 
+        public Animator animator;
+        public float wait;
         // Start is called before the first frame update
         void Start()
         {
             pills.AddConsumable(0);    // Player starts with 10 pills
+            animator = GetComponent<Animator>();
         }
 
         // Update is called once per frame
@@ -122,8 +125,16 @@ namespace Torn.Interact
             if (Input.GetKeyDown(consumeKey) && pills.GetCurrentCount() != 0)   // Check if the player has pressed the consume key and there are pills to consume
             {
                 pills.UseConsumable();  // Consume pills
+                animator.SetBool("eatPill", true);
+                Pause();
+                animator.SetBool("eatPill", false);
                 SceneManager.LoadScene("Home");
             }
+        }
+
+        private IEnumerator Pause()
+        {
+            yield return new WaitForSecondsRealtime(wait);
         }
     }
 }
