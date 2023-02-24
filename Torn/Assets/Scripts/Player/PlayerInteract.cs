@@ -126,15 +126,15 @@ namespace Torn.Interact
             {
                 pills.UseConsumable();  // Consume pills
                 animator.SetBool("eatPill", true);
-                Pause();
-                animator.SetBool("eatPill", false);
-                SceneManager.LoadScene("Home");
+                StartCoroutine(Pause(wait));
             }
         }
 
-        private IEnumerator Pause()
+        private IEnumerator Pause(float waitIE)
         {
-            yield return new WaitForSecondsRealtime(wait);
+            yield return new WaitForSecondsRealtime(waitIE);
+            animator.SetBool("eatPill", false);
+            SceneManager.LoadScene("Home");
         }
     }
 }
