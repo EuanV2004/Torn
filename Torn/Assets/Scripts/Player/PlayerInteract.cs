@@ -130,9 +130,9 @@ namespace Torn.Interact
             }
         }
 
-        private IEnumerator Pause(float waitIE)
+        private IEnumerator Pause(float pause)
         {
-            yield return new WaitForSecondsRealtime(waitIE);
+            yield return new WaitForSecondsRealtime(pause);
             animator.SetBool("eatPill", false);
             SceneManager.LoadScene("Home");
         }
