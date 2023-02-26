@@ -218,6 +218,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu_Fade Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1224561324548975814, guid: 066a270540bd2b245ba3ba76462b400e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ddb2afdedc839564da0f43ed863bf2d2, type: 2}
+    - target: {fileID: 8303372457344839021, guid: 066a270540bd2b245ba3ba76462b400e, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 066a270540bd2b245ba3ba76462b400e, type: 3}
 --- !u!1 &90563025

@@ -131,6 +131,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: bea87596179b9ad4292b4518f1f702c3, type: 3}
+    - target: {fileID: 2397902521506499188, guid: b9a51ae0cacba044fa0081d23ab000f4, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397902521506499188, guid: b9a51ae0cacba044fa0081d23ab000f4, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3207547
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397902521506499188, guid: b9a51ae0cacba044fa0081d23ab000f4, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3207547
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397902521506499188, guid: b9a51ae0cacba044fa0081d23ab000f4, type: 3}
+      propertyPath: m_Color.r
+      value: 0.3207547
+      objectReference: {fileID: 0}
     - target: {fileID: 2397902521506499190, guid: b9a51ae0cacba044fa0081d23ab000f4, type: 3}
       propertyPath: m_Name
       value: PauseMenu
@@ -231,6 +247,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Resume
       objectReference: {fileID: 0}
+    - target: {fileID: 8126547431773126117, guid: b9a51ae0cacba044fa0081d23ab000f4, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9a51ae0cacba044fa0081d23ab000f4, type: 3}
 --- !u!1 &2502810858025294590 stripped
@@ -248,9 +268,9 @@ Animator:
   m_GameObject: {fileID: 2502810858025294590}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c8196fe4d1caf6e488b94c8f41deefaf, type: 2}
+  m_Controller: {fileID: 9100000, guid: ddb2afdedc839564da0f43ed863bf2d2, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
