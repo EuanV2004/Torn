@@ -17,6 +17,7 @@ namespace Torn.Interact
         public Collider2D itemCollider = new Collider2D();  // Holds the collider of the interactable
 
         public Animator animator;
+        public Animator anim;
         public float wait;
         // Start is called before the first frame update
         void Start()
@@ -97,14 +98,16 @@ namespace Torn.Interact
                     
                     case InteractType.Audio:
                         {
-                            SceneManager.LoadScene("AudioPuzzle");
+                            anim.SetTrigger("FadeOut");
+                            StartCoroutine(Transition("AudioPuzzle"));
                             
                             break;
                         }
 
                     case InteractType.Clothes:
                         {
-                            SceneManager.LoadScene("ClothesPuzzle");
+                            anim.SetTrigger("FadeOut");
+                            StartCoroutine(Transition("ClothesPuzzle"));
                             
                             break;
                         }
@@ -135,6 +138,12 @@ namespace Torn.Interact
             yield return new WaitForSecondsRealtime(pause);
             animator.SetBool("eatPill", false);
             SceneManager.LoadScene("Home");
+        }
+
+        private IEnumerator Transition(string level)
+        {
+            yield return new WaitForSecondsRealtime(1);
+            SceneManager.LoadScene(level);
         }
     }
 }
