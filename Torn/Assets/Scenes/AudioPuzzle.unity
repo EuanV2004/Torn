@@ -1243,6 +1243,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1853813074}
     m_Modifications:
+    - target: {fileID: 820815828304810471, guid: c2de09c440764dc4cbd37fe9bb81eeca, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1120510894}
     - target: {fileID: 2537808861579121055, guid: c2de09c440764dc4cbd37fe9bb81eeca, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1371,6 +1375,11 @@ MonoBehaviour:
   pointsNeededForGoodEnding: 5
   goodEnding: {fileID: 1923917533}
   badEnding: {fileID: 743397674}
+--- !u!95 &1120510894 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5112216704475283067, guid: 066a270540bd2b245ba3ba76462b400e, type: 3}
+  m_PrefabInstance: {fileID: 287327216316703550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1132562173
 PrefabInstance:
   m_ObjectHideFlags: 0
