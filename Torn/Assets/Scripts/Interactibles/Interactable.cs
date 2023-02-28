@@ -13,7 +13,8 @@ namespace Torn.Interact
         Environment,
         Puzzle,
         Audio,
-        Clothes
+        Clothes,
+        Door
     }
 
     public class Interactable : MonoBehaviour
@@ -23,6 +24,7 @@ namespace Torn.Interact
         public string collectableID = "";   // ID of the collectable
 
         public bool interactedWith;
+        public string sceneName;
 
         /*// Start is called before the first frame update
         void Start()

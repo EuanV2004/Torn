@@ -9,11 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 987e8045eb327084894b966832e8e0e9
   - enabled: 1
-    path: Assets/Scenes/AudioPuzzle.unity
-    guid: 6c9e59cbcdb9750488cd964cb7e118f8
-  - enabled: 1
     path: Assets/Scenes/Home.unity
     guid: e9b808b73738ba24e887794bbe2013b2
+  - enabled: 1
+    path: Assets/Scenes/LivingRoom.unity
+    guid: ddaa57c5876304144b6fa24671656dea
+  - enabled: 1
+    path: Assets/Scenes/Bedroom.unity
+    guid: acdbfa28168c5bd4e863d428f89a2e69
+  - enabled: 1
+    path: Assets/Scenes/Bathroom.unity
+    guid: 390c534a2178a90448fb70dfc32fb672
+  - enabled: 1
+    path: Assets/Scenes/AudioPuzzle.unity
+    guid: 6c9e59cbcdb9750488cd964cb7e118f8
   - enabled: 1
     path: Assets/Scenes/ClothesPuzzle.unity
     guid: 16daf2644024e644abbb57f545733ac6

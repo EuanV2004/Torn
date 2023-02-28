@@ -111,6 +111,13 @@ namespace Torn.Interact
                             
                             break;
                         }
+                    case InteractType.Door:
+                        {
+                            anim.SetTrigger("FadeOut");
+                            StartCoroutine(Transition(interacted.GetComponent<Interactable>().sceneName));
+
+                            break;
+                        }
                 }
 
                 if (interacted.GetComponent<Interactable>().GetInteractType() == InteractType.Collectable || interacted.GetComponent<Interactable>().GetInteractType() == InteractType.Consumable)
