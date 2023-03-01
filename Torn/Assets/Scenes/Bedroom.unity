@@ -982,6 +982,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -2.76
       objectReference: {fileID: 0}
+    - target: {fileID: 8311583108063346740, guid: 449153fa7e6158242af0e8e4bc7f11e1, type: 3}
+      propertyPath: sceneName
+      value: Bathroom
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 449153fa7e6158242af0e8e4bc7f11e1, type: 3}
 --- !u!4 &915477561 stripped
@@ -1466,6 +1470,10 @@ PrefabInstance:
     - target: {fileID: 3267919203862781171, guid: 449153fa7e6158242af0e8e4bc7f11e1, type: 3}
       propertyPath: m_LocalPosition.y
       value: -2.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311583108063346740, guid: 449153fa7e6158242af0e8e4bc7f11e1, type: 3}
+      propertyPath: sceneName
+      value: LivingRoom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 449153fa7e6158242af0e8e4bc7f11e1, type: 3}
