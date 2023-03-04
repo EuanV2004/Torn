@@ -10,9 +10,11 @@ namespace Torn.Interact
         public int maxItemStack = 99;   // Maximum stack of the item
 
         public int itemCounter;     // Counter of the item
+        public int keyCounter;
 
         // Get the current amount of the consumable
         public int GetCurrentCount() { return itemCounter; }
+        public int GetCurrentKeyCount() {return keyCounter; }
 
         // Add consumable to the player. Default is 1;
         public void AddConsumable(int n = 1)
@@ -20,6 +22,13 @@ namespace Torn.Interact
             itemCounter += n;   // Add to the counter
 
             Debug.Log($"Pills Left: {GetCurrentCount()}");  // Display to the player
+        }
+
+        public void KeyCheckCounter(int i = 1) 
+        {
+            keyCounter += i;
+            
+            Debug.Log($"You have checked {GetCurrentKeyCount()}/5 locations");
         }
 
         // Player uses consumable

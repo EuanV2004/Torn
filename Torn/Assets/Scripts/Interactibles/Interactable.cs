@@ -14,7 +14,8 @@ namespace Torn.Interact
         Puzzle,
         Audio,
         Clothes,
-        Door
+        Door,
+        Keys
     }
 
     public class Interactable : MonoBehaviour

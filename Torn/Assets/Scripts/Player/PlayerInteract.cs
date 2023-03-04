@@ -12,6 +12,7 @@ namespace Torn.Interact
         public KeyCode consumeKey = KeyCode.C;  // Saves the keycode of the consume key (Default is C)
 
         public Consumable pills = new Consumable();     // Reference to the Consumable Class
+        public Consumable keys = new Consumable();
         public List<Interactable> collection = new List<Interactable>();    // List of collectable items
 
         public Collider2D itemCollider = new Collider2D();  // Holds the collider of the interactable
@@ -116,6 +117,12 @@ namespace Torn.Interact
                             anim.SetTrigger("FadeOut");
                             StartCoroutine(Transition(interacted.GetComponent<Interactable>().sceneName));
 
+                            break;
+                        }
+                    case InteractType.Keys:
+                        {
+                            keys.KeyCheckCounter();
+                            Destroy(itemCollider.gameObject);
                             break;
                         }
                 }

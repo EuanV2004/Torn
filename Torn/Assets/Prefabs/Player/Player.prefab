@@ -198,6 +198,7 @@ MonoBehaviour:
   collection: []
   itemCollider: {fileID: 0}
   animator: {fileID: 0}
+  anim: {fileID: 0}
   wait: 2
 --- !u!95 &2537808861579121062
 Animator:

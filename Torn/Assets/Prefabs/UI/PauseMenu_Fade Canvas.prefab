@@ -506,6 +506,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fade
       objectReference: {fileID: 0}
+    - target: {fileID: 4976183559704142231, guid: 2e543b3b64442714dbf284142fe0a4e7, type: 3}
+      propertyPath: m_TagString
+      value: Fade
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e543b3b64442714dbf284142fe0a4e7, type: 3}
 --- !u!224 &5112216704475283068 stripped
