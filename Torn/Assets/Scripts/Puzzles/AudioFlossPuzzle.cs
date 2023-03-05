@@ -84,7 +84,7 @@ namespace Torn.Puzzles
 
                 userOrder.Clear();
                 print("<Next even happens>");
-                SceneManager.LoadScene("Home");
+                SceneManager.LoadScene("Bathroom");
             }
             else {
                 print("Order is incorrect!");
