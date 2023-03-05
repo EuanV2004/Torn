@@ -116,6 +116,7 @@ namespace Torn.Interact
                         {
                             anim.SetTrigger("FadeOut");
                             StartCoroutine(Transition(interacted.GetComponent<Interactable>().sceneName));
+                            
 
                             break;
                         }
@@ -162,6 +163,7 @@ namespace Torn.Interact
         {
             yield return new WaitForSecondsRealtime(1);
             SceneManager.LoadScene(level);
+            anim.SetTrigger("FadeIn");
         }
     }
 }

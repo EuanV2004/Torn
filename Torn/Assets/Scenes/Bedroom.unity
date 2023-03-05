@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 820815828304810471, guid: c2de09c440764dc4cbd37fe9bb81eeca, type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 738214794}
+      objectReference: {fileID: 866924793}
     - target: {fileID: 820815828304810471, guid: c2de09c440764dc4cbd37fe9bb81eeca, type: 3}
       propertyPath: wait
       value: 1
@@ -506,11 +506,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &738214794 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5112216704475283067, guid: 066a270540bd2b245ba3ba76462b400e, type: 3}
-  m_PrefabInstance: {fileID: 866924792}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &821249899
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +791,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4075310485851219753, guid: 066a270540bd2b245ba3ba76462b400e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 066a270540bd2b245ba3ba76462b400e, type: 3}
+--- !u!95 &866924793 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8536526051918164878, guid: 066a270540bd2b245ba3ba76462b400e, type: 3}
+  m_PrefabInstance: {fileID: 866924792}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &892365953
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,7 +980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8311583108063346740, guid: 449153fa7e6158242af0e8e4bc7f11e1, type: 3}
       propertyPath: sceneName
-      value: Home
+      value: Bathroom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 449153fa7e6158242af0e8e4bc7f11e1, type: 3}
@@ -1429,7 +1429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3267919203862781171, guid: 449153fa7e6158242af0e8e4bc7f11e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.49
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3267919203862781171, guid: 449153fa7e6158242af0e8e4bc7f11e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1437,7 +1437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8311583108063346740, guid: 449153fa7e6158242af0e8e4bc7f11e1, type: 3}
       propertyPath: sceneName
-      value: Bathroom
+      value: Home
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 449153fa7e6158242af0e8e4bc7f11e1, type: 3}
