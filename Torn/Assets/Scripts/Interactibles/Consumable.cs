@@ -27,6 +27,10 @@ namespace Torn.Interact
         public void KeyCheckCounter(int i = 1) 
         {
             keyCounter += i;
+            if (keyCounter >= 5)
+            {
+                keyCounter = 5;
+            }
             
             Debug.Log($"You have checked {GetCurrentKeyCount()}/5 locations");
         }
