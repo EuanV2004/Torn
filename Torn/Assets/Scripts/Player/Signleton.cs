@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Signleton : MonoBehaviour
 {
-    public static Signleton instance;
+    private void Awake()
+        
+    {
 
-    private void Awake() {
-
-        if (instance == null) {
-            instance = this;
-        }
-        else {
-            Destroy(gameObject);
-            return;
+        for (int i = 0; i < Object.FindObjectsOfType<Signleton>().Length; i++)
+        {
+            if (Object.FindObjectsOfType<Signleton>()[i] != this)
+            {
+                if (Object.FindObjectsOfType<Signleton>()[i].name == gameObject.name)
+                {
+                    Destroy(gameObject);
+                }
+            }
         }
         DontDestroyOnLoad(gameObject);
     }
