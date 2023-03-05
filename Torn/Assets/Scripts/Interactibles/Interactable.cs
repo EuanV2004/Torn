@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 namespace Torn.Interact
@@ -26,19 +27,17 @@ namespace Torn.Interact
 
         public bool interactedWith;
         public string sceneName;
+        public Transform normalPoint;
 
-        /*// Start is called before the first frame update
-        void Start()
+        private void Update() 
         {
-
+            Scene scene = SceneManager.GetActiveScene();
+            if (interactedWith || SceneManager.GetActiveScene().name != sceneName)
+            {
+                transform.TransformPoint(999,999,999);
+            }
+            
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }*/
-
         public InteractType GetInteractType() { return itemType; }  // Return type of interactable
 
         public string GetCollectableID() { return collectableID; } // Return collectable ID

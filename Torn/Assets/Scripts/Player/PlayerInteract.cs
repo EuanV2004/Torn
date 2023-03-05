@@ -122,8 +122,12 @@ namespace Torn.Interact
                         }
                     case InteractType.Keys:
                         {
-                            keys.KeyCheckCounter();
-                            Destroy(itemCollider.gameObject);
+                            if (itemCollider.GetComponent<Interactable>().interactedWith == false)
+                            {
+                                keys.KeyCheckCounter();
+                                //itemCollider.gameObject.transform.Translate(999,999,999);
+                                itemCollider.GetComponent<Interactable>().interactedWith = true;
+                            }
                             break;
                         }
                 }
