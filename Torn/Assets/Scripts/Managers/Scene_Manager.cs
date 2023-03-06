@@ -40,13 +40,13 @@ public class Scene_Manager : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.sceneUnloaded += OnSceneUnloaded;
+        //SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+        //SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -56,28 +56,45 @@ public class Scene_Manager : MonoBehaviour
             objectToMove1.transform.position = newPosition1;
             objectToMove2.transform.position = newPosition2;
         }
-        else if (scene.name == "Home")
+        else if (scene.name != "LivingRoom")
+        {
+            objectToMove1.transform.position = unloadedPosition;
+            objectToMove2.transform.position = unloadedPosition;
+        }
+        if (scene.name == "Home")
         {
             objectToMove3.transform.position = newPosition3;
         }
-        else if (scene.name == "Bedroom")
+        else if (scene.name != "Home")
+        {
+            objectToMove3.transform.position = unloadedPosition;
+        }
+        if (scene.name == "Bedroom")
         {
             objectToMove4.transform.position = newPosition4;
         }
-        else if (scene.name == "Bathroom")
+        else if (scene.name != "Bedroom")
+        {
+            objectToMove4.transform.position = unloadedPosition;
+        }
+        if (scene.name == "Bathroom")
         {
             objectToMove5.transform.position = newPosition5;
         }
+        else if (scene.name != "Bathroom")
+        {
+            objectToMove5.transform.position = unloadedPosition;
+        }
     }
 
-    private void OnSceneUnloaded(Scene scene)
+    /*private void OnSceneUnloaded(Scene scene)
     {
         if (scene.name != "LivingRoom")
         {
             objectToMove1.transform.position = unloadedPosition;
             objectToMove2.transform.position = unloadedPosition;
         }
-        else if (scene.name != "Home")
+        if (scene.name != "Home")
         {
             objectToMove3.transform.position = unloadedPosition;
         }
@@ -89,5 +106,5 @@ public class Scene_Manager : MonoBehaviour
         {
             objectToMove5.transform.position = unloadedPosition;
         }
-    }
+    }*/
 }
