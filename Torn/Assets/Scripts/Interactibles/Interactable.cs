@@ -27,17 +27,15 @@ namespace Torn.Interact
 
         public bool interactedWith;
         public string sceneName;
-        public Transform normalPoint;
 
         private void Update() 
         {
-            Scene scene = SceneManager.GetActiveScene();
-            if (interactedWith || SceneManager.GetActiveScene().name != sceneName)
+            if (interactedWith)
             {
-                transform.TransformPoint(999,999,999);
+                transform.TransformPoint(15,15,15);
             }
-            
         }
+
         public InteractType GetInteractType() { return itemType; }  // Return type of interactable
 
         public string GetCollectableID() { return collectableID; } // Return collectable ID
