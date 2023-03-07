@@ -9,6 +9,10 @@ TagManager:
   - AudioPuzzle
   - ClothesPuzzle
   - Fade
+  - Movable
+  - Object
+  - MovementDecider
+  - WaterPuzzleGoal
   layers:
   - Default
   - TransparentFX
