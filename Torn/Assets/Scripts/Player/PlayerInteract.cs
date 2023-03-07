@@ -125,10 +125,7 @@ namespace Torn.Interact
                             if (itemCollider.GetComponent<Interactable>().interactedWith == false)
                             {
                                 keys.KeyCheckCounter();
-                                itemCollider.gameObject.transform.Translate(999,999,999);
-                                Scene scene = SceneManager.GetActiveScene();
-                                itemCollider.GetComponent<Interactable>().interactedWith = true;
-                                
+                                itemCollider.GetComponent<Interactable>().interactedWith = true;  
                             }
                             break;
                         }
