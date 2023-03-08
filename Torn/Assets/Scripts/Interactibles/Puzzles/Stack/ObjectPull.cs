@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectPull : MonoBehaviour
 {
@@ -9,34 +8,48 @@ public class ObjectPull : MonoBehaviour
 
     Rigidbody2D body;
 
+    [SerializeField]
+    bool outOfStack;
+
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+
+        outOfStack = false;
     }
 
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        if (!outOfStack)
         {
-            body.AddForce(Vector2.left * pullForce, ForceMode2D.Impulse);
-        }
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            {
+                body.AddForce(Vector2.left * pullForce, ForceMode2D.Impulse);
+            }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-        {
-            body.AddForce(Vector2.right * pullForce, ForceMode2D.Impulse);
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if(collision.collider.tag != "Stack")
-        {
-            body.drag = 10;
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            {
+                body.AddForce(Vector2.right * pullForce, ForceMode2D.Impulse);
+            }
         }
         else
         {
-            body.drag = 1;
+            body.velocity = Vector2.zero;
+        }
+       
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag != "Stack")
+        {
+            outOfStack = true;
+            body.velocity = Vector2.zero;
+        }
+        else
+        {
+            outOfStack = false;
         }
     }
 }
