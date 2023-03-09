@@ -11,6 +11,9 @@ namespace Torn.Stack
         List<GameObject> stackPrefabs = new List<GameObject>();     // List of stack prefabs
 
         [SerializeField]
+        List<float> spacingFloats = new List<float>();
+
+        [SerializeField]
         GameObject resumePrefab, tablePrefab;    // Resume prefab
 
         [SerializeField]
@@ -35,7 +38,7 @@ namespace Torn.Stack
             stackSize = Random.Range(minStack, maxStack);   // Randomize stack size
 
             // Radomly select where to place the resume
-            resumePlacement = Random.Range(hardMode ? 0 : 1, stackSize - 1);  // NOTE: hardmode on will make the minimum placement at the bottom of the stack
+            resumePlacement = Random.Range(hardMode ? 0 : 1, stackSize/2 + 1);  // NOTE: hardmode on will make the minimum placement at the bottom of the stack
 
             BuildStack();   // Build the stack
         }
@@ -52,14 +55,14 @@ namespace Torn.Stack
                 {
                     if (hardMode)
                     {
-                        resumePrefab.GetComponent<ObjectPull>().HardmodeOn(hardMode);
+                        resumePrefab.GetComponent<ResumeController>().HardmodeOn(hardMode);
                     }
-                    resumePrefab.GetComponent<ObjectPull>().SetForceMuliplier((stackSize - resumePlacement));
+                    resumePrefab.GetComponent<ResumeController>().SetForceMuliplier(resumePlacement, stackSize);
 
-                    placement.y += 0.1f; // Adjust the y position to account for the thickness of the resume
+                    placement.y += spacingFloats[3]; // Adjust the y position to account for the thickness of the resume
                     Instantiate(resumePrefab, placement, transform.rotation, this.transform);   // Create the resume in the correct position.
+                    placement.y += spacingFloats[3]; ; // Adjust for the next item in the stack
 
-                    placement.y += 0.1f; // Adjust for the next item in the stack
                 }
                 else
                 {
@@ -70,28 +73,28 @@ namespace Torn.Stack
                         // Paper Prefab
                         case 0:
                             {
-                                placement.y += 0.1f;
+                                placement.y += spacingFloats[0];
                                 temp = Instantiate(stackPrefabs[itemSelected], placement, transform.rotation, this.transform);
+                                placement.y += spacingFloats[0];
 
-                                placement.y += 0.1f;
                                 break;
                             }
                         // Thin Book Prefab
                         case 1:
                             {
-                                placement.y += 0.2f;
+                                placement.y += spacingFloats[1];
                                 temp = Instantiate(stackPrefabs[itemSelected], placement, transform.rotation, this.transform);
+                                placement.y += spacingFloats[1];
 
-                                placement.y += 0.2f;
                                 break;
                             }
                         // Thick Book Prefab
                         case 2:
                             {
-                                placement.y += 0.25f;
+                                placement.y += spacingFloats[2];
                                 temp = Instantiate(stackPrefabs[itemSelected], placement, transform.rotation, this.transform);
+                                placement.y += spacingFloats[2];
 
-                                placement.y += 0.25f;
                                 break;
                             }
                     }   // END OF SWITCH

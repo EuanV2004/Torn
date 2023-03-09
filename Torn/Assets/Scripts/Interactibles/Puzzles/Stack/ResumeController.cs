@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace Torn.Stack
 {
-    public class ObjectPull : MonoBehaviour
+    public class ResumeController : MonoBehaviour
     {
         [SerializeField]
         float pullForce = 3f;
@@ -25,12 +25,12 @@ namespace Torn.Stack
         {
             if (!outOfStack)
             {
-                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
                 {
                     body.AddForce(Vector2.left * pullForce, ForceMode2D.Impulse);
                 }
 
-                if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+                if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
                 {
                     body.AddForce(Vector2.right * pullForce, ForceMode2D.Impulse);
                 }
@@ -42,10 +42,18 @@ namespace Torn.Stack
 
         }
 
-        public void SetForceMuliplier(float m)
+        public void SetForceMuliplier(float pos = 0, float size = 0)
         {
-            //Debug.Log($"pullForce = {m}");
-            pullForce = m;
+            if (pos <= 0 &&  size <= 0)
+            {
+                pullForce = 3f;
+            }
+            else
+            {
+                pullForce = 3f + (2f / (pos + 1) + (0.1f * (size - pos)));
+            }
+
+            Debug.Log($"New pull force: {pullForce}");
         }
 
         public void HardmodeOn (bool b = false)
