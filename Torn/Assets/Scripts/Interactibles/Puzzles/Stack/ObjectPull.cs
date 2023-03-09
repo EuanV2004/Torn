@@ -1,55 +1,85 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ObjectPull : MonoBehaviour
+namespace Torn.Stack
 {
-    [SerializeField]
-    float pullForce;
-
-    Rigidbody2D body;
-
-    [SerializeField]
-    bool outOfStack;
-
-    // Start is called before the first frame update
-    void Start()
+    public class ObjectPull : MonoBehaviour
     {
-        body = GetComponent<Rigidbody2D>();
+        [SerializeField]
+        float pullForce = 3f;
 
-        outOfStack = false;
-    }
+        Rigidbody2D body;
 
-    void FixedUpdate()
-    {
-        if (!outOfStack)
+        [SerializeField]
+        bool outOfStack;
+
+        bool hardModeOn;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            body = GetComponent<Rigidbody2D>();
+        }
+
+        void FixedUpdate()
+        {
+            if (!outOfStack)
             {
-                body.AddForce(Vector2.left * pullForce, ForceMode2D.Impulse);
+                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                {
+                    body.AddForce(Vector2.left * pullForce, ForceMode2D.Impulse);
+                }
+
+                if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+                {
+                    body.AddForce(Vector2.right * pullForce, ForceMode2D.Impulse);
+                }
+            }
+            else
+            {
+                body.velocity = Vector2.zero;
             }
 
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        }
+
+        public void SetForceMuliplier(float m)
+        {
+            //Debug.Log($"pullForce = {m}");
+            pullForce = m;
+        }
+
+        public void HardmodeOn (bool b = false)
+        {
+            hardModeOn = b;
+        }
+
+        public bool CheckHardmode()
+        {
+            return hardModeOn;
+        }
+
+        void RestartGame()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                body.AddForce(Vector2.right * pullForce, ForceMode2D.Impulse);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
-        else
-        {
-            body.velocity = Vector2.zero;
-        }
-       
-    }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag != "Stack")
+        void OnCollisionEnter2D(Collision2D collision)
         {
-            outOfStack = true;
-            body.velocity = Vector2.zero;
-        }
-        else
-        {
-            outOfStack = false;
+            if (collision.gameObject.tag == "Table" && !hardModeOn)
+            {
+                outOfStack = true;
+                body.velocity = Vector2.zero;
+
+                RestartGame();
+
+            }
+            else
+            {
+                outOfStack = false;
+            }
         }
     }
 }
