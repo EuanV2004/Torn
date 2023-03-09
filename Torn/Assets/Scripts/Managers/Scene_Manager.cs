@@ -24,6 +24,9 @@ public class Scene_Manager : MonoBehaviour
     [Header("Unloaded")]
     public Vector3 unloadedPosition;
 
+    [Header("Player")]
+    public GameObject Player;
+
     private void Awake()
     {
         if (instance == null)
@@ -51,60 +54,30 @@ public class Scene_Manager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "LivingRoom")
+        if (scene.name == "House")
         {
             objectToMove1.transform.position = newPosition1;
             objectToMove2.transform.position = newPosition2;
+            objectToMove3.transform.position = newPosition3;
+            objectToMove4.transform.position = newPosition4;
+            objectToMove5.transform.position = newPosition5;
         }
-        else if (scene.name != "LivingRoom")
+        else if (scene.name != "House")
         {
             objectToMove1.transform.position = unloadedPosition;
             objectToMove2.transform.position = unloadedPosition;
-        }
-        if (scene.name == "Home")
-        {
-            objectToMove3.transform.position = newPosition3;
-        }
-        else if (scene.name != "Home")
-        {
             objectToMove3.transform.position = unloadedPosition;
-        }
-        if (scene.name == "Bedroom")
-        {
-            objectToMove4.transform.position = newPosition4;
-        }
-        else if (scene.name != "Bedroom")
-        {
             objectToMove4.transform.position = unloadedPosition;
-        }
-        if (scene.name == "Bathroom")
-        {
-            objectToMove5.transform.position = newPosition5;
-        }
-        else if (scene.name != "Bathroom")
-        {
             objectToMove5.transform.position = unloadedPosition;
+            Player.transform.position = new Vector3(0,0,0);
         }
     }
 
     /*private void OnSceneUnloaded(Scene scene)
     {
-        if (scene.name != "LivingRoom")
+        if (scene.name != "House")
         {
-            objectToMove1.transform.position = unloadedPosition;
-            objectToMove2.transform.position = unloadedPosition;
-        }
-        if (scene.name != "Home")
-        {
-            objectToMove3.transform.position = unloadedPosition;
-        }
-        else if (scene.name != "Bedroom")
-        {
-            objectToMove4.transform.position = unloadedPosition;
-        }
-        else if (scene.name != "Bathroom")
-        {
-            objectToMove5.transform.position = unloadedPosition;
+            Player.transform.position = new Vector3(0,0,0);
         }
     }*/
 }
