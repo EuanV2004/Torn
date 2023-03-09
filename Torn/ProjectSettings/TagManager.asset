@@ -10,8 +10,6 @@ TagManager:
   - ClothesPuzzle
   - Fade
   - Movable
-  - Object
-  - MovementDecider
   - WaterPuzzleGoal
   layers:
   - Default
