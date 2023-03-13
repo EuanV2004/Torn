@@ -16,6 +16,7 @@ namespace Torn.Interact
         public List<Interactable> collection = new List<Interactable>();    // List of collectable items
 
         public Collider2D itemCollider = new Collider2D();  // Holds the collider of the interactable
+        public LayerMask floorLayer;
 
         public Animator animator;
         public Animator anim;
@@ -54,6 +55,8 @@ namespace Torn.Interact
 
         void OnCollisionEnter2D(Collision2D collision)
         {
+            if (collision.gameObject.layer == floorLayer) return;
+            
             Debug.Log($"Press {interactKey} to collect.");  // Notify the player the button to interact
             itemCollider = collision.collider;   // Get the collider of the interactable
         }
