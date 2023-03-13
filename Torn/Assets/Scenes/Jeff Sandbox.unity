@@ -540,10 +540,10 @@ MonoBehaviour:
   - {fileID: 3789894921331167643, guid: 2c16eebe87ed82a499d16755bd2233b0, type: 3}
   - {fileID: 8470963140283348972, guid: 43398892555dcaa41a8a179106c6e009, type: 3}
   spacingFloats:
-  - 0.1
-  - 0.2
   - 0.25
-  - 0.05
+  - 0.325
+  - 0.475
+  - 0.175
   resumePrefab: {fileID: 1331972386475501979, guid: 7b0e47623cc991445bec55b7859d4763, type: 3}
   tablePrefab: {fileID: 274913906}
   stackSize: 0
