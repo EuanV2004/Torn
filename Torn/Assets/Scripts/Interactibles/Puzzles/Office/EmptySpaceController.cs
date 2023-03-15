@@ -18,6 +18,9 @@ namespace Torn.Office
                 Vector2 oldPiecePos = gm.GetSelectedPiece().GetComponent<Transform>().position;
                 gm.GetSelectedPiece().GetComponent<Transform>().position = gameObject.transform.position;
                 gameObject.transform.position = oldPiecePos;
+
+                // Clear Selected Piece once it swaps
+                gm.SetSelectedPiece();
             }
         }
     }

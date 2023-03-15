@@ -13,27 +13,37 @@ namespace Torn.Office
         GameObject selectedPiece;
 
         [SerializeField]
-        GameObject piecePrefab;
+        GameObject emptySpacePrefab;
 
         [SerializeField]
-        GameObject emptySpacePrefab;
+        List<ScriptableOfficePuzzle> officePuzzlePrefabs;
+
+        ScriptableOfficePuzzle currentLvlPrefabs;
 
         GameObject emptySpace;
 
         const int gridSize = 9;
 
+        int currentLvl = 1;
+
         // Start is called before the first frame update
         void Start()
         {
-            GenerateGrid();     // Generate grid at the start of the game
+            GenerateGrid(currentLvl);     // Generate grid at the start of the game
         }
 
         // Method to randomly generate grid
-        void GenerateGrid()
+        void GenerateGrid(int level)
         {
             int[] gridPos = new int[gridSize] {1,2,3,4,5,6,7,8,9};  // List of grid positions
 
             gridPos = gridPos.OrderBy(x => new System.Random().Next()).ToArray();   // Randomizes the order
+
+            // Set the current level prefabs to the correct prefab list
+            currentLvlPrefabs = officePuzzlePrefabs[level - 1];
+
+            // Randomize order of pieces
+            currentLvlPrefabs._OfficePuzzlePieces = currentLvlPrefabs._OfficePuzzlePieces.OrderBy(x => new System.Random().Next()).ToArray();
 
             // Loop through the list of grid positions
             for (int i = 0; i < gridPos.Length; i++)
@@ -103,22 +113,16 @@ namespace Torn.Office
                 }
                 else
                 {
-                    GameObject newPiece = Instantiate(piecePrefab, position, Quaternion.identity);
+                    GameObject newPiece = Instantiate(currentLvlPrefabs._OfficePuzzlePieces[i-1], position, Quaternion.identity);
 
                     newPiece.GetComponent<SlidePiece>().gm = gameObject.GetComponent<GameManager>();
                     newPiece.GetComponent<SlidePiece>().emptySpace = emptySpace.GetComponent<Transform>();
-
-                    // Change the color for every odd index depending to make it a little easier to see the grid
-                    if (i % 2 != 0)
-                    {
-                        newPiece.GetComponent<SpriteRenderer>().color = Color.cyan;
-                    }
                 }
             }
         }
 
         // Set the piece as selected
-        public void SetSelectedPiece(GameObject piece)
+        public void SetSelectedPiece(GameObject piece = null)
         {
             selectedPiece = piece;
         }

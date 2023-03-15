@@ -397,8 +397,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedPiece: {fileID: 0}
-  piecePrefab: {fileID: 7255460210037969444, guid: ea29566fa7a366a468f53e47de96eff9, type: 3}
   emptySpacePrefab: {fileID: 994868010071211158, guid: 96ff171f272654446b65443a152a54f2, type: 3}
+  officePuzzlePrefabs:
+  - {fileID: 11400000, guid: 6154b4610a24a0940942525b5b03a9ab, type: 2}
 --- !u!1001 &3528117493600877174
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58c6dd700690d24c9de566f4bfcc124, type: 3}
+  m_Name: OfficePuzzlePieces
+  m_EditorClassIdentifier: 
+  _OfficePuzzlePieces:
+  - {fileID: 1800711730153157945, guid: a2e2fa7a46af7e24eabc23d1917891c6, type: 3}
+  - {fileID: 1800711730153157945, guid: 474dfb4cdc1f3d04c9ba69a2b297f3e3, type: 3}
+  - {fileID: 1800711730153157945, guid: 5b0fb819cf29c2f4f99ebf473a14d55d, type: 3}
+  - {fileID: 1800711730153157945, guid: 0f9e3893c3cb71f449c84543bac39c83, type: 3}
+  - {fileID: 1800711730153157945, guid: bc90e715ac873254fbede9e54a3933f9, type: 3}
+  - {fileID: 1800711730153157945, guid: 311883f3bb3a83c4d91526db9a81c5c4, type: 3}
+  - {fileID: 1800711730153157945, guid: 1a5215a5f2ba21c4eb2fa3c1f0047779, type: 3}
+  - {fileID: 1800711730153157945, guid: 62557644b9fbb9140b1d9071bc026c83, type: 3}
