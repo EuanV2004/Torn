@@ -8,6 +8,12 @@ namespace Torn.Office
     {
         public GameManager gm;
 
+        [SerializeField]
+        bool inCorrectPosition;
+
+        [SerializeField]
+        List<Vector2> correctPos = new List<Vector2>();
+
         // On mouse click
         void OnMouseDown()
         {
@@ -21,6 +27,27 @@ namespace Torn.Office
 
                 // Clear Selected Piece once it swaps
                 gm.SetSelectedPiece();
+            }
+        }
+
+        public void CheckCorrectPos(Vector2 pos)
+        {
+            foreach (Vector2 position in correctPos)
+            {
+                if (pos == position)
+                {
+                    inCorrectPosition = true;
+                    
+                    break;
+                }
+            }
+        }
+
+        public void SetCorrectPositions(List<Vector2> posList)
+        {
+            foreach (Vector2 pos in posList)
+            {
+                correctPos.Add(pos);
             }
         }
     }

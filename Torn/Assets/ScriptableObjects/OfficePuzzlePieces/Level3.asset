@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Level3
   m_EditorClassIdentifier: 
   _OfficePuzzlePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1800711730153157945, guid: 21fa371865b8da14bb59b1a189d9750d, type: 3}
+  - {fileID: 1800711730153157945, guid: 12328a519122f3348879e0d199265e18, type: 3}
+  - {fileID: 1800711730153157945, guid: 7b890dea519d4ee489933e1a24512002, type: 3}
+  - {fileID: 1800711730153157945, guid: c37ad52a470099247b41e82d7feb4ae1, type: 3}
+  - {fileID: 1800711730153157945, guid: 816baa77b2d964945a3d49df0ed61853, type: 3}
+  - {fileID: 1800711730153157945, guid: 31230a29fa516774b932a454d982c116, type: 3}
+  - {fileID: 1800711730153157945, guid: 31610087e4daeae4cabef2772ee1c5e4, type: 3}
+  - {fileID: 8993709602553588644, guid: 30f472bef1b482548ad925641e232261, type: 3}

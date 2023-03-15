@@ -16,12 +16,15 @@ namespace Torn.Office
         GameObject emptySpacePrefab;
 
         [SerializeField]
+        List<Transform> answerPoses;
+
+        [SerializeField]
         List<ScriptableOfficePuzzle> officePuzzlePrefabs;
 
         [SerializeField]
-        List<ScriptableObject> officeAnswerPrefabs;
+        List<ScriptableOfficeAnswer> officeAnswerPrefabs;
 
-        ScriptableObject answerPrefabs;
+        ScriptableOfficeAnswer currentAnswerPrefabs;
 
         ScriptableOfficePuzzle currentLvlPrefabs;
 
@@ -118,12 +121,58 @@ namespace Torn.Office
                 }
                 else
                 {
+                    // Add the puzzle pieces into the board
                     GameObject newPiece = Instantiate(currentLvlPrefabs._OfficePuzzlePieces[i-1], position, Quaternion.identity);
 
                     newPiece.GetComponent<SlidePiece>().gm = gameObject.GetComponent<GameManager>();
                     newPiece.GetComponent<SlidePiece>().emptySpace = emptySpace.GetComponent<Transform>();
                 }
             }
+
+            GetAnswerKeys(level);
+        }
+
+        void GetAnswerKeys(int level)
+        {
+            // Get the correct answer keys
+            currentAnswerPrefabs = officeAnswerPrefabs[level - 1];
+
+            // Randomize the oder
+            currentAnswerPrefabs._OfficeAnswers = currentAnswerPrefabs._OfficeAnswers.OrderBy(x => new System.Random().Next()).ToArray();
+
+            for (int i = 0; i < answerPoses.Count; i++)
+            {
+                Instantiate(currentAnswerPrefabs._OfficeAnswers[i], answerPoses[i].position, Quaternion.identity);
+            }
+        }
+
+        void SetAnswerPositions(int level, GameObject empty)
+        {
+            List<Vector2> correctPos = new List<Vector2>();
+
+            switch (level)
+            {
+                case 1:
+                    {
+                        correctPos.Add(new Vector2(-3f, 3f));
+                        correctPos.Add(new Vector2(3f, -3f));
+                        break;
+                    }
+                case 2:
+                    {
+                        correctPos.Add(new Vector2(3f, -3f));
+                        break;
+                    }
+                case 3:
+                    {
+                        correctPos.Add(new Vector2(-3f, 3f));
+                        correctPos.Add(new Vector2(3f, -3f));
+                        break;
+                    }
+            }
+
+            empty.GetComponent<EmptySpaceController>().SetCorrectPositions(correctPos);
+
         }
 
         // Set the piece as selected
