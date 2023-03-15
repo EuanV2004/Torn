@@ -1,15 +1,21 @@
 using System.Collections;
 using UnityEngine;
+using Torn.Player;
 
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private Vector3 panTarget = new Vector3(0f, 0f, -10f);
     [SerializeField] private float panDuration = 3f;
 
+    private GameObject player;
+
     private Camera cam;
 
     private void Start() {
         cam = Camera.main;
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        player.GetComponent<PlayerMovement>().enabled = false;
     }
 
     public void StartGame() {
@@ -35,6 +41,7 @@ public class MainMenuManager : MonoBehaviour
         }
 
         cam.transform.position = panTarget;
+        player.GetComponent<PlayerMovement>().enabled = true;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
     }
