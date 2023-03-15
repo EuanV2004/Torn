@@ -18,6 +18,11 @@ namespace Torn.Office
         [SerializeField]
         List<ScriptableOfficePuzzle> officePuzzlePrefabs;
 
+        [SerializeField]
+        List<ScriptableObject> officeAnswerPrefabs;
+
+        ScriptableObject answerPrefabs;
+
         ScriptableOfficePuzzle currentLvlPrefabs;
 
         GameObject emptySpace;
