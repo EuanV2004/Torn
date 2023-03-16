@@ -5,6 +5,9 @@ namespace Torn.Puzzles {
     {
         [SerializeField] private float playerSpeed;
 
+        private bool isInRange;
+        private Collider2D collidingMovableObject;
+
         private void Update() {
             MovePlayer();
         }
@@ -21,9 +24,35 @@ namespace Torn.Puzzles {
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
+            if (other.CompareTag("Movable")) {
+                collidingMovableObject = other;
+                isInRange = true;
+            }
             if (other.CompareTag("WaterPuzzleGoal")) {
                 print("Won!");
             }
+        }
+
+        private void OnTriggerStay2D(Collider2D other) {
+            if (other.CompareTag("Movable")) {
+                collidingMovableObject = other;
+                isInRange = true;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other) {
+            if (other.CompareTag("Movable")) {
+                collidingMovableObject = null;
+                isInRange = false;
+            }
+        }
+
+        public bool ReturnIsInRange() {
+            return isInRange;
+        }
+
+        public Collider2D ReturnCollidingMovableObject() {
+            return collidingMovableObject;
         }
     }
 }

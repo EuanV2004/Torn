@@ -3,25 +3,28 @@ using UnityEngine;
 namespace Torn.Puzzles {
     public class WaterBlocksManager : MonoBehaviour
     {
+        [SerializeField] private LayerMask movableLayer;
+        private WaterBlocksMovement waterBlocksMovement;
+
         private void Start() {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
+
+            waterBlocksMovement = FindObjectOfType<WaterBlocksMovement>();
         }
 
         private void Update() {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (!waterBlocksMovement.ReturnIsInRange()) return;
 
-            if (hit.collider == null) return;
+            Collider2D movableBlock = waterBlocksMovement.ReturnCollidingMovableObject();
 
-            if (Input.GetMouseButtonDown(0)) {
-                if (hit.collider.CompareTag("Movable")) {
-                    MoveBlock(hit);
-                }
+            if (Input.GetKeyDown(KeyCode.E)) {
+                MoveBlock(movableBlock);
             }
         }
 
-        private void MoveBlock(RaycastHit2D hit) {
-            var block = hit.collider.GetComponent<WaterBlocks>();
+        private void MoveBlock(Collider2D other) {
+            var block = other.GetComponent<WaterBlocks>();
             var blockDirection = block.ReturnBlockDirection();
             var movementFactor = block.ReturnMovementFactor();
 
