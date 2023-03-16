@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 namespace Torn.Office
@@ -41,14 +38,6 @@ namespace Torn.Office
         void Start()
         {
             GenerateGrid(currentLvl);     // Generate grid at the start of the game
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                NextLevel();
-            }
         }
 
         // Method to randomly generate grid
@@ -209,18 +198,27 @@ namespace Torn.Office
                 // Loops through each child and destorys them
                 foreach (Transform child in puzzlePieceParent)
                 {
-                    GameObject.DestroyImmediate(child.gameObject);
+                    GameObject.Destroy(child.gameObject);
                 }
 
                 foreach (Transform child in answerPieceParent)
                 {
-                    GameObject.DestroyImmediate(child.gameObject);
+                    GameObject.Destroy(child.gameObject);
                 }
             }
 
             Destroy(emptySpace);
 
-            //GenerateGrid(++currentLvl);     // Recreate Grid with the new level
+            if (currentLvl+1 > 3)
+            {
+                // Exit Scene
+            }
+            else
+            {
+                GenerateGrid(++currentLvl);     // Recreate Grid with the new level
+            }
+
+            
         }
 
         // Set the piece as selected
