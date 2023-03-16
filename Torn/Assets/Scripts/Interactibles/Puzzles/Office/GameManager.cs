@@ -10,6 +10,9 @@ namespace Torn.Office
     public class GameManager : MonoBehaviour
     {
         [SerializeField]
+        Transform puzzlePieceParent, answerPieceParent;
+
+        [SerializeField]
         GameObject selectedPiece;
 
         [SerializeField]
@@ -40,9 +43,18 @@ namespace Torn.Office
             GenerateGrid(currentLvl);     // Generate grid at the start of the game
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                NextLevel();
+            }
+        }
+
         // Method to randomly generate grid
         void GenerateGrid(int level)
         {
+
             int[] gridPos = new int[gridSize] {1,2,3,4,5,6,7,8,9};  // List of grid positions
 
             gridPos = gridPos.OrderBy(x => new System.Random().Next()).ToArray();   // Randomizes the order
@@ -117,21 +129,23 @@ namespace Torn.Office
                 {
                     emptySpace = Instantiate(emptySpacePrefab, position, Quaternion.identity);
 
-                    emptySpace.GetComponent<EmptySpaceController>().gm = gameObject.GetComponent<GameManager>();
+                    emptySpace.GetComponent<EmptySpaceController>().gm = GetComponent<GameManager>();
                 }
                 else
                 {
                     // Add the puzzle pieces into the board
-                    GameObject newPiece = Instantiate(currentLvlPrefabs._OfficePuzzlePieces[i-1], position, Quaternion.identity);
+                    GameObject newPiece = Instantiate(currentLvlPrefabs._OfficePuzzlePieces[i-1], position, Quaternion.identity, puzzlePieceParent);
 
-                    newPiece.GetComponent<SlidePiece>().gm = gameObject.GetComponent<GameManager>();
+                    newPiece.GetComponent<SlidePiece>().gm = GetComponent<GameManager>();
                     newPiece.GetComponent<SlidePiece>().emptySpace = emptySpace.GetComponent<Transform>();
                 }
             }
 
-            GetAnswerKeys(level);
+            GetAnswerKeys(level);   // Get the answers for the puzzle
+            SetAnswerPositions(level,emptySpace);   // Set the correct position for the empty space to be
         }
 
+        // Create the Answer Prefabs
         void GetAnswerKeys(int level)
         {
             // Get the correct answer keys
@@ -140,39 +154,73 @@ namespace Torn.Office
             // Randomize the oder
             currentAnswerPrefabs._OfficeAnswers = currentAnswerPrefabs._OfficeAnswers.OrderBy(x => new System.Random().Next()).ToArray();
 
+            // Loop through the answer prefab
             for (int i = 0; i < answerPoses.Count; i++)
             {
-                Instantiate(currentAnswerPrefabs._OfficeAnswers[i], answerPoses[i].position, Quaternion.identity);
+                // Create the answer piece preefabs
+                GameObject newAnswerPiece = Instantiate(currentAnswerPrefabs._OfficeAnswers[i], answerPoses[i].position, Quaternion.identity, answerPieceParent);
+
+                // Tell them who is the GM
+                newAnswerPiece.GetComponent<AnswerPiece>().gm = GetComponent<GameManager>();
             }
         }
 
+        // Set the position of the answer pieces
         void SetAnswerPositions(int level, GameObject empty)
         {
+            // List of X and Y coordinates
             List<Vector2> correctPos = new List<Vector2>();
 
+            // Depending on the level, the correct positons are
             switch (level)
             {
+                // Level 1
                 case 1:
                     {
-                        correctPos.Add(new Vector2(-3f, 3f));
-                        correctPos.Add(new Vector2(3f, -3f));
+                        correctPos.Add(new Vector2(-3f, 3f));   // Top left
+                        correctPos.Add(new Vector2(3f, -3f));   // Bottom right
                         break;
                     }
+                // Level 2
                 case 2:
                     {
-                        correctPos.Add(new Vector2(3f, -3f));
+                        correctPos.Add(new Vector2(3f, -3f));   // Bottom right
                         break;
                     }
+                // Level 3
                 case 3:
                     {
-                        correctPos.Add(new Vector2(-3f, 3f));
-                        correctPos.Add(new Vector2(3f, -3f));
+                        correctPos.Add(new Vector2(3f, -3f));   // Bottom right
                         break;
                     }
             }
 
+            // Tell the empty square where the correct positon is
             empty.GetComponent<EmptySpaceController>().SetCorrectPositions(correctPos);
 
+        }
+
+        // Generate next level
+        public void NextLevel()
+        {
+            // Check if the parent exists
+            if (puzzlePieceParent != null && answerPieceParent != null)
+            {
+                // Loops through each child and destorys them
+                foreach (Transform child in puzzlePieceParent)
+                {
+                    GameObject.DestroyImmediate(child.gameObject);
+                }
+
+                foreach (Transform child in answerPieceParent)
+                {
+                    GameObject.DestroyImmediate(child.gameObject);
+                }
+            }
+
+            Destroy(emptySpace);
+
+            //GenerateGrid(++currentLvl);     // Recreate Grid with the new level
         }
 
         // Set the piece as selected
@@ -186,5 +234,6 @@ namespace Torn.Office
         {
             return selectedPiece;
         }
+
     }
 }
