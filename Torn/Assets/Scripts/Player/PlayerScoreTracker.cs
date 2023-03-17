@@ -15,6 +15,8 @@ namespace Torn.Player
         }
 
         private void Update() {
+            if (endingManager == null) return;
+            
             playerScore = endingManager.GetPlayerScore();
 
             if (Input.GetKeyDown(KeyCode.P)) {

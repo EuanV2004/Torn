@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c222c3f177388944b91b539fead1199, type: 3}
+  m_Name: TestDialogue1
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogueText: This is the first line
+    dialogueAudio: {fileID: 8300000, guid: 778498c77a6aeb246862537333f3f46a, type: 3}
+  - dialogueText: This is the second line
+    dialogueAudio: {fileID: 8300000, guid: 6ad7e2b4c125a56449c47e64b7d080fd, type: 3}
