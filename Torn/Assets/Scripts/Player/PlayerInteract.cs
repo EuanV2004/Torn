@@ -47,6 +47,7 @@ namespace Torn.Interact
         {
             Debug.Log($"Press {interactKey} to collect.");  // Notify the player the button to interact
             itemCollider = collision;   // Get the collider of the interactable
+            itemCollider.GetComponent<Animator>().SetBool("InRange", true);
         }
 
         // Called on exiting a collider with isTrigger = true
@@ -55,6 +56,7 @@ namespace Torn.Interact
             // Check if the itemCollider is not null
             if (itemCollider != null)
             {
+                itemCollider.GetComponent<Animator>().SetBool("InRange", false);
                 itemCollider = null;    // Set it to null to prevent unwanted interaction
             }
         }
