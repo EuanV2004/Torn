@@ -1,19 +1,22 @@
 using System.Collections;
 using UnityEngine;
 using Torn.Player;
+using Torn.Dialogues;
 
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private Vector3 panTarget = new Vector3(0f, 0f, -10f);
     [SerializeField] private float panDuration = 3f;
+    [SerializeField] private DialogueSO beginningDialogue;
 
     private GameObject player;
-
+    private PlayerDialogueManager playerDialogueManager;
     private Camera cam;
 
     private void Start() {
         cam = Camera.main;
         player = GameObject.FindGameObjectWithTag("Player");
+        playerDialogueManager = player.GetComponent<PlayerDialogueManager>();
 
         player.GetComponent<PlayerMovement>().enabled = false;
     }
@@ -44,5 +47,6 @@ public class MainMenuManager : MonoBehaviour
         player.GetComponent<PlayerMovement>().enabled = true;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
+        playerDialogueManager.SetDialogue(beginningDialogue);
     }
 }

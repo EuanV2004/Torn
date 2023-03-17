@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c222c3f177388944b91b539fead1199, type: 3}
+  m_Name: 02 - Baby Stu
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogueText: Where the hell am I? Who are you?
+    dialogueAudio: {fileID: 8300000, guid: c8417f97be2560b4d807a6f77baf878b, type: 3}
+  - dialogueText: <Garbled noises>
+    dialogueAudio: {fileID: 0}
+  - dialogueText: Ah great, another one of God's twisted jokes
+    dialogueAudio: {fileID: 8300000, guid: a27637fb152f34541bdb3a9988a5606d, type: 3}
