@@ -6234,7 +6234,7 @@ GameObject:
   - component: {fileID: 1817132796}
   - component: {fileID: 1817132795}
   - component: {fileID: 1817132797}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Confiner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6266,10 +6266,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 9.642799, y: 7.488138}
-      - {x: -0.14538193, y: 7.5098224}
-      - {x: -12.471746, y: 7.4469433}
-      - {x: -50.014275, y: 7.366822}
+    - - {x: 21.594475, y: 13.9326725}
+      - {x: 4.190033, y: 14.188702}
+      - {x: -12.588921, y: 14.242996}
+      - {x: -50.014275, y: 14.280048}
       - {x: -50.008022, y: -6.791592}
       - {x: 21.518661, y: -6.667058}
       - {x: 21.398697, y: 7.434524}

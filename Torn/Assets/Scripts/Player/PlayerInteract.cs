@@ -124,7 +124,7 @@ namespace Torn.Interact
                         case InteractType.Logic:
                         {
                             anim.SetTrigger("FadeOut");
-                            StartCoroutine(Transition("LogicPuzzle", -16.22f, 10, -5));
+                            StartCoroutine(Transition("LogicPuzzle", 17.75f, -1, -5));
                             
                             break;
                         }
