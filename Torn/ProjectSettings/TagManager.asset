@@ -5,10 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactable
+<<<<<<< HEAD
   - AudioFloss
   - AudioPuzzle
   - ClothesPuzzle
   - Fade
+=======
+  - EmptySpace
+  - PuzzlePiece
+  - AnswerPiece
+>>>>>>> Jeff
   layers:
   - Default
   - TransparentFX

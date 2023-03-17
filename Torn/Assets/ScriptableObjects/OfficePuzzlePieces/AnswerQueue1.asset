@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e83f607bea5f71c4796acfd959870dc4, type: 3}
+  m_Name: AnswerQueue1
+  m_EditorClassIdentifier: 
+  _OfficeAnswers:
+  - {fileID: 1800711730153157945, guid: 6bf882fcbc417e74e87307915f6c16b0, type: 3}
+  - {fileID: 1800711730153157945, guid: 6ba07190d2bd0c54eadb1877221b1ae9, type: 3}
+  - {fileID: 1800711730153157945, guid: 17271ee66c0dcc14db91ada965657c54, type: 3}
+  - {fileID: 1800711730153157945, guid: 46b66da4e67472b49ab680d798a8cfc8, type: 3}
