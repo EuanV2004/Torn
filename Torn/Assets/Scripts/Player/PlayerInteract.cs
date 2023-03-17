@@ -21,16 +21,22 @@ namespace Torn.Interact
         public Animator animator;
         public Animator anim;
         public float wait;
+        Scene currentScene;
+
+        Scene scene;
         // Start is called before the first frame update
         void Start()
         {
             pills.AddConsumable(0);    // Player starts with 10 pills
             animator = GetComponent<Animator>();
+            currentScene = SceneManager.GetActiveScene();
+            
         }
 
         // Update is called once per frame
         void Update()
         {
+            currentScene = SceneManager.GetActiveScene();
             InteractWith(itemCollider);     // Check every frame when the player has pressed the interact key
 
             ConsumePills();     // Check every frame when the player has pressed the consume key
@@ -103,7 +109,7 @@ namespace Torn.Interact
                     case InteractType.Audio:
                         {
                             anim.SetTrigger("FadeOut");
-                            StartCoroutine(Transition("AudioPuzzle"));
+                            StartCoroutine(Transition("AudioPuzzle", -5.61f, -2.6f, -8.0f));
                             
                             break;
                         }
@@ -111,16 +117,22 @@ namespace Torn.Interact
                     case InteractType.Clothes:
                         {
                             anim.SetTrigger("FadeOut");
-                            StartCoroutine(Transition("ClothesPuzzle"));
+                            StartCoroutine(Transition("ClothesPuzzle", 6.87f, -2.9f, -8f));
                             
                             break;
                         }
-                    case InteractType.Door:
+                        case InteractType.Logic:
                         {
                             anim.SetTrigger("FadeOut");
-                            StartCoroutine(Transition(interacted.GetComponent<Interactable>().sceneName));
+                            StartCoroutine(Transition("LogicPuzzle", -16.22f, 10, -5));
                             
-
+                            break;
+                        }
+                        case InteractType.Water:
+                        {
+                            anim.SetTrigger("FadeOut");
+                            StartCoroutine(Transition("WaterPuzzle", -16.22f, 10, -5));
+                            
                             break;
                         }
                     case InteractType.Keys:
@@ -157,17 +169,27 @@ namespace Torn.Interact
 
         private IEnumerator Pause(float pause)
         {
-            
-            yield return new WaitForSecondsRealtime(pause);
             anim.SetTrigger("FadeOut");
             yield return new WaitForSecondsRealtime(pause);
             animator.SetBool("eatPill", false);
-            SceneManager.LoadScene("Home");
+            if (currentScene.name == "ClothesPuzzle")
+            {
+                this.transform.position = new Vector3(40.5f,-4.34f,-5f);
+            }
+
+            else if (currentScene.name == "AudioPuzzle")
+            {
+                this.transform.position = new Vector3(53.75f, -4.34f, -5f);
+            }
+            
+            SceneManager.LoadScene("House");
+            anim.SetTrigger("FadeIn");
         }
 
-        private IEnumerator Transition(string level)
+        private IEnumerator Transition(string level, float x, float y, float z)
         {
             yield return new WaitForSecondsRealtime(1);
+            this.transform.position = new Vector3(x,y,z);
             SceneManager.LoadScene(level);
             anim.SetTrigger("FadeIn");
         }

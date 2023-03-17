@@ -15,6 +15,9 @@ namespace Torn.Puzzles
         private bool shouldStillInteract = true;
         private AudioFlossNote currentNote;
         private AudioManager audioManager;
+        public GameObject pill;
+        public Vector3 location;
+        int i;
 
         private void Start() {
             audioManager = FindObjectOfType<AudioManager>();
@@ -51,22 +54,27 @@ namespace Torn.Puzzles
 
             switch (currentNote.GetCurrentNote()) {
                 case Notes.E:
+                    print ("E");
                     audioManager.Play("E");
                     userOrder.Add(1);
                     break;
                 case Notes.G:
+                    print ("G");
                     audioManager.Play("G");
                     userOrder.Add(2);
                     break;
                 case Notes.A:
+                    print ("A");
                     audioManager.Play("A");
                     userOrder.Add(3);
                     break;
                 case Notes.B:
+                    print ("B");
                     audioManager.Play("B");
                     userOrder.Add(4);
                     break;
                 case Notes.D:
+                    print ("D");
                     audioManager.Play("D");
                     userOrder.Add(5);
                     break;
@@ -83,8 +91,13 @@ namespace Torn.Puzzles
                 yield return new WaitForSeconds(0.5f);
 
                 userOrder.Clear();
-                print("<Next even happens>");
-                SceneManager.LoadScene("Bathroom");
+                if (i == 0)
+                {
+                    Instantiate(pill, location, Quaternion.identity);
+                    i++;
+                }
+                //transform.position = new Vector3(76f, -3.56f, -5f);
+                //SceneManager.LoadScene("House");
             }
             else {
                 print("Order is incorrect!");

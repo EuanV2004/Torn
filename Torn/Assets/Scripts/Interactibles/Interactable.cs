@@ -15,6 +15,8 @@ namespace Torn.Interact
         Puzzle,
         Audio,
         Clothes,
+        Logic,
+        Water,
         Door,
         Keys
     }

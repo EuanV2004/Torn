@@ -69,7 +69,6 @@ public class Scene_Manager : MonoBehaviour
             objectToMove3.transform.position = unloadedPosition;
             objectToMove4.transform.position = unloadedPosition;
             objectToMove5.transform.position = unloadedPosition;
-            Player.transform.position = new Vector3(0,0,0);
         }
     }
 
