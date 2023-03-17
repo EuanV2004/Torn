@@ -1,4 +1,5 @@
 using UnityEngine;
+using Torn.UI;
 
 namespace Torn.Dialogues {
     [RequireComponent(typeof(AudioSource))]
@@ -8,17 +9,30 @@ namespace Torn.Dialogues {
         private AudioSource audioSource;
         private DialogueContainer[] currentDialogues;
         private int currentDialogueIndex = 0;
+        private DialogueUIManager dialogueUIManager;
 
         private void Start() {
             audioSource = GetComponent<AudioSource>();
+            dialogueUIManager = FindObjectOfType<DialogueUIManager>();
         }
 
         private void Update() {
             if (!newDialogue) return;
 
+            if (Input.GetKeyDown(KeyCode.E) && currentDialogueIndex == newDialogue.ReturnDialogueLength()) {
+                dialogueUIManager.SetObjectInactive();
+            }
+
             if (Input.GetKeyDown(KeyCode.E) && currentDialogueIndex < newDialogue.ReturnDialogueLength()) {
                 ParseDialogueObject();
             }
+        }
+
+        public void SetDialogue(DialogueSO dialogue) {
+            newDialogue = dialogue;
+            currentDialogues = newDialogue.ReturnDialogueArray();
+            currentDialogueIndex = 0;
+            ParseDialogueObject();
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
@@ -29,9 +43,22 @@ namespace Torn.Dialogues {
             }
         }
 
+        private void OnTriggerExit2D(Collider2D other) {
+            if (other.CompareTag("Dialogue")) {
+                dialogueUIManager.SetObjectInactive();
+            }
+        }
+
         private void ParseDialogueObject() {
-            print(currentDialogues[currentDialogueIndex].dialogueText);
-            audioSource.PlayOneShot(currentDialogues[currentDialogueIndex].dialogueAudio);
+            if (!dialogueUIManager) return;
+
+            dialogueUIManager.SetObjectActive();
+            dialogueUIManager.SetText(currentDialogues[currentDialogueIndex].dialogueText);
+
+            if (currentDialogues[currentDialogueIndex].dialogueAudio != null) {
+                audioSource.PlayOneShot(currentDialogues[currentDialogueIndex].dialogueAudio);
+            }
+
             currentDialogueIndex++;
         }
     }
