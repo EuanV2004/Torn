@@ -6,6 +6,8 @@ namespace Torn.Office
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] bool hardMode = false;
+
         [SerializeField]
         Transform puzzlePieceParent, answerPieceParent;
 
@@ -37,14 +39,21 @@ namespace Torn.Office
         // Start is called before the first frame update
         void Start()
         {
-            GenerateGrid(currentLvl);     // Generate grid at the start of the game
+            if (hardMode)
+            {
+                GenerateGrid(currentLvl);        // Generate grid at the start of the game
+            }
+            else
+            {
+                GeneratePattern(currentLvl);    // Generates pattern at the start of the game
+            }
         }
 
         // Method to randomly generate grid
         void GenerateGrid(int level)
         {
 
-            int[] gridPos = new int[gridSize] {1,2,3,4,5,6,7,8,9};  // List of grid positions
+            int[] gridPos = new int[gridSize] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  // List of grid positions
 
             gridPos = gridPos.OrderBy(x => new System.Random().Next()).ToArray();   // Randomizes the order
 
@@ -57,61 +66,8 @@ namespace Torn.Office
             // Loop through the list of grid positions
             for (int i = 0; i < gridPos.Length; i++)
             {
-                // Creates a variable to hold the cooridates of the sqaures
-                Vector2 position = new Vector2();
-
-                // Quickly select the right position depending on the grid position from top left - bottom right
-                switch (gridPos[i])
-                {
-                    case 1:
-                        {
-                            position = new Vector2(-3, 3);
-
-                            break;
-                        }
-                        case 2:
-                        {
-                            position = new Vector2(0, 3);
-
-                            break;
-                        }
-                        case 3:
-                        {
-                            position = new Vector2(3, 3);
-                            break;
-                        }
-                        case 4:
-                        {
-                            position = new Vector2(-3, 0);
-                            break;
-                        }
-                        case 5:
-                        {
-                            position = new Vector2(0, 0);
-
-                            break;
-                        }
-                        case 6:
-                        {
-                            position = new Vector2(3, 0);
-                            break;
-                        }
-                        case 7:
-                        {
-                            position = new Vector2(-3, -3);
-                            break;
-                        }
-                        case 8:
-                        {
-                            position = new Vector2(0, -3);
-                            break;
-                        }
-                        case 9:
-                        {
-                            position = new Vector2(3, -3);
-                            break;
-                        }
-                }
+                // Get the position on the grid
+                Vector2 position = GetFixedPosition(gridPos[i]);
 
                 // Make the first square always be the empty square
                 if (i == 0)
@@ -123,7 +79,7 @@ namespace Torn.Office
                 else
                 {
                     // Add the puzzle pieces into the board
-                    GameObject newPiece = Instantiate(currentLvlPrefabs._OfficePuzzlePieces[i-1], position, Quaternion.identity, puzzlePieceParent);
+                    GameObject newPiece = Instantiate(currentLvlPrefabs._OfficePuzzlePieces[i - 1], position, Quaternion.identity, puzzlePieceParent);
 
                     newPiece.GetComponent<SlidePiece>().gm = GetComponent<GameManager>();
                     newPiece.GetComponent<SlidePiece>().emptySpace = emptySpace.GetComponent<Transform>();
@@ -131,7 +87,264 @@ namespace Torn.Office
             }
 
             GetAnswerKeys(level);   // Get the answers for the puzzle
-            SetAnswerPositions(level,emptySpace);   // Set the correct position for the empty space to be
+            SetAnswerPositions(level, emptySpace);   // Set the correct position for the empty space to be
+        }
+
+        // Method creates a fix pattern on the grid
+        void GeneratePattern(int level)
+        {
+            // Set the current level prefabs to the correct prefab list
+            currentLvlPrefabs = officePuzzlePrefabs[level - 1];
+
+            switch (level)
+            {
+                case 1:
+                    {
+                        LevelOnePattern();
+                        break;
+                    }
+                case 2:
+                    {
+                        LevelTwoPattern();
+                        break;
+                    }
+                case 3:
+                    {
+                        LevelThreePattern();
+                        break;
+                    }
+            }
+
+            GetAnswerKeys(level);   // Get the answers for the puzzle
+            SetAnswerPositions(level, emptySpace);   // Set the correct position for the empty space to be
+        }
+
+        // Fixed the position of pieces
+        Vector2 GetFixedPosition(int gPos)
+        {
+            /* NUMBER POSITION
+             * 1 2 3
+             * 4 5 6
+             * 7 8 9
+             */
+
+            Vector2 position = new Vector2();
+
+            switch (gPos)
+            {
+                // Top Left
+                case 1:
+                    {
+                        position = new Vector2(-3, 3);
+
+                        break;
+                    }
+                // Top Center
+                case 2:
+                    {
+                        position = new Vector2(0, 3);
+
+                        break;
+                    }
+                // Top Right
+                case 3:
+                    {
+                        position = new Vector2(3, 3);
+                        break;
+                    }
+                // Middle Left
+                case 4:
+                    {
+                        position = new Vector2(-3, 0);
+                        break;
+                    }
+                // Dead Center
+                case 5:
+                    {
+                        position = new Vector2(0, 0);
+
+                        break;
+                    }
+                // Middle Right
+                case 6:
+                    {
+                        position = new Vector2(3, 0);
+                        break;
+                    }
+                // Bottom Left
+                case 7:
+                    {
+                        position = new Vector2(-3, -3);
+                        break;
+                    }
+                // Bottom Middle
+                case 8:
+                    {
+                        position = new Vector2(0, -3);
+                        break;
+                    }
+                // Bottom Right
+                case 9:
+                    {
+                        position = new Vector2(3, -3);
+                        break;
+                    }
+            }
+
+            return position;
+        }
+
+        // Level 1 Pattern
+        void LevelOnePattern()
+        {
+            emptySpace = Instantiate(emptySpacePrefab, GetFixedPosition(8), emptySpacePrefab.transform.rotation);
+            emptySpace.GetComponent<EmptySpaceController>().gm = GetComponent<GameManager>();
+
+            List<GameObject> levelPieces = currentLvlPrefabs._OfficePuzzlePieces.ToList();
+
+            List<int> gridPos = new List<int>() {1, 2, 3, 4, 7 };
+            gridPos = gridPos.OrderBy(x => new System.Random().Next()).ToList();
+
+            GameObject newPiece = null;
+            for (int i = 1; i <= levelPieces.Count; i++)
+            {
+                switch (i)
+                {
+                    case 5:
+                        {
+                            newPiece = Instantiate(levelPieces[i-1], GetFixedPosition(6), Quaternion.identity, puzzlePieceParent);
+                            break;
+                        }
+                    case 6:
+                        {
+                            newPiece = Instantiate(levelPieces[i-1], GetFixedPosition(9), Quaternion.identity, puzzlePieceParent);
+                            break;
+                        }
+                    case 8:
+                        {
+                            newPiece = Instantiate(levelPieces[i-1], GetFixedPosition(5), Quaternion.identity, puzzlePieceParent);
+                            break;
+                        }
+                    default:
+                        {
+
+
+                            newPiece = Instantiate(levelPieces[i-1], GetFixedPosition(gridPos[0]), Quaternion.identity, puzzlePieceParent);
+                            gridPos.RemoveAt(0);
+
+                            break;
+                        }
+                }
+
+
+                if (newPiece != null)
+                {
+                    newPiece.GetComponent<SlidePiece>().gm = GetComponent<GameManager>();
+                    newPiece.GetComponent<SlidePiece>().emptySpace = emptySpace.GetComponent<Transform>();
+                }
+            }
+        }
+
+        // Level 2 Pattern
+        void LevelTwoPattern()
+        {
+            emptySpace = Instantiate(emptySpacePrefab, GetFixedPosition(8), emptySpacePrefab.transform.rotation);
+            emptySpace.GetComponent<EmptySpaceController>().gm = GetComponent<GameManager>();
+
+            List<GameObject> levelPieces = currentLvlPrefabs._OfficePuzzlePieces.ToList();
+
+            List<int> gridPos = new List<int>() { 1, 2, 3, 4, 7 };
+            gridPos = gridPos.OrderBy(x => new System.Random().Next()).ToList();
+
+            GameObject newPiece = null;
+            for (int i = 1; i <= levelPieces.Count; i++)
+            {
+                switch (i)
+                {
+                    case 5:
+                        {
+                            newPiece = Instantiate(levelPieces[i - 1], GetFixedPosition(6), Quaternion.identity, puzzlePieceParent);
+                            break;
+                        }
+                    case 6:
+                        {
+                            newPiece = Instantiate(levelPieces[i - 1], GetFixedPosition(9), Quaternion.identity, puzzlePieceParent);
+                            break;
+                        }
+                    case 8:
+                        {
+                            newPiece = Instantiate(levelPieces[i - 1], GetFixedPosition(5), Quaternion.identity, puzzlePieceParent);
+                            break;
+                        }
+                    default:
+                        {
+
+
+                            newPiece = Instantiate(levelPieces[i - 1], GetFixedPosition(gridPos[0]), Quaternion.identity, puzzlePieceParent);
+                            gridPos.RemoveAt(0);
+
+                            break;
+                        }
+                }
+
+
+                if (newPiece != null)
+                {
+                    newPiece.GetComponent<SlidePiece>().gm = GetComponent<GameManager>();
+                    newPiece.GetComponent<SlidePiece>().emptySpace = emptySpace.GetComponent<Transform>();
+                }
+            }
+        }
+
+        // Level 3 Pattern
+        void LevelThreePattern()
+        {
+            emptySpace = Instantiate(emptySpacePrefab, GetFixedPosition(8), emptySpacePrefab.transform.rotation);
+            emptySpace.GetComponent<EmptySpaceController>().gm = GetComponent<GameManager>();
+
+            List<GameObject> levelPieces = currentLvlPrefabs._OfficePuzzlePieces.ToList();
+
+            List<int> gridPos = new List<int>() { 1, 2, 3, 4, 7 };
+            gridPos = gridPos.OrderBy(x => new System.Random().Next()).ToList();
+
+            GameObject newPiece = null;
+            for (int i = 1; i <= levelPieces.Count; i++)
+            {
+                switch (i)
+                {
+                    case 5:
+                        {
+                            newPiece = Instantiate(levelPieces[i - 1], GetFixedPosition(6), Quaternion.identity, puzzlePieceParent);
+                            break;
+                        }
+                    case 6:
+                        {
+                            newPiece = Instantiate(levelPieces[i - 1], GetFixedPosition(9), Quaternion.identity, puzzlePieceParent);
+                            break;
+                        }
+                    case 8:
+                        {
+                            newPiece = Instantiate(levelPieces[i - 1], GetFixedPosition(5), Quaternion.identity, puzzlePieceParent);
+                            break;
+                        }
+                    default:
+                        {
+
+
+                            newPiece = Instantiate(levelPieces[i - 1], GetFixedPosition(gridPos[0]), Quaternion.identity, puzzlePieceParent);
+                            gridPos.RemoveAt(0);
+
+                            break;
+                        }
+                }
+
+
+                if (newPiece != null)
+                {
+                    newPiece.GetComponent<SlidePiece>().gm = GetComponent<GameManager>();
+                    newPiece.GetComponent<SlidePiece>().emptySpace = emptySpace.GetComponent<Transform>();
+                }
+            }
         }
 
         // Create the Answer Prefabs
@@ -215,7 +428,8 @@ namespace Torn.Office
             }
             else
             {
-                GenerateGrid(++currentLvl);     // Recreate Grid with the new level
+                // GenerateGrid(++currentLvl);     // Recreate Grid with the new level
+                GeneratePattern(++currentLvl);
             }
 
             
