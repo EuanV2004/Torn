@@ -926,6 +926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0c4511fe4fe3c4d98351961758a689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hardMode: 0
   puzzlePieceParent: {fileID: 672319843}
   answerPieceParent: {fileID: 797884432}
   selectedPiece: {fileID: 0}
@@ -943,6 +944,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e4e07978d5b0938418fc17614a5e3e17, type: 2}
   - {fileID: 11400000, guid: baebe2ab80bd3474c832a58f5131e7c7, type: 2}
   - {fileID: 11400000, guid: 9b9080a0d0557684fb2b1686005d7286, type: 2}
+  currentLvl: 1
 --- !u!4 &1353562829
 Transform:
   m_ObjectHideFlags: 0

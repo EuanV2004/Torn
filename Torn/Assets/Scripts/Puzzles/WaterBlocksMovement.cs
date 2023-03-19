@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Torn.Puzzles {
     public class WaterBlocksMovement : MonoBehaviour
@@ -7,6 +10,13 @@ namespace Torn.Puzzles {
 
         private bool isInRange;
         private Collider2D collidingMovableObject;
+
+        Torn.Interact.PlayerInteract player;
+
+        private void Start() 
+        {
+            player = FindObjectOfType<Torn.Interact.PlayerInteract>();
+        }
 
         private void Update() {
             MovePlayer();
@@ -29,7 +39,10 @@ namespace Torn.Puzzles {
                 isInRange = true;
             }
             if (other.CompareTag("WaterPuzzleGoal")) {
+                player.anim.SetTrigger("FadeOut");
+                
                 print("Won!");
+                StartCoroutine(Transition("House", 12.34f, -4.34f, -5, "FadeIn"));
             }
         }
 
@@ -53,6 +66,14 @@ namespace Torn.Puzzles {
 
         public Collider2D ReturnCollidingMovableObject() {
             return collidingMovableObject;
+        }
+
+        IEnumerator Transition(string level, float x, float y, float z, string trigger)
+        {
+            yield return new WaitForSecondsRealtime(1);
+            player.transform.position = new Vector3(x,y,z);
+            SceneManager.LoadScene(level);
+            player.anim.SetTrigger("FadeIn");
         }
     }
 }

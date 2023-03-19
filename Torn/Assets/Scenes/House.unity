@@ -731,10 +731,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d65aaf9066046845bea9399c77ef949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 7
+  itemType: 9
   collectableID: 
   interactedWith: 0
   sceneName: LivingRoom
+  animator: {fileID: 0}
 --- !u!212 &59723022
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1372,10 +1373,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d65aaf9066046845bea9399c77ef949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 7
+  itemType: 9
   collectableID: 
   interactedWith: 0
   sceneName: Bedroom
+  animator: {fileID: 0}
 --- !u!212 &328098013
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2334,7 +2336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &523629302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2375,10 +2377,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d65aaf9066046845bea9399c77ef949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 7
+  itemType: 9
   collectableID: 
   interactedWith: 0
   sceneName: Bathroom
+  animator: {fileID: 0}
 --- !u!212 &523629305
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3630,10 +3633,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d65aaf9066046845bea9399c77ef949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 7
+  itemType: 9
   collectableID: 
   interactedWith: 0
   sceneName: LivingRoom
+  animator: {fileID: 0}
 --- !u!212 &857584586
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5865,10 +5869,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d65aaf9066046845bea9399c77ef949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 7
+  itemType: 9
   collectableID: 
   interactedWith: 0
   sceneName: Home
+  animator: {fileID: 0}
 --- !u!212 &1635877693
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6099,6 +6104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1676111116}
   - component: {fileID: 1676111115}
+  - component: {fileID: 1676111117}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -6127,7 +6133,7 @@ MonoBehaviour:
   objectToMove4: {fileID: 328098009}
   newPosition4: {x: 37.1589, y: -4.4531, z: 0.05057924}
   objectToMove5: {fileID: 523629301}
-  newPosition5: {x: 55.1718, y: -4.7393, z: 0.05057924}
+  newPosition5: {x: 53.745, y: -4.7393, z: 0.05057924}
   unloadedPosition: {x: 500, y: 500, z: 500}
   Player: {fileID: 1912761478}
 --- !u!4 &1676111116
@@ -6145,6 +6151,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1676111117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676111114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f777ac6d3aa8d1741a0960509d8ae3e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1720170530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6272,7 +6290,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &1721299067
+--- !u!114 &1721299072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7471,6 +7489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1941274306}
   - component: {fileID: 1941274307}
+  - component: {fileID: 1941274308}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -7506,6 +7525,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 11400000, guid: 6533236ee0fbf08489d9559b38fcd2ad, type: 2}
+--- !u!114 &1941274308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941274305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f777ac6d3aa8d1741a0960509d8ae3e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1965863318
 GameObject:
   m_ObjectHideFlags: 0

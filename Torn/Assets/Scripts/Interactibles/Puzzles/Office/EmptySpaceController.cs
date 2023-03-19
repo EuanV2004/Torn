@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Torn.Office
 {
@@ -12,7 +14,7 @@ namespace Torn.Office
 
         [SerializeField]
         List<Vector2> correctPos = new List<Vector2>();
-
+        
         void Update()
         {
             CheckCorrectPos(transform.position);

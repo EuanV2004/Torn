@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Torn.Office
 {
@@ -34,11 +36,14 @@ namespace Torn.Office
 
         const int gridSize = 9;
 
-        int currentLvl = 1;
+        public int currentLvl = 1;
+
+        Torn.Interact.PlayerInteract player;
 
         // Start is called before the first frame update
         void Start()
         {
+            player = GetComponent<Torn.Interact.PlayerInteract>();
             if (hardMode)
             {
                 GenerateGrid(currentLvl);        // Generate grid at the start of the game
@@ -425,11 +430,19 @@ namespace Torn.Office
             if (currentLvl+1 > 3)
             {
                 // Exit Scene
+                Debug.Log ("win");
+                //SceneManager.LoadScene("House");
+                //player.anim.SetTrigger("FadeOut");
+                
+                //print("Won!");
+                //StartCoroutine(Transition("House", 12.34f, -4.34f, -5, "FadeIn"));
             }
             else
             {
                 // GenerateGrid(++currentLvl);     // Recreate Grid with the new level
+                Debug.Log ("Level beat " + currentLvl);
                 GeneratePattern(++currentLvl);
+                
             }
 
             
@@ -445,6 +458,14 @@ namespace Torn.Office
         public GameObject GetSelectedPiece()
         {
             return selectedPiece;
+        }
+
+        IEnumerator Transition(string level, float x, float y, float z, string trigger)
+        {
+            yield return new WaitForSecondsRealtime(1);
+            player.transform.position = new Vector3(x,y,z);
+            SceneManager.LoadScene(level);
+            player.anim.SetTrigger("FadeIn");
         }
 
     }

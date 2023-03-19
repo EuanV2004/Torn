@@ -47,7 +47,6 @@ namespace Torn.Interact
         {
             Debug.Log($"Press {interactKey} to collect.");  // Notify the player the button to interact
             itemCollider = collision;   // Get the collider of the interactable
-            itemCollider.GetComponent<Animator>().SetBool("InRange", true);
         }
 
         // Called on exiting a collider with isTrigger = true
@@ -56,7 +55,6 @@ namespace Torn.Interact
             // Check if the itemCollider is not null
             if (itemCollider != null)
             {
-                itemCollider.GetComponent<Animator>().SetBool("InRange", false);
                 itemCollider = null;    // Set it to null to prevent unwanted interaction
             }
         }
@@ -111,7 +109,8 @@ namespace Torn.Interact
                     case InteractType.Audio:
                         {
                             anim.SetTrigger("FadeOut");
-                            StartCoroutine(Transition("AudioPuzzle", -5.61f, -2.6f, -8.0f));
+                            itemCollider.GetComponent<Animator>().SetBool("InRange", false);
+                            StartCoroutine(Transition("AudioPuzzle", -5.61f, -2.6f, -8.0f, "FadeIn"));
                             
                             break;
                         }
@@ -119,21 +118,21 @@ namespace Torn.Interact
                     case InteractType.Clothes:
                         {
                             anim.SetTrigger("FadeOut");
-                            StartCoroutine(Transition("ClothesPuzzle", 6.87f, -2.9f, -8f));
+                            StartCoroutine(Transition("ClothesPuzzle", 6.87f, -2.9f, -8f, "FadeIn"));
                             
                             break;
                         }
                         case InteractType.Logic:
                         {
                             anim.SetTrigger("FadeOut");
-                            StartCoroutine(Transition("LogicPuzzle", 17.75f, -1, -5));
+                            StartCoroutine(Transition("LogicPuzzle", 17.75f, -1, -5, "FadeIn"));
                             
                             break;
                         }
                         case InteractType.Water:
                         {
                             anim.SetTrigger("FadeOut");
-                            StartCoroutine(Transition("WaterPuzzle", -16.22f, 10, -5));
+                            StartCoroutine(Transition("WaterPuzzle", -16.22f, 10, -5, "FadeIn"));
                             
                             break;
                         }
@@ -176,19 +175,19 @@ namespace Torn.Interact
             animator.SetBool("eatPill", false);
             if (currentScene.name == "ClothesPuzzle")
             {
-                this.transform.position = new Vector3(40.5f,-4.34f,-5f);
+                this.transform.position = new Vector3(31.59f,-4.34f,-5f);
             }
 
             else if (currentScene.name == "AudioPuzzle")
             {
-                this.transform.position = new Vector3(53.75f, -4.34f, -5f);
+                this.transform.position = new Vector3(55.25f, -4.34f, -5f);
             }
             
             SceneManager.LoadScene("House");
             anim.SetTrigger("FadeIn");
         }
 
-        private IEnumerator Transition(string level, float x, float y, float z)
+        private IEnumerator Transition(string level, float x, float y, float z, string trigger)
         {
             yield return new WaitForSecondsRealtime(1);
             this.transform.position = new Vector3(x,y,z);

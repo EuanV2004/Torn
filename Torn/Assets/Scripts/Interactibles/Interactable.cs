@@ -29,6 +29,12 @@ namespace Torn.Interact
 
         public bool interactedWith;
         public string sceneName;
+        public Animator animator;
+
+        private void Start() 
+        {
+            animator = GetComponent<Animator>();
+        }
 
         private void Update() 
         {
@@ -41,5 +47,26 @@ namespace Torn.Interact
         public InteractType GetInteractType() { return itemType; }  // Return type of interactable
 
         public string GetCollectableID() { return collectableID; } // Return collectable ID
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (animator != null)
+            {
+                if (collision.CompareTag("Player")) // Change "Player" to the tag of the object you want to check for
+                {
+                    animator.SetBool("InRange", true); // Change "ExitTrigger" to the name of the trigger parameter you added to your animation state
+                }
+            }
+        }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (animator != null)
+            {
+                if (collision.CompareTag("Player")) // Change "Player" to the tag of the object you want to check for
+                {
+                    animator.SetBool("InRange", false); // Change "ExitTrigger" to the name of the trigger parameter you added to your animation state
+                }
+            }
+        }
     }
 }
