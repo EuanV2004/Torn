@@ -431,7 +431,7 @@ namespace Torn.Office
             if (currentLvl > 3)
             {
                 // Exit Scene
-                player.anim.SetTrigger("FadeOut");
+                //player.anim.SetTrigger("FadeOut");
                 
                 //print("Won!");
                 StartCoroutine(Transition("House", 12.34f, -4.34f, -5, "FadeIn"));
