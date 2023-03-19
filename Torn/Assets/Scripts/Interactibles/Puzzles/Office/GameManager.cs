@@ -405,6 +405,8 @@ namespace Torn.Office
         // Generate next level
         public void NextLevel()
         {
+            ++currentLvl;
+
             // Check if the parent exists
             if (puzzlePieceParent != null && answerPieceParent != null)
             {
@@ -422,14 +424,14 @@ namespace Torn.Office
 
             Destroy(emptySpace);
 
-            if (currentLvl+1 > 3)
+            if (currentLvl <= 3)
             {
-                // Exit Scene
+                // GenerateGrid(++currentLvl);     // Recreate Grid with the new level
+                GeneratePattern(currentLvl);
             }
             else
             {
-                // GenerateGrid(++currentLvl);     // Recreate Grid with the new level
-                GeneratePattern(++currentLvl);
+                Debug.Log("Next scene");
             }
 
             
