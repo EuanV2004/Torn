@@ -2,21 +2,14 @@ using UnityEngine;
 
 namespace Torn.Office
 {
-    public class AnswerPiece : MonoBehaviour
+    public class AnswerPiece : OfficePiece
     {
-        public GameManager gm;
-
         [SerializeField]
         bool isCorrect;
 
         public bool CheckCorrectAnswer()
         {
             return isCorrect;
-        }
-
-        void OnMouseDown()
-        {
-            gm.SetSelectedPiece(gameObject);
         }
     }
 }

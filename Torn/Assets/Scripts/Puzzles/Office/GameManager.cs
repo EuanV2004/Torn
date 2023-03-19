@@ -208,7 +208,6 @@ namespace Torn.Office
             List<GameObject> levelPieces = currentLvlPrefabs._OfficePuzzlePieces.ToList();
 
             List<int> gridPos = new List<int>() {1, 2, 3, 4, 7 };
-            gridPos = gridPos.OrderBy(x => new System.Random().Next()).ToList();
 
             GameObject newPiece = null;
             for (int i = 1; i <= levelPieces.Count; i++)
@@ -259,7 +258,6 @@ namespace Torn.Office
             List<GameObject> levelPieces = currentLvlPrefabs._OfficePuzzlePieces.ToList();
 
             List<int> gridPos = new List<int>() { 1, 2, 3, 4, 7 };
-            gridPos = gridPos.OrderBy(x => new System.Random().Next()).ToList();
 
             GameObject newPiece = null;
             for (int i = 1; i <= levelPieces.Count; i++)
@@ -310,7 +308,6 @@ namespace Torn.Office
             List<GameObject> levelPieces = currentLvlPrefabs._OfficePuzzlePieces.ToList();
 
             List<int> gridPos = new List<int>() { 1, 2, 3, 4, 7 };
-            gridPos = gridPos.OrderBy(x => new System.Random().Next()).ToList();
 
             GameObject newPiece = null;
             for (int i = 1; i <= levelPieces.Count; i++)
@@ -450,6 +447,11 @@ namespace Torn.Office
         // Set the piece as selected
         public void SetSelectedPiece(GameObject piece = null)
         {
+            if (piece == null)
+            {
+                selectedPiece.GetComponentInParent<OfficePiece>().UnSelect();
+            }
+
             selectedPiece = piece;
         }
 
@@ -457,6 +459,11 @@ namespace Torn.Office
         public GameObject GetSelectedPiece()
         {
             return selectedPiece;
+        }
+
+        public List<GameObject> GetPuzzlePieces()
+        {
+            return currentLvlPrefabs._OfficePuzzlePieces.ToList();
         }
 
         IEnumerator Transition(string level, float x, float y, float z, string trigger)
