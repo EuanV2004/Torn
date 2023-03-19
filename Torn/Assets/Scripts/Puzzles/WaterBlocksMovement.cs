@@ -39,10 +39,13 @@ namespace Torn.Puzzles {
                 isInRange = true;
             }
             if (other.CompareTag("WaterPuzzleGoal")) {
-                player.anim.SetTrigger("FadeOut");
+
                 
-                print("Won!");
+                //SceneManager.LoadScene("House");
+                //print("Won!");
                 StartCoroutine(Transition("House", 12.34f, -4.34f, -5, "FadeIn"));
+                
+                
             }
         }
 
@@ -70,10 +73,13 @@ namespace Torn.Puzzles {
 
         IEnumerator Transition(string level, float x, float y, float z, string trigger)
         {
+            player.GetComponent<Torn.Interact.PlayerInteract>().anim.SetTrigger("FadeOut");
             yield return new WaitForSecondsRealtime(1);
-            player.transform.position = new Vector3(x,y,z);
-            SceneManager.LoadScene(level);
-            player.anim.SetTrigger("FadeIn");
+            player.GetComponent<Torn.Interact.PlayerInteract>().transform.position = new Vector3(x,y,z);
+            SceneManager.LoadScene("House");
+            player.GetComponent<Torn.Interact.PlayerInteract>().anim.SetTrigger("FadeIn");
+            
+            
         }
     }
 }
