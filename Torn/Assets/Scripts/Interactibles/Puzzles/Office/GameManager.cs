@@ -410,6 +410,7 @@ namespace Torn.Office
         // Generate next level
         public void NextLevel()
         {
+            currentLvl++;
             // Check if the parent exists
             if (puzzlePieceParent != null && answerPieceParent != null)
             {
@@ -427,21 +428,19 @@ namespace Torn.Office
 
             Destroy(emptySpace);
 
-            if (currentLvl+1 > 3)
+            if (currentLvl > 3)
             {
                 // Exit Scene
-                Debug.Log ("win");
-                //SceneManager.LoadScene("House");
-                //player.anim.SetTrigger("FadeOut");
+                player.anim.SetTrigger("FadeOut");
                 
                 //print("Won!");
-                //StartCoroutine(Transition("House", 12.34f, -4.34f, -5, "FadeIn"));
+                StartCoroutine(Transition("House", 12.34f, -4.34f, -5, "FadeIn"));
             }
             else
             {
                 // GenerateGrid(++currentLvl);     // Recreate Grid with the new level
-                Debug.Log ("Level beat " + currentLvl);
-                GeneratePattern(++currentLvl);
+                Debug.Log ("Puzzle beat " + (currentLvl-1));
+                GeneratePattern(currentLvl);
                 
             }
 
