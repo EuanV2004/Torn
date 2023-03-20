@@ -77,7 +77,7 @@ namespace Torn.Puzzles {
             yield return new WaitForSecondsRealtime(1);
             player.GetComponent<Torn.Interact.PlayerInteract>().transform.position = new Vector3(x,y,z);
             SceneManager.LoadScene("House");
-            player.GetComponent<Torn.Interact.PlayerInteract>().anim.SetTrigger("FadeIn");
+            //player.GetComponent<Torn.Interact.PlayerInteract>().anim.SetTrigger("FadeIn");
             
             
         }

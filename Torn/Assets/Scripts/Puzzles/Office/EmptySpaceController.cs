@@ -61,7 +61,7 @@ namespace Torn.Office
 
             foreach (GameObject piece in pieces)
             {
-                if (!piece.GetComponent<SlidePiece>().CheckCorrectPlacement())
+                if (piece.GetComponent<SlidePiece>().CheckCorrectPlacement() == false)
                 {
                     return false;
                 }
