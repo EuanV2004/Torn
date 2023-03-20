@@ -463,7 +463,13 @@ namespace Torn.Office
 
         public List<GameObject> GetPuzzlePieces()
         {
-            return currentLvlPrefabs._OfficePuzzlePieces.ToList();
+            List<GameObject> puzzlePieces = new List<GameObject>();
+            foreach (Transform child in puzzlePieceParent)
+            {
+                puzzlePieces.Add(child.gameObject);
+            }
+
+            return puzzlePieces;
         }
 
         IEnumerator Transition(string level, float x, float y, float z, string trigger)
