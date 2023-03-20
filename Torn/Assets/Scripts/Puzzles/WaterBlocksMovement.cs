@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Torn.Puzzles {
     public class WaterBlocksMovement : MonoBehaviour
@@ -9,13 +6,12 @@ namespace Torn.Puzzles {
         [SerializeField] private float playerSpeed;
 
         private bool isInRange;
+        private bool wonHasRunOnce;
         private Collider2D collidingMovableObject;
+        private WaterBlocksManager waterBlocksManager;
 
-        Torn.Interact.PlayerInteract player;
-
-        private void Start() 
-        {
-            player = FindObjectOfType<Torn.Interact.PlayerInteract>();
+        private void Start() {
+            waterBlocksManager = FindObjectOfType<WaterBlocksManager>();
         }
 
         private void Update() {
@@ -38,14 +34,9 @@ namespace Torn.Puzzles {
                 collidingMovableObject = other;
                 isInRange = true;
             }
-            if (other.CompareTag("WaterPuzzleGoal")) {
-
-                
-                //SceneManager.LoadScene("House");
-                //print("Won!");
-                StartCoroutine(Transition("House", 12.34f, -4.34f, -5, "FadeIn"));
-                
-                
+            if (other.CompareTag("WaterPuzzleGoal") && !wonHasRunOnce) {
+                wonHasRunOnce = true;
+                waterBlocksManager.StartTransition();
             }
         }
 
@@ -69,17 +60,6 @@ namespace Torn.Puzzles {
 
         public Collider2D ReturnCollidingMovableObject() {
             return collidingMovableObject;
-        }
-
-        IEnumerator Transition(string level, float x, float y, float z, string trigger)
-        {
-            player.GetComponent<Torn.Interact.PlayerInteract>().anim.SetTrigger("FadeOut");
-            yield return new WaitForSecondsRealtime(1);
-            player.GetComponent<Torn.Interact.PlayerInteract>().transform.position = new Vector3(x,y,z);
-            SceneManager.LoadScene("House");
-            //player.GetComponent<Torn.Interact.PlayerInteract>().anim.SetTrigger("FadeIn");
-            
-            
         }
     }
 }

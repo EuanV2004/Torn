@@ -1,16 +1,20 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Torn.Puzzles {
     public class WaterBlocksManager : MonoBehaviour
     {
         [SerializeField] private LayerMask movableLayer;
         private WaterBlocksMovement waterBlocksMovement;
+        private Torn.Interact.PlayerInteract player;
 
         private void Start() {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
 
             waterBlocksMovement = FindObjectOfType<WaterBlocksMovement>();
+            player = FindObjectOfType<Torn.Interact.PlayerInteract>();
         }
 
         private void Update() {
@@ -72,6 +76,20 @@ namespace Torn.Puzzles {
                 block.gameObject.transform.Translate(new Vector3(0f, movementFactor, 0f));
                 block.NumberOfTimeClicked++;
             }
+        }
+
+        public void StartTransition() {
+            StartCoroutine(Transition("House", 12.34f, -4.34f, -5, "FadeIn"));
+        }
+
+        IEnumerator Transition(string level, float x, float y, float z, string trigger)
+        {
+            player.GetComponent<Torn.Interact.PlayerInteract>().anim.SetTrigger("FadeOut");
+            print($"Calling fade out from object: {gameObject.name}");
+            yield return new WaitForSecondsRealtime(1);
+            player.GetComponent<Torn.Interact.PlayerInteract>().transform.position = new Vector3(x, y, z);
+            SceneManager.LoadScene("House");
+            player.GetComponent<Torn.Interact.PlayerInteract>().anim.SetTrigger("FadeIn");
         }
     }
 }

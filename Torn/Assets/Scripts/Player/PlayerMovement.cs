@@ -16,6 +16,9 @@ namespace Torn.Player
 
         void Start()
         {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
+            
             rb = GetComponent<Rigidbody2D>();
             gravityScale = rb.gravityScale;
             animator = GetComponent<Animator>();
