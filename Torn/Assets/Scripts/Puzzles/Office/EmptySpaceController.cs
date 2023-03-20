@@ -41,7 +41,7 @@ namespace Torn.Office
                 else if (gm.GetSelectedPiece().tag == "AnswerPiece")
                 {
                     // Check if the empty space is in the correct position and if answer is correct
-                    if (inCorrectPosition && gm.GetSelectedPiece().GetComponent<AnswerPiece>().CheckCorrectAnswer())
+                    if (inCorrectPosition && gm.GetSelectedPiece().GetComponent<AnswerPiece>().CheckCorrectAnswer() && CheckPuzzlePiecePosition())
                     {
                         // Place the answer on the empty space
                         gm.GetSelectedPiece().GetComponent<Transform>().position = transform.position;
@@ -55,6 +55,22 @@ namespace Torn.Office
             }
         }
 
+        bool CheckPuzzlePiecePosition()
+        {
+            List<GameObject> pieces = gm.GetPuzzlePieces();
+
+            foreach (GameObject piece in pieces)
+            {
+                if (!piece.GetComponent<SlidePiece>().CheckCorrectPlacement())
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Checks if the Empty space is in the correct position
         void CheckCorrectPos(Vector2 pos)
         {
             foreach (Vector2 position in correctPos)
@@ -71,6 +87,7 @@ namespace Torn.Office
             }
         }
 
+        // Set the Vector2 position so the empty space knows where is should be
         public void SetCorrectPositions(List<Vector2> posList)
         {
             foreach (Vector2 pos in posList)

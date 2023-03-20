@@ -38,12 +38,12 @@ namespace Torn.Office
 
         public int currentLvl = 1;
 
-        Torn.Interact.PlayerInteract player;
+        [SerializeField] Torn.Interact.PlayerInteract player;
 
         // Start is called before the first frame update
         void Start()
         {
-            player = GetComponent<Torn.Interact.PlayerInteract>();
+            player = FindObjectOfType<Torn.Interact.PlayerInteract>();
             if (hardMode)
             {
                 GenerateGrid(currentLvl);        // Generate grid at the start of the game
@@ -208,7 +208,6 @@ namespace Torn.Office
             List<GameObject> levelPieces = currentLvlPrefabs._OfficePuzzlePieces.ToList();
 
             List<int> gridPos = new List<int>() {1, 2, 3, 4, 7 };
-            gridPos = gridPos.OrderBy(x => new System.Random().Next()).ToList();
 
             GameObject newPiece = null;
             for (int i = 1; i <= levelPieces.Count; i++)
@@ -259,7 +258,6 @@ namespace Torn.Office
             List<GameObject> levelPieces = currentLvlPrefabs._OfficePuzzlePieces.ToList();
 
             List<int> gridPos = new List<int>() { 1, 2, 3, 4, 7 };
-            gridPos = gridPos.OrderBy(x => new System.Random().Next()).ToList();
 
             GameObject newPiece = null;
             for (int i = 1; i <= levelPieces.Count; i++)
@@ -310,7 +308,6 @@ namespace Torn.Office
             List<GameObject> levelPieces = currentLvlPrefabs._OfficePuzzlePieces.ToList();
 
             List<int> gridPos = new List<int>() { 1, 2, 3, 4, 7 };
-            gridPos = gridPos.OrderBy(x => new System.Random().Next()).ToList();
 
             GameObject newPiece = null;
             for (int i = 1; i <= levelPieces.Count; i++)
@@ -431,10 +428,10 @@ namespace Torn.Office
             if (currentLvl > 3)
             {
                 // Exit Scene
-                //player.anim.SetTrigger("FadeOut");
-                
+                player.GetComponent<Torn.Interact.PlayerInteract>().anim.SetTrigger("FadeOut");
+                //SceneManager.LoadScene("House");
                 //print("Won!");
-                StartCoroutine(Transition("House", 12.34f, -4.34f, -5, "FadeIn"));
+                StartCoroutine(Transition("House", 22.3578f, -4.34f, -5, "FadeIn"));
             }
             else
             {
@@ -450,6 +447,11 @@ namespace Torn.Office
         // Set the piece as selected
         public void SetSelectedPiece(GameObject piece = null)
         {
+            if (piece == null)
+            {
+                selectedPiece.GetComponentInParent<OfficePiece>().UnSelect();
+            }
+
             selectedPiece = piece;
         }
 
@@ -459,12 +461,17 @@ namespace Torn.Office
             return selectedPiece;
         }
 
+        public List<GameObject> GetPuzzlePieces()
+        {
+            return currentLvlPrefabs._OfficePuzzlePieces.ToList();
+        }
+
         IEnumerator Transition(string level, float x, float y, float z, string trigger)
         {
             yield return new WaitForSecondsRealtime(1);
-            player.transform.position = new Vector3(x,y,z);
+            player.GetComponent<Torn.Interact.PlayerInteract>().transform.position = new Vector3(x,y,z);
             SceneManager.LoadScene(level);
-            player.anim.SetTrigger("FadeIn");
+            player.GetComponent<Torn.Interact.PlayerInteract>().anim.SetTrigger("FadeIn");
         }
 
     }

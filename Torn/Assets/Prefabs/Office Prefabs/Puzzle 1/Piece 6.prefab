@@ -75,6 +75,7 @@ MonoBehaviour:
   isNextToEmpty: 0
   gm: {fileID: 0}
   emptySpace: {fileID: 0}
+  correctPosition: {x: 3, y: 0}
 --- !u!1 &2277502077769510478
 GameObject:
   m_ObjectHideFlags: 0
