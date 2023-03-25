@@ -54,7 +54,14 @@ namespace Torn.Interact
             {
                 if (collision.CompareTag("Player")) // Change "Player" to the tag of the object you want to check for
                 {
-                    animator.SetBool("InRange", true); // Change "ExitTrigger" to the name of the trigger parameter you added to your animation state
+                    if (!interactedWith)
+                    {
+                        animator.SetBool("InRange", true); // Change "ExitTrigger" to the name of the trigger parameter you added to your animation state
+                    }
+                    else if (interactedWith)
+                    {
+                        gameObject.SetActive(false);
+                    }
                 }
             }
         }

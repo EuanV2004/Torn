@@ -79,7 +79,7 @@ namespace Torn.Puzzles {
         }
 
         public void StartTransition() {
-            StartCoroutine(Transition("House", 12.34f, -4.34f, -5, "FadeIn"));
+            StartCoroutine(Transition("House", 15.84f, -4.34f, -5, "FadeIn"));
         }
 
         IEnumerator Transition(string level, float x, float y, float z, string trigger)

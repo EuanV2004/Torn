@@ -21,6 +21,7 @@ namespace Torn.Interact
         public Animator animator;
         public Animator anim;
         public float wait;
+        [SerializeField] private int puzzleCount = 0;
         Scene currentScene;
 
         Scene scene;
@@ -108,31 +109,50 @@ namespace Torn.Interact
                     
                     case InteractType.Audio:
                         {
-                            anim.SetTrigger("FadeOut");
-                            itemCollider.GetComponent<Animator>().SetBool("InRange", false);
-                            StartCoroutine(Transition("AudioPuzzle", -5.61f, -2.6f, -8.0f, "FadeIn"));
+                            if (itemCollider.GetComponent<Interactable>().interactedWith == false)
+                            {
+                                anim.SetTrigger("FadeOut");
+                                StartCoroutine(Transition("AudioPuzzle", -5.61f, -2.6f, -8.0f, "FadeIn"));
+                                itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                puzzleCount++;
+                            }
                             
                             break;
                         }
 
                     case InteractType.Clothes:
                         {
-                            anim.SetTrigger("FadeOut");
-                            StartCoroutine(Transition("ClothesPuzzle", 6.87f, -2.9f, -8f, "FadeIn"));
+                            if (itemCollider.GetComponent<Interactable>().interactedWith == false)
+                            {
+                                anim.SetTrigger("FadeOut");
+                                StartCoroutine(Transition("ClothesPuzzle", 6.87f, -2.9f, -8f, "FadeIn"));
+                                itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                puzzleCount++;
+                            }
                             
                             break;
                         }
                         case InteractType.Logic:
                         {
-                            anim.SetTrigger("FadeOut");
-                            StartCoroutine(Transition("LogicPuzzle", 17.75f, -1, -5, "FadeIn"));
+                            if (itemCollider.GetComponent<Interactable>().interactedWith == false)
+                            {
+                                anim.SetTrigger("FadeOut");
+                                StartCoroutine(Transition("LogicPuzzle", 17.75f, -1, -5, "FadeIn"));
+                                itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                puzzleCount++;
+                            }
                             
                             break;
                         }
                         case InteractType.Water:
                         {
-                            anim.SetTrigger("FadeOut");
-                            StartCoroutine(Transition("WaterPuzzle", -16.22f, 10, -5, "FadeIn"));
+                            if (itemCollider.GetComponent<Interactable>().interactedWith == false)
+                            {
+                                anim.SetTrigger("FadeOut");
+                                StartCoroutine(Transition("WaterPuzzle", -16.22f, 10, -5, "FadeIn"));
+                                itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                puzzleCount++;
+                            }
                             
                             break;
                         }

@@ -434,7 +434,7 @@ namespace Torn.Office
                 player.GetComponent<Torn.Interact.PlayerInteract>().anim.SetTrigger("FadeOut");
                 //SceneManager.LoadScene("House");
                 //print("Won!");
-                StartCoroutine(Transition("House", 22.3578f, -4.34f, -5, "FadeIn"));
+                StartCoroutine(Transition("House", 22.36f, -4.34f, -5, "FadeIn"));
             }
             else
             {
