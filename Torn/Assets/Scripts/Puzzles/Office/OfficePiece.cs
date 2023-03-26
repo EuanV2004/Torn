@@ -25,7 +25,7 @@ namespace Torn.Office
             }
             else
             {
-                GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+                GetComponentInChildren<SpriteRenderer>().color = Color.white;
             }
         }
 

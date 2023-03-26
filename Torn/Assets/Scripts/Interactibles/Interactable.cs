@@ -52,7 +52,7 @@ namespace Torn.Interact
         {
             if (animator != null)
             {
-                if (collision.CompareTag("Player")) // Change "Player" to the tag of the object you want to check for
+                if (collision.CompareTag("Player") && !gameObject.name.Contains("scale")) // Change "Player" to the tag of the object you want to check for
                 {
                     if (!interactedWith)
                     {
@@ -67,7 +67,7 @@ namespace Torn.Interact
         }
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (animator != null)
+            if (animator != null && !gameObject.name.Contains("scale"))
             {
                 if (collision.CompareTag("Player")) // Change "Player" to the tag of the object you want to check for
                 {

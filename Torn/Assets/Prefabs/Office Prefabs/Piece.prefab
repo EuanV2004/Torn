@@ -124,6 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e14bbe2e90c4e479edd9df18ffc246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isNextToEmpty: 0
   gm: {fileID: 0}
+  isSelected: 0
+  isNextToEmpty: 0
   emptySpace: {fileID: 0}
+  correctPosition: {x: 0, y: 0}
+  isInPosition: 0

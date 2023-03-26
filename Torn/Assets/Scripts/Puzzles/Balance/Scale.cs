@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Torn.Interact {
     public class Scale : Interactable
     {
-        public TextMeshProUGUI leftScaleText, rightScaleText;
+        //public TextMeshProUGUI leftScaleText, rightScaleText;
 
         public int leftTotal, rightTotal;
 
@@ -16,10 +16,13 @@ namespace Torn.Interact {
         public GameObject rightSide;
         private int i = 0;
 
-        [SerializeField] private GameObject pillPrefab;
-        [SerializeField] private Transform pillParent;
+        public GameObject pill;
+        public Vector3 location;
 
         Vector3 startLeftPos, startRightPos;
+
+        Animator anim;
+        public GameObject scale;
 
 
         List<GameObject> clothesObjects = new List<GameObject>();
@@ -31,8 +34,10 @@ namespace Torn.Interact {
             startLeftPos = leftSide.transform.position;
             startRightPos = rightSide.transform.position;
 
-            leftScaleText.text = "0";
-            rightScaleText.text = "0";
+            //leftScaleText.text = "0";
+            //rightScaleText.text = "0";
+
+            anim = scale.gameObject.GetComponent<Animator>();
         }
 
         // Update is called once per frame
@@ -51,25 +56,28 @@ namespace Torn.Interact {
             // When left side weights more then right side
             if (leftTotal > rightTotal)
             {
-                scaleArm.transform.rotation = new Quaternion(0, 0, -15, 1);
-                leftSide.transform.position = new Vector3(startLeftPos.x, startLeftPos.y - 0.5f, startLeftPos.z);
-                rightSide.transform.position = new Vector3(startRightPos.x, startRightPos.y + 0.5f, startRightPos.z);
+                anim.SetTrigger("LeftLower");
+                // scaleArm.transform.rotation = new Quaternion(0, 0, -15, 1);
+                // leftSide.transform.position = new Vector3(startLeftPos.x, startLeftPos.y - 0.5f, startLeftPos.z);
+                // rightSide.transform.position = new Vector3(startRightPos.x, startRightPos.y + 0.5f, startRightPos.z);
 
             }
             // When right side weights more than left side
             else if (rightTotal > leftTotal)
             {
-                scaleArm.transform.rotation = new Quaternion(0, 0, 15, 1);
-                leftSide.transform.position = new Vector3(startLeftPos.x, startLeftPos.y + 0.5f, startLeftPos.z);
-                rightSide.transform.position = new Vector3(startRightPos.x, startRightPos.y - 0.5f, startRightPos.z);
+                anim.SetTrigger("RightLower");
+                // scaleArm.transform.rotation = new Quaternion(0, 0, 15, 1);
+                // leftSide.transform.position = new Vector3(startLeftPos.x, startLeftPos.y + 0.5f, startLeftPos.z);
+                // rightSide.transform.position = new Vector3(startRightPos.x, startRightPos.y - 0.5f, startRightPos.z);
 
             }
             // When both sides are equally balanced
             else if (leftTotal == rightTotal)
             {
-                scaleArm.transform.rotation = Quaternion.identity;  // Reset rotation
-                leftSide.transform.position = startLeftPos;
-                rightSide.transform.position = startRightPos;
+                anim.SetTrigger("Even");
+                // scaleArm.transform.rotation = Quaternion.identity;  // Reset rotation
+                // leftSide.transform.position = startLeftPos;
+                // rightSide.transform.position = startRightPos;
             }
 
             /*if (leftObject != null) 
@@ -84,22 +92,21 @@ namespace Torn.Interact {
                     rightObject.GetComponent<Cloths>().scalePlate.transform.position.y + 0.8f,
                     rightObject.GetComponent<Cloths>().scalePlate.transform.position.z);*/
 
-            if (leftTotal < 10 && rightTotal < 10)
+            if (leftTotal > 15 && rightTotal > 15 && leftTotal == rightTotal)
             {
-                if (i >= 1)
+                if (i < 1)
                 {
-                    var pill = Instantiate(pillPrefab, transform.position, Quaternion.identity);
-                    pill.transform.parent = pillParent;
+                    Instantiate(pill, location, Quaternion.identity);
                     i++;
                 }
             }
         }
 
-        void UpdateText()
-        {
-            leftScaleText.text = leftTotal.ToString();
-            rightScaleText.text = rightTotal.ToString();
-        }
+        // void UpdateText()
+        // {
+        //     leftScaleText.text = leftTotal.ToString();
+        //     rightScaleText.text = rightTotal.ToString();
+        // }
 
         // Adds clothes to scale
         public void AddWeight(Cloths clothes)
@@ -124,7 +131,7 @@ namespace Torn.Interact {
 
             clothesObjects.Add(clothes.gameObject);
 
-            UpdateText();
+            //UpdateText();
         }
 
 
@@ -134,7 +141,7 @@ namespace Torn.Interact {
             leftTotal = 0;
             rightTotal = 0;
 
-            UpdateText();
+            //UpdateText();
 
             foreach (GameObject obj in clothesObjects)
             {
@@ -158,6 +165,12 @@ namespace Torn.Interact {
             rightObject = null;*/
 
             interactedWith = false;
+        }
+
+        IEnumerator PillSpawn()
+        {
+            yield return new WaitForSeconds(0.5f);
+            
         }
     }
 }

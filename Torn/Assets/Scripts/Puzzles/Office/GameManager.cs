@@ -143,58 +143,58 @@ namespace Torn.Office
                 // Top Left
                 case 1:
                     {
-                        position = new Vector2(-3, 3);
+                        position = new Vector2(-1.375f, 2.875f);
 
                         break;
                     }
                 // Top Center
                 case 2:
                     {
-                        position = new Vector2(0, 3);
+                        position = new Vector2(0.125f, 2.875f);
 
                         break;
                     }
                 // Top Right
                 case 3:
                     {
-                        position = new Vector2(3, 3);
+                        position = new Vector2(1.625f, 2.875f);
                         break;
                     }
                 // Middle Left
                 case 4:
                     {
-                        position = new Vector2(-3, 0);
+                        position = new Vector2(-1.375f, 1.375f);
                         break;
                     }
                 // Dead Center
                 case 5:
                     {
-                        position = new Vector2(0, 0);
+                        position = new Vector2(0.125f, 1.375f);
 
                         break;
                     }
                 // Middle Right
                 case 6:
                     {
-                        position = new Vector2(3, 0);
+                        position = new Vector2(1.625f, 1.375f);
                         break;
                     }
                 // Bottom Left
                 case 7:
                     {
-                        position = new Vector2(-3, -3);
+                        position = new Vector2(-1.375f, -0.125f);
                         break;
                     }
                 // Bottom Middle
                 case 8:
                     {
-                        position = new Vector2(0, -3);
+                        position = new Vector2(0.125f, -0.125f);
                         break;
                     }
                 // Bottom Right
                 case 9:
                     {
-                        position = new Vector2(3, -3);
+                        position = new Vector2(1.625f, -0.125f);
                         break;
                     }
             }
