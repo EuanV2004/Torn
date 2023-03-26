@@ -160,5 +160,5 @@ MonoBehaviour:
   isSelected: 0
   isNextToEmpty: 0
   emptySpace: {fileID: 0}
-  correctPosition: {x: 0, y: 0}
+  correctPosition: {x: 1.625, y: 1.375}
   isInPosition: 0

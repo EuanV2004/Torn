@@ -93,8 +93,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7909445112087271399}
-  - component: {fileID: -4490883314041436815}
   - component: {fileID: 2652297355600438506}
+  - component: {fileID: -4490883314041436815}
   m_Layer: 0
   m_Name: Piece 8
   m_TagString: PuzzlePiece
@@ -118,24 +118,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4490883314041436815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8993709602553588644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68e14bbe2e90c4e479edd9df18ffc246, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gm: {fileID: 0}
-  isSelected: 0
-  isNextToEmpty: 0
-  emptySpace: {fileID: 0}
-  correctPosition: {x: 0, y: 0}
-  isInPosition: 0
 --- !u!61 &2652297355600438506
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -162,3 +144,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.66, y: 0.66}
   m_EdgeRadius: 0
+--- !u!114 &-4490883314041436815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8993709602553588644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e14bbe2e90c4e479edd9df18ffc246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  isSelected: 0
+  isNextToEmpty: 0
+  emptySpace: {fileID: 0}
+  correctPosition: {x: 0.125, y: -0.125}
+  isInPosition: 0

@@ -384,20 +384,20 @@ namespace Torn.Office
                 // Level 1
                 case 1:
                     {
-                        correctPos.Add(new Vector2(-3f, 3f));   // Top left
-                        correctPos.Add(new Vector2(3f, -3f));   // Bottom right
+                        correctPos.Add(new Vector2(-1.375f, 2.875f));   // Top left
+                        correctPos.Add(new Vector2(1.625f, -0.125f));   // Bottom right
                         break;
                     }
                 // Level 2
                 case 2:
                     {
-                        correctPos.Add(new Vector2(3f, -3f));   // Bottom right
+                        correctPos.Add(new Vector2(1.625f, -0.125f));   // Bottom right
                         break;
                     }
                 // Level 3
                 case 3:
                     {
-                        correctPos.Add(new Vector2(3f, -3f));   // Bottom right
+                        correctPos.Add(new Vector2(1.625f, -0.125f));   // Bottom right
                         break;
                     }
             }
