@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level2
   m_EditorClassIdentifier: 
   _OfficePuzzlePieces:
-  - {fileID: 8993709602553588644, guid: 710b9676d98645840b8a59658917a2fd, type: 3}
+  - {fileID: 8993709602553588644, guid: 221233fb89bb4864395524e264dba7ea, type: 3}
   - {fileID: 8993709602553588644, guid: 5447e1a7f16aa7c43be59f0e24ce2bc8, type: 3}
   - {fileID: 8993709602553588644, guid: 7e25a6a9e7cc1674ab527010ecbe87b9, type: 3}
   - {fileID: 8993709602553588644, guid: 572cac178a62d46479b9068b9aaf96f7, type: 3}
