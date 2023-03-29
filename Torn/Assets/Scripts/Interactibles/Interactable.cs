@@ -60,8 +60,7 @@ namespace Torn.Interact
                     }
                     else if (interactedWith)
                     {
-                        gameObject.SetActive(false);
-                    }
+                        gameObject.transform.position = new Vector3(500, 500, 500);                   }
                 }
             }
         }

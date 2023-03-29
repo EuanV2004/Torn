@@ -21,7 +21,7 @@ namespace Torn.Interact
         public Animator animator;
         public Animator anim;
         public float wait;
-        [SerializeField] private int puzzleCount = 0;
+        [SerializeField]int puzzleCount = 0;
         Scene currentScene;
 
         Scene scene;
@@ -213,6 +213,11 @@ namespace Torn.Interact
             this.transform.position = new Vector3(x,y,z);
             SceneManager.LoadScene(level);
             anim.SetTrigger("FadeIn");
+        }
+
+        public int GetPuzzleCount()
+        {
+            return puzzleCount;
         }
     }
 }
