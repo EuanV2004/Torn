@@ -31,7 +31,7 @@ namespace Torn.Office
 
         KeyCode helpButton = KeyCode.E, solutionButton = KeyCode.Q;
         [SerializeField] float solutionUnlockTimer = 15f;
-        bool helpMenuOpen, solutionUnlocked;
+        [SerializeField] bool helpMenuOpen, solutionUnlocked;
 
         GameObject emptySpace;
         const int gridSize = 9;
@@ -87,7 +87,7 @@ namespace Torn.Office
                 helpMenu.SetActive(true);
                 helpSection.SetActive(true);
 
-                Instantiate(hintPrefabs[currentLvl - 1], new Vector2(1.1f, 2.3f), Quaternion.Euler(0, 0, 0), helpSection.transform);
+                Instantiate(hintPrefabs[currentLvl - 1], helpSection.transform.position, Quaternion.Euler(0, 0, 0), helpSection.transform);
             }
             else
             {
@@ -113,7 +113,7 @@ namespace Torn.Office
                     GameObject.Destroy(child.gameObject);
                 }
 
-                Instantiate(solutionPrefabs[currentLvl - 1], new Vector2(1.1f, 2.3f), Quaternion.Euler(0, 0, 0), helpSection.transform);
+                Instantiate(solutionPrefabs[currentLvl - 1], helpSection.transform.position, Quaternion.Euler(0, 0, 0), helpSection.transform);
             }
         }
 
@@ -498,6 +498,9 @@ namespace Torn.Office
             }
             else
             {
+                solutionUnlockTimer += Time.timeSinceLevelLoad;
+                solutionUnlocked = false;
+
                 // GenerateGrid(++currentLvl);     // Recreate Grid with the new level
                 Debug.Log ("Puzzle beat " + (currentLvl-1));
                 GeneratePattern(currentLvl);
