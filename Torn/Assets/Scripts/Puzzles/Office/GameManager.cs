@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,29 +14,27 @@ namespace Torn.Office
         [SerializeField]
         Transform puzzlePieceParent, answerPieceParent;
 
-        [SerializeField]
-        GameObject selectedPiece;
+        [SerializeField]GameObject selectedPiece;
 
-        [SerializeField]
-        GameObject emptySpacePrefab;
+        [SerializeField]GameObject emptySpacePrefab;
+        [SerializeField]List<Transform> answerPoses;
 
-        [SerializeField]
-        List<Transform> answerPoses;
+        [SerializeField] List<ScriptableOfficePuzzle> officePuzzlePrefabs;
+        [SerializeField]List<ScriptableOfficeAnswer> officeAnswerPrefabs;
 
-        [SerializeField]
-        List<ScriptableOfficePuzzle> officePuzzlePrefabs;
+        [SerializeField] List<GameObject> hintPrefabs, solutionPrefabs;
 
-        [SerializeField]
-        List<ScriptableOfficeAnswer> officeAnswerPrefabs;
+        [SerializeField] GameObject helpMenu, helpSection;
 
         ScriptableOfficeAnswer currentAnswerPrefabs;
-
         ScriptableOfficePuzzle currentLvlPrefabs;
 
+        KeyCode helpButton = KeyCode.E, solutionButton = KeyCode.Q;
+        [SerializeField] float solutionUnlockTimer = 15f;
+        bool helpMenuOpen, solutionUnlocked;
+
         GameObject emptySpace;
-
         const int gridSize = 9;
-
         public int currentLvl = 1;
 
         [SerializeField] Torn.Interact.PlayerInteract player;
@@ -43,6 +42,9 @@ namespace Torn.Office
         // Start is called before the first frame update
         void Start()
         {
+            helpMenu.SetActive(false);
+            helpSection.SetActive(false);
+
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
 
@@ -54,6 +56,64 @@ namespace Torn.Office
             else
             {
                 GeneratePattern(currentLvl);    // Generates pattern at the start of the game
+            }
+        }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(helpButton))
+            {
+                HelpMenu();
+                
+            }
+
+            if (Time.timeSinceLevelLoad >= solutionUnlockTimer && !solutionUnlocked)
+            {
+                solutionUnlocked = true;
+            }
+
+            if (Input.GetKeyDown(solutionButton) && helpMenuOpen)
+            {
+                GiveSolution();
+            }
+        }
+
+        void HelpMenu()
+        {
+            if (!helpMenuOpen)
+            {
+                helpMenuOpen = true;
+
+                helpMenu.SetActive(true);
+                helpSection.SetActive(true);
+
+                Instantiate(hintPrefabs[currentLvl - 1], new Vector2(1.1f, 2.3f), Quaternion.Euler(0, 0, 0), helpSection.transform);
+            }
+            else
+            {
+                helpMenuOpen = false;
+
+                helpMenu.SetActive(false);
+                helpSection.SetActive(false);
+
+                foreach (Transform child in helpSection.transform)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+            }
+
+        }
+
+        void GiveSolution()
+        {
+            if (solutionUnlocked)
+            {
+                foreach (Transform child in helpSection.transform)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+
+                Instantiate(solutionPrefabs[currentLvl - 1], new Vector2(1.1f, 2.3f), Quaternion.Euler(0, 0, 0), helpSection.transform);
             }
         }
 
