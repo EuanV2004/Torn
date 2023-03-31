@@ -1174,6 +1174,10 @@ MonoBehaviour:
   - {fileID: 328098009}
   - {fileID: 523629301}
   realKey: {fileID: 1635877689}
+  audioPuzzle: {fileID: 1721299065}
+  clothesPuzzle: {fileID: 1511709319}
+  logicPuzzle: {fileID: 1751145434}
+  waterPuzzle: {fileID: 1406123525}
 --- !u!4 &148594885
 Transform:
   m_ObjectHideFlags: 0
@@ -6079,18 +6083,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1685325179667982040, guid: 82e48fa96cb9506428d5a0096da902c8, type: 3}
   m_PrefabInstance: {fileID: 1363214885}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1406123526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406123525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f777ac6d3aa8d1741a0960509d8ae3e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1406123527
 Animator:
   serializedVersion: 5
@@ -6360,18 +6352,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1685325179667982040, guid: 82e48fa96cb9506428d5a0096da902c8, type: 3}
   m_PrefabInstance: {fileID: 1361865877}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1511709320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511709319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f777ac6d3aa8d1741a0960509d8ae3e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1511709321
 Animator:
   serializedVersion: 5
@@ -7096,18 +7076,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &1721299072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1721299065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f777ac6d3aa8d1741a0960509d8ae3e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1731707266
 GameObject:
   m_ObjectHideFlags: 0
@@ -7357,18 +7325,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1685325179667982040, guid: 82e48fa96cb9506428d5a0096da902c8, type: 3}
   m_PrefabInstance: {fileID: 1326351181}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1751145435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751145434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f777ac6d3aa8d1741a0960509d8ae3e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1751145436
 Animator:
   serializedVersion: 5

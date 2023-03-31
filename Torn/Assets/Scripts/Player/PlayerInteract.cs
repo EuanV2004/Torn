@@ -24,6 +24,10 @@ namespace Torn.Interact
         public bool hasKey;
         [SerializeField] int puzzleCount = 0;
         [SerializeField] int keyCount = 0;
+        [SerializeField] bool playedAudioPuzzle;
+        [SerializeField] bool playedClothesPuzzle;
+        [SerializeField] bool playedLogicPuzzle;
+        [SerializeField] bool playedWaterPuzzle;
         Scene currentScene;
 
         Scene scene;
@@ -116,6 +120,7 @@ namespace Torn.Interact
                                 anim.SetTrigger("FadeOut");
                                 StartCoroutine(Transition("AudioPuzzle", -5.61f, -2.6f, -8.0f, "FadeIn"));
                                 itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                playedAudioPuzzle = true;
                                 puzzleCount++;
                             }
                             
@@ -129,6 +134,7 @@ namespace Torn.Interact
                                 anim.SetTrigger("FadeOut");
                                 StartCoroutine(Transition("ClothesPuzzle", 6.87f, -2.9f, -8f, "FadeIn"));
                                 itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                playedClothesPuzzle = true;
                                 puzzleCount++;
                             }
                             
@@ -141,6 +147,7 @@ namespace Torn.Interact
                                 anim.SetTrigger("FadeOut");
                                 StartCoroutine(Transition("LogicPuzzle", 17.75f, -1, -5, "FadeIn"));
                                 itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                playedLogicPuzzle = true;
                                 puzzleCount++;
                             }
                             
@@ -153,6 +160,7 @@ namespace Torn.Interact
                                 anim.SetTrigger("FadeOut");
                                 StartCoroutine(Transition("WaterPuzzle", -16.22f, 10, -5, "FadeIn"));
                                 itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                playedWaterPuzzle = true;
                                 puzzleCount++;
                             }
                             
@@ -245,6 +253,26 @@ namespace Torn.Interact
         public int GetKeyCount()
         {
             return keyCount;
+        }
+
+        public bool GetPlayedAudioPuzzle()
+        {
+            return playedAudioPuzzle;
+        }
+
+        public bool GetPlayedClothesPuzzle()
+        {
+            return playedClothesPuzzle;
+        }
+
+        public bool GetPlayedLogicPuzzle()
+        {
+            return playedLogicPuzzle;
+        }
+
+        public bool GetPlayedWaterPuzzle()
+        {
+            return playedWaterPuzzle;
         }
     }
 }
