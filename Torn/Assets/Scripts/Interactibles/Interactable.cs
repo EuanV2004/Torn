@@ -18,12 +18,15 @@ namespace Torn.Interact
         Logic,
         Water,
         Door,
-        Keys
+        Keys,
+        EndingCollect
     }
 
     public class Interactable : MonoBehaviour
     {
         public InteractType itemType;   // Type of the interactable
+
+        [SerializeField] bool isKey;
 
         public string collectableID = "";   // ID of the collectable
 
@@ -73,6 +76,11 @@ namespace Torn.Interact
                     animator.SetBool("InRange", false); // Change "ExitTrigger" to the name of the trigger parameter you added to your animation state
                 }
             }
+        }
+
+        public bool GetIsKey()
+        {
+            return isKey;
         }
     }
 }

@@ -21,7 +21,9 @@ namespace Torn.Interact
         public Animator animator;
         public Animator anim;
         public float wait;
-        [SerializeField]int puzzleCount = 0;
+        public bool hasKey;
+        [SerializeField] int puzzleCount = 0;
+        [SerializeField] int keyCount = 0;
         Scene currentScene;
 
         Scene scene;
@@ -156,15 +158,35 @@ namespace Torn.Interact
                             
                             break;
                         }
-                    case InteractType.Keys:
+                        case InteractType.Keys:
                         {
                             if (itemCollider.GetComponent<Interactable>().interactedWith == false)
                             {
                                 keys.KeyCheckCounter();
+                                if (itemCollider.GetComponent<Interactable>().GetIsKey() == true)
+                                {
+                                    hasKey = true;
+                                }
                                 itemCollider.GetComponent<Interactable>().interactedWith = true;  
+                                keyCount++;
                             }
                             break;
                         }
+                        case InteractType.Door:
+                        {
+                            if (hasKey)
+                            {
+                                anim.SetTrigger("FadeOut");
+                                StartCoroutine(Transition("EndHall", 46f, -4.34f, -5f, "FadeIn"));
+                            }
+                            break;
+                        }
+                        case InteractType.EndingCollect:
+                        {
+                            FindObjectOfType<Torn.Managers.EndingManager>().IncreasePlayerScore();
+                            break;
+                        }
+                        
                 }
 
                 if (interacted.GetComponent<Interactable>().GetInteractType() == InteractType.Collectable || interacted.GetComponent<Interactable>().GetInteractType() == InteractType.Consumable)
@@ -218,6 +240,11 @@ namespace Torn.Interact
         public int GetPuzzleCount()
         {
             return puzzleCount;
+        }
+
+        public int GetKeyCount()
+        {
+            return keyCount;
         }
     }
 }

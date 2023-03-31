@@ -7,6 +7,8 @@ namespace Torn.Puzzles {
 
         [SerializeField] private BlockDirection blockDirection;
         [SerializeField] private float movementFactor;
+        [SerializeField] private Vector2 newPos;
+        [SerializeField] private Vector2 oldPos;
 
         private int numberOfTimeClicked;
 
@@ -16,6 +18,16 @@ namespace Torn.Puzzles {
 
         public float ReturnMovementFactor() {
             return movementFactor;
+        }
+
+        public Vector2 GetNewPos()
+        {
+            return newPos;
+        }
+
+        public Vector2 GetOldPos()
+        {
+            return oldPos;
         }
 
         public int NumberOfTimeClicked {

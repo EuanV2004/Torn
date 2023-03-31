@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WaterPuzzle.unity
     guid: 28b4c97a0033b3b449c3d43019adfb5a
+  - enabled: 1
+    path: Assets/Scenes/EndHall.unity
+    guid: 92264fbb4fe613f4a9965b23cbd589a4
   m_configObjects: {}
