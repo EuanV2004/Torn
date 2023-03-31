@@ -30,7 +30,7 @@ namespace Torn.Puzzles {
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
-            if (other.CompareTag("Movable")) {
+            if (other.CompareTag("Movable") || other.CompareTag("Movable2")) {
                 collidingMovableObject = other;
                 isInRange = true;
             }
@@ -41,14 +41,14 @@ namespace Torn.Puzzles {
         }
 
         private void OnTriggerStay2D(Collider2D other) {
-            if (other.CompareTag("Movable")) {
+            if (other.CompareTag("Movable") || other.CompareTag("Movable2")) {
                 collidingMovableObject = other;
                 isInRange = true;
             }
         }
 
         private void OnTriggerExit2D(Collider2D other) {
-            if (other.CompareTag("Movable")) {
+            if (other.CompareTag("Movable")|| other.CompareTag("Movable2")) {
                 collidingMovableObject = null;
                 isInRange = false;
             }

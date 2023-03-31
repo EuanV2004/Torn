@@ -42,12 +42,12 @@ namespace Torn.Puzzles {
 
         private void MoveBlockHorizontally(WaterBlocks block, float movementFactor) {
             if (block.NumberOfTimeClicked == 0) {
-                block.gameObject.transform.Rotate(new Vector3(movementFactor, 0f, 0f));
+                block.gameObject.transform.Rotate(new Vector3(0f, 180f, 0f));
                 block.gameObject.transform.position = block.GetNewPos();
                 block.NumberOfTimeClicked++;
             }
             else if (block.NumberOfTimeClicked == 1) {
-                block.gameObject.transform.Rotate(new Vector3(-movementFactor, 0f, 0f));
+                block.gameObject.transform.Rotate(new Vector3(0f, 180f, 0f));
                 block.gameObject.transform.position = block.GetOldPos();
                 block.NumberOfTimeClicked--;
             }
@@ -63,14 +63,31 @@ namespace Torn.Puzzles {
 
         private void MoveBlockVertically(WaterBlocks block, float movementFactor) {
             if (block.NumberOfTimeClicked == 0) {
-                block.gameObject.transform.Rotate(new Vector3(0f, movementFactor, 0f));
-                block.gameObject.transform.position = block.GetNewPos();
-                block.NumberOfTimeClicked++;
+                if (block.tag == "Movable")
+                {
+                    block.gameObject.transform.Rotate(new Vector3(180f, 0f, 0f));
+                    block.gameObject.transform.position = block.GetNewPos();
+                    block.NumberOfTimeClicked++;
+                }
+                else if (block.tag == "Movable2")
+                {
+                    block.gameObject.transform.position = block.GetNewPos();
+                    block.NumberOfTimeClicked++;
+                }
+
             }
             else if (block.NumberOfTimeClicked == 1) {
-                block.gameObject.transform.Rotate(new Vector3(0f, -movementFactor, 0f));
-                block.gameObject.transform.position = block.GetOldPos();
-                block.NumberOfTimeClicked--;
+                if (block.tag == "Movable")
+                {
+                    block.gameObject.transform.Rotate(new Vector3(180f, 0f, 0f));
+                    block.gameObject.transform.position = block.GetOldPos();
+                    block.NumberOfTimeClicked--;
+                }
+                else if (block.tag == "Movable2")
+                {
+                    block.gameObject.transform.position = block.GetOldPos();
+                    block.NumberOfTimeClicked--;
+                }
             }
             // else if (block.NumberOfTimeClicked == 2) {
             //     block.gameObject.transform.Translate(new Vector3(0f, -movementFactor, 0f));
