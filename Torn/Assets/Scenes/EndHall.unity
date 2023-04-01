@@ -533,7 +533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 332604517}
   - component: {fileID: 332604516}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Confiner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
