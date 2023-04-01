@@ -18,14 +18,17 @@ namespace Torn.Puzzles
         public GameObject pill;
         public Vector3 location;
         int i;
+        GameObject floss;
 
         private void Start() {
             audioManager = FindObjectOfType<AudioManager>();
+            
         }
 
         private void Update() {
             if (Input.GetKeyDown(KeyCode.E) && isInRange) {
                 InteractWithAudioFloss();
+                floss.GetComponent<Animator>().SetTrigger("Played");
             }
 
             if (userOrder.Count > 4) {
@@ -37,6 +40,7 @@ namespace Torn.Puzzles
             if (other.CompareTag("AudioFloss")) {
                 isInRange = true;
                 currentNote = other.gameObject.GetComponent<AudioFlossNote>();
+                floss = other.gameObject;
             }
         }
 
@@ -44,6 +48,7 @@ namespace Torn.Puzzles
             if (other.CompareTag("AudioFloss")) {
                 isInRange = false;
                 currentNote = null;
+                floss = null;
             }
         }
 

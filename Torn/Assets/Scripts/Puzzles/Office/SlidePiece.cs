@@ -9,7 +9,7 @@ namespace Torn.Office
 
         public Transform emptySpace;
 
-        float squareScale = 3f;
+        float squareScale = 1.5f;
 
         [SerializeField]
         Vector2 correctPosition;
@@ -24,42 +24,42 @@ namespace Torn.Office
             {
                 case "Piece 1":
                     {
-                        correctPosition = new Vector2(-3, 3);
+                        correctPosition = new Vector2(-1.375f, 2.875f);
                         break;
                     }
                 case "Piece 2":
                     {
-                        correctPosition = new Vector2(0, 3);
+                        correctPosition = new Vector2(0.125f, 2.875f);
                         break;
                     }
                 case "Piece 3":
                     {
-                        correctPosition = new Vector2(3, 3);
+                        correctPosition = new Vector2(1.625f, 2.875f);
                         break;
                     }
                 case "Piece 4":
                     {
-                        correctPosition = new Vector2(-3, 0);
+                        correctPosition = new Vector2(-1.375f, 1.375f);
                         break;
                     }
                 case "Piece 5":
                     {
-                        correctPosition = new Vector2(0, 0);
+                        correctPosition = new Vector2(0.125f, 1.375f);
                         break;
                     }
                 case "Piece 6":
                     {
-                        correctPosition = new Vector2(3, 0);
+                        correctPosition = new Vector2(1.625f, 1.375f);
                         break;
                     }
                 case "Piece 7":
                     {
-                        correctPosition = new Vector2(-3, -3);
+                        correctPosition = new Vector2(-1.375f, -0.125f);
                         break;
                     }
                 case "Piece 8":
                     {
-                        correctPosition = new Vector2(0, -3);
+                        correctPosition = new Vector2(0.125f, -0.125f);
                         break;
                     }
             }

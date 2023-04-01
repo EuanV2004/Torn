@@ -4,6 +4,10 @@ namespace Torn.Puzzles {
     public class WaterBlocksMovement : MonoBehaviour
     {
         [SerializeField] private float playerSpeed;
+        [SerializeField] private float stoppingDistance;
+        [SerializeField] private LayerMask wallLayer;
+
+        private int wallStopper;
 
         private bool isInRange;
         private bool wonHasRunOnce;
@@ -15,6 +19,14 @@ namespace Torn.Puzzles {
         }
 
         private void Update() {
+            if (CheckIfPlayerShouldStop(Vector2.right) == true || CheckIfPlayerShouldStop(Vector2.left) == true || CheckIfPlayerShouldStop(Vector2.up) == true || CheckIfPlayerShouldStop(Vector2.down) == true)
+            {
+                wallStopper = 0;
+            }
+            else
+            {
+                wallStopper = 1;
+            }
             MovePlayer();
         }
 
@@ -22,15 +34,15 @@ namespace Torn.Puzzles {
             var horizontalInput = Input.GetAxisRaw("Horizontal");
             var verticalInput = Input.GetAxisRaw("Vertical");
 
-            var horizontalMovement = horizontalInput * playerSpeed * Time.deltaTime;
-            var verticalMovement = verticalInput * playerSpeed * Time.deltaTime;
+            var horizontalMovement = horizontalInput * playerSpeed * Time.deltaTime * wallStopper;
+            var verticalMovement = verticalInput * playerSpeed * Time.deltaTime * wallStopper;
 
             Vector3 newPos = transform.position + new Vector3(horizontalMovement, verticalMovement, 0f);
             transform.position = newPos;
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
-            if (other.CompareTag("Movable")) {
+            if (other.CompareTag("Movable") || other.CompareTag("Movable2")) {
                 collidingMovableObject = other;
                 isInRange = true;
             }
@@ -41,14 +53,14 @@ namespace Torn.Puzzles {
         }
 
         private void OnTriggerStay2D(Collider2D other) {
-            if (other.CompareTag("Movable")) {
+            if (other.CompareTag("Movable") || other.CompareTag("Movable2")) {
                 collidingMovableObject = other;
                 isInRange = true;
             }
         }
 
         private void OnTriggerExit2D(Collider2D other) {
-            if (other.CompareTag("Movable")) {
+            if (other.CompareTag("Movable")|| other.CompareTag("Movable2")) {
                 collidingMovableObject = null;
                 isInRange = false;
             }
@@ -60,6 +72,14 @@ namespace Torn.Puzzles {
 
         public Collider2D ReturnCollidingMovableObject() {
             return collidingMovableObject;
+        }
+
+        private bool CheckIfPlayerShouldStop(Vector2 direction)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, stoppingDistance, wallLayer);
+
+            if (hit.collider) return true;
+            else return false;
         }
     }
 }

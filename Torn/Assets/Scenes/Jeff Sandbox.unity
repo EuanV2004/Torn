@@ -848,6 +848,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: baebe2ab80bd3474c832a58f5131e7c7, type: 2}
   - {fileID: 11400000, guid: 9b9080a0d0557684fb2b1686005d7286, type: 2}
   currentLvl: 1
+  player: {fileID: 0}
 --- !u!1001 &3528117493600877174
 PrefabInstance:
   m_ObjectHideFlags: 0

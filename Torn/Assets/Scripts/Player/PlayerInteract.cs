@@ -21,6 +21,13 @@ namespace Torn.Interact
         public Animator animator;
         public Animator anim;
         public float wait;
+        public bool hasKey;
+        [SerializeField] int puzzleCount = 0;
+        [SerializeField] int keyCount = 0;
+        [SerializeField] bool playedAudioPuzzle;
+        [SerializeField] bool playedClothesPuzzle;
+        [SerializeField] bool playedLogicPuzzle;
+        [SerializeField] bool playedWaterPuzzle;
         Scene currentScene;
 
         Scene scene;
@@ -108,43 +115,86 @@ namespace Torn.Interact
                     
                     case InteractType.Audio:
                         {
-                            anim.SetTrigger("FadeOut");
-                            itemCollider.GetComponent<Animator>().SetBool("InRange", false);
-                            StartCoroutine(Transition("AudioPuzzle", -5.61f, -2.6f, -8.0f, "FadeIn"));
+                            if (itemCollider.GetComponent<Interactable>().interactedWith == false)
+                            {
+                                anim.SetTrigger("FadeOut");
+                                StartCoroutine(Transition("AudioPuzzle", -5.61f, -2.6f, -8.0f, "FadeIn"));
+                                itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                playedAudioPuzzle = true;
+                                puzzleCount++;
+                            }
                             
                             break;
                         }
 
                     case InteractType.Clothes:
                         {
-                            anim.SetTrigger("FadeOut");
-                            StartCoroutine(Transition("ClothesPuzzle", 6.87f, -2.9f, -8f, "FadeIn"));
+                            if (itemCollider.GetComponent<Interactable>().interactedWith == false)
+                            {
+                                anim.SetTrigger("FadeOut");
+                                StartCoroutine(Transition("ClothesPuzzle", 6.87f, -2.9f, -8f, "FadeIn"));
+                                itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                playedClothesPuzzle = true;
+                                puzzleCount++;
+                            }
                             
                             break;
                         }
                         case InteractType.Logic:
                         {
-                            anim.SetTrigger("FadeOut");
-                            StartCoroutine(Transition("LogicPuzzle", 17.75f, -1, -5, "FadeIn"));
+                            if (itemCollider.GetComponent<Interactable>().interactedWith == false)
+                            {
+                                anim.SetTrigger("FadeOut");
+                                StartCoroutine(Transition("LogicPuzzle", 17.75f, -1, -5, "FadeIn"));
+                                itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                playedLogicPuzzle = true;
+                                puzzleCount++;
+                            }
                             
                             break;
                         }
                         case InteractType.Water:
                         {
-                            anim.SetTrigger("FadeOut");
-                            StartCoroutine(Transition("WaterPuzzle", -16.22f, 10, -5, "FadeIn"));
+                            if (itemCollider.GetComponent<Interactable>().interactedWith == false)
+                            {
+                                anim.SetTrigger("FadeOut");
+                                StartCoroutine(Transition("WaterPuzzle", -16.22f, 10, -5, "FadeIn"));
+                                itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                playedWaterPuzzle = true;
+                                puzzleCount++;
+                            }
                             
                             break;
                         }
-                    case InteractType.Keys:
+                        case InteractType.Keys:
                         {
                             if (itemCollider.GetComponent<Interactable>().interactedWith == false)
                             {
                                 keys.KeyCheckCounter();
+                                if (itemCollider.GetComponent<Interactable>().GetIsKey() == true)
+                                {
+                                    hasKey = true;
+                                }
                                 itemCollider.GetComponent<Interactable>().interactedWith = true;  
+                                keyCount++;
                             }
                             break;
                         }
+                        case InteractType.Door:
+                        {
+                            if (hasKey)
+                            {
+                                anim.SetTrigger("FadeOut");
+                                StartCoroutine(Transition("EndHall", 46f, -4.34f, -5f, "FadeIn"));
+                            }
+                            break;
+                        }
+                        case InteractType.EndingCollect:
+                        {
+                            FindObjectOfType<Torn.Managers.EndingManager>().IncreasePlayerScore();
+                            break;
+                        }
+                        
                 }
 
                 if (interacted.GetComponent<Interactable>().GetInteractType() == InteractType.Collectable || interacted.GetComponent<Interactable>().GetInteractType() == InteractType.Consumable)
@@ -193,6 +243,36 @@ namespace Torn.Interact
             this.transform.position = new Vector3(x,y,z);
             SceneManager.LoadScene(level);
             anim.SetTrigger("FadeIn");
+        }
+
+        public int GetPuzzleCount()
+        {
+            return puzzleCount;
+        }
+
+        public int GetKeyCount()
+        {
+            return keyCount;
+        }
+
+        public bool GetPlayedAudioPuzzle()
+        {
+            return playedAudioPuzzle;
+        }
+
+        public bool GetPlayedClothesPuzzle()
+        {
+            return playedClothesPuzzle;
+        }
+
+        public bool GetPlayedLogicPuzzle()
+        {
+            return playedLogicPuzzle;
+        }
+
+        public bool GetPlayedWaterPuzzle()
+        {
+            return playedWaterPuzzle;
         }
     }
 }

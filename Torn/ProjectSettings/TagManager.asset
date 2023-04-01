@@ -13,6 +13,7 @@ TagManager:
   - WaterPuzzleGoal
   - CameraTrigger
   - Dialogue
+  - Movable2
   layers:
   - Default
   - TransparentFX

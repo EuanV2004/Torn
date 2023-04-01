@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,29 +14,27 @@ namespace Torn.Office
         [SerializeField]
         Transform puzzlePieceParent, answerPieceParent;
 
-        [SerializeField]
-        GameObject selectedPiece;
+        [SerializeField]GameObject selectedPiece;
 
-        [SerializeField]
-        GameObject emptySpacePrefab;
+        [SerializeField]GameObject emptySpacePrefab;
+        [SerializeField]List<Transform> answerPoses;
 
-        [SerializeField]
-        List<Transform> answerPoses;
+        [SerializeField] List<ScriptableOfficePuzzle> officePuzzlePrefabs;
+        [SerializeField]List<ScriptableOfficeAnswer> officeAnswerPrefabs;
 
-        [SerializeField]
-        List<ScriptableOfficePuzzle> officePuzzlePrefabs;
+        [SerializeField] List<GameObject> hintPrefabs, solutionPrefabs;
 
-        [SerializeField]
-        List<ScriptableOfficeAnswer> officeAnswerPrefabs;
+        [SerializeField] GameObject helpMenu, helpSection;
 
         ScriptableOfficeAnswer currentAnswerPrefabs;
-
         ScriptableOfficePuzzle currentLvlPrefabs;
 
+        KeyCode helpButton = KeyCode.E, solutionButton = KeyCode.Q;
+        [SerializeField] float solutionUnlockTimer = 15f;
+        [SerializeField] bool helpMenuOpen, solutionUnlocked;
+
         GameObject emptySpace;
-
         const int gridSize = 9;
-
         public int currentLvl = 1;
 
         [SerializeField] Torn.Interact.PlayerInteract player;
@@ -43,6 +42,9 @@ namespace Torn.Office
         // Start is called before the first frame update
         void Start()
         {
+            helpMenu.SetActive(false);
+            helpSection.SetActive(false);
+
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
 
@@ -54,6 +56,64 @@ namespace Torn.Office
             else
             {
                 GeneratePattern(currentLvl);    // Generates pattern at the start of the game
+            }
+        }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(helpButton))
+            {
+                HelpMenu();
+                
+            }
+
+            if (Time.timeSinceLevelLoad >= solutionUnlockTimer && !solutionUnlocked)
+            {
+                solutionUnlocked = true;
+            }
+
+            if (Input.GetKeyDown(solutionButton) && helpMenuOpen)
+            {
+                GiveSolution();
+            }
+        }
+
+        void HelpMenu()
+        {
+            if (!helpMenuOpen)
+            {
+                helpMenuOpen = true;
+
+                helpMenu.SetActive(true);
+                helpSection.SetActive(true);
+
+                Instantiate(hintPrefabs[currentLvl - 1], helpSection.transform.position, Quaternion.Euler(0, 0, 0), helpSection.transform);
+            }
+            else
+            {
+                helpMenuOpen = false;
+
+                helpMenu.SetActive(false);
+                helpSection.SetActive(false);
+
+                foreach (Transform child in helpSection.transform)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+            }
+
+        }
+
+        void GiveSolution()
+        {
+            if (solutionUnlocked)
+            {
+                foreach (Transform child in helpSection.transform)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+
+                Instantiate(solutionPrefabs[currentLvl - 1], helpSection.transform.position, Quaternion.Euler(0, 0, 0), helpSection.transform);
             }
         }
 
@@ -143,58 +203,58 @@ namespace Torn.Office
                 // Top Left
                 case 1:
                     {
-                        position = new Vector2(-3, 3);
+                        position = new Vector2(-1.375f, 2.875f);
 
                         break;
                     }
                 // Top Center
                 case 2:
                     {
-                        position = new Vector2(0, 3);
+                        position = new Vector2(0.125f, 2.875f);
 
                         break;
                     }
                 // Top Right
                 case 3:
                     {
-                        position = new Vector2(3, 3);
+                        position = new Vector2(1.625f, 2.875f);
                         break;
                     }
                 // Middle Left
                 case 4:
                     {
-                        position = new Vector2(-3, 0);
+                        position = new Vector2(-1.375f, 1.375f);
                         break;
                     }
                 // Dead Center
                 case 5:
                     {
-                        position = new Vector2(0, 0);
+                        position = new Vector2(0.125f, 1.375f);
 
                         break;
                     }
                 // Middle Right
                 case 6:
                     {
-                        position = new Vector2(3, 0);
+                        position = new Vector2(1.625f, 1.375f);
                         break;
                     }
                 // Bottom Left
                 case 7:
                     {
-                        position = new Vector2(-3, -3);
+                        position = new Vector2(-1.375f, -0.125f);
                         break;
                     }
                 // Bottom Middle
                 case 8:
                     {
-                        position = new Vector2(0, -3);
+                        position = new Vector2(0.125f, -0.125f);
                         break;
                     }
                 // Bottom Right
                 case 9:
                     {
-                        position = new Vector2(3, -3);
+                        position = new Vector2(1.625f, -0.125f);
                         break;
                     }
             }
@@ -384,20 +444,20 @@ namespace Torn.Office
                 // Level 1
                 case 1:
                     {
-                        correctPos.Add(new Vector2(-3f, 3f));   // Top left
-                        correctPos.Add(new Vector2(3f, -3f));   // Bottom right
+                        correctPos.Add(new Vector2(-1.375f, 2.875f));   // Top left
+                        correctPos.Add(new Vector2(1.625f, -0.125f));   // Bottom right
                         break;
                     }
                 // Level 2
                 case 2:
                     {
-                        correctPos.Add(new Vector2(3f, -3f));   // Bottom right
+                        correctPos.Add(new Vector2(1.625f, -0.125f));   // Bottom right
                         break;
                     }
                 // Level 3
                 case 3:
                     {
-                        correctPos.Add(new Vector2(3f, -3f));   // Bottom right
+                        correctPos.Add(new Vector2(1.625f, -0.125f));   // Bottom right
                         break;
                     }
             }
@@ -434,10 +494,13 @@ namespace Torn.Office
                 player.GetComponent<Torn.Interact.PlayerInteract>().anim.SetTrigger("FadeOut");
                 //SceneManager.LoadScene("House");
                 //print("Won!");
-                StartCoroutine(Transition("House", 22.3578f, -4.34f, -5, "FadeIn"));
+                StartCoroutine(Transition("House", 22.36f, -4.34f, -5, "FadeIn"));
             }
             else
             {
+                solutionUnlockTimer += Time.timeSinceLevelLoad;
+                solutionUnlocked = false;
+
                 // GenerateGrid(++currentLvl);     // Recreate Grid with the new level
                 Debug.Log ("Puzzle beat " + (currentLvl-1));
                 GeneratePattern(currentLvl);

@@ -18,12 +18,15 @@ namespace Torn.Interact
         Logic,
         Water,
         Door,
-        Keys
+        Keys,
+        EndingCollect
     }
 
     public class Interactable : MonoBehaviour
     {
         public InteractType itemType;   // Type of the interactable
+
+        [SerializeField] bool isKey;
 
         public string collectableID = "";   // ID of the collectable
 
@@ -52,21 +55,32 @@ namespace Torn.Interact
         {
             if (animator != null)
             {
-                if (collision.CompareTag("Player")) // Change "Player" to the tag of the object you want to check for
+                if (collision.CompareTag("Player") && !gameObject.name.Contains("scale")) // Change "Player" to the tag of the object you want to check for
                 {
-                    animator.SetBool("InRange", true); // Change "ExitTrigger" to the name of the trigger parameter you added to your animation state
+                    if (!interactedWith)
+                    {
+                        animator.SetBool("InRange", true); // Change "ExitTrigger" to the name of the trigger parameter you added to your animation state
+                    }
+                    else if (interactedWith)
+                    {
+                        gameObject.transform.position = new Vector3(500, 500, 500);                   }
                 }
             }
         }
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (animator != null)
+            if (animator != null && !gameObject.name.Contains("scale"))
             {
                 if (collision.CompareTag("Player")) // Change "Player" to the tag of the object you want to check for
                 {
                     animator.SetBool("InRange", false); // Change "ExitTrigger" to the name of the trigger parameter you added to your animation state
                 }
             }
+        }
+
+        public bool GetIsKey()
+        {
+            return isKey;
         }
     }
 }
