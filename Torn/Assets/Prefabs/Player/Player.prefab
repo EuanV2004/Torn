@@ -270,11 +270,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba760bbfe9a7f8468011d6a49359f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5.5
+  movementSpeed: 4.5
   stoppingDistance: 1
   wallLayer:
     serializedVersion: 2
     m_Bits: 8
+  player: {fileID: 0}
 --- !u!114 &2537808861579121061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719a66368141eeb4884f8f1a04641d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pill: {fileID: 0}
+  location: {x: 0, y: 0, z: 0}
 --- !u!114 &820815828304810471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +325,15 @@ MonoBehaviour:
   animator: {fileID: 0}
   anim: {fileID: 0}
   wait: 2
+  hasKey: 0
+  puzzleCount: 0
+  keyCount: 0
+  playedAudioPuzzle: 0
+  playedClothesPuzzle: 0
+  playedLogicPuzzle: 0
+  playedWaterPuzzle: 0
+  keyAnimationImage: {fileID: 0}
+  keyAnimation: {fileID: 0}
 --- !u!114 &1092843630823049315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719a66368141eeb4884f8f1a04641d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pill: {fileID: 0}
+  location: {x: 0, y: 0, z: 0}
 --- !u!114 &1908969526480668444
 MonoBehaviour:
   m_ObjectHideFlags: 0

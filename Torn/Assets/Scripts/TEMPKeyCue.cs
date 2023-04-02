@@ -12,9 +12,16 @@ public class TEMPKeyCue : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Player") && !hasPassedOnce) {
+        if (other.CompareTag("Player")){ //&& !hasPassedOnce) {
             keyCue.SetActive(true);
-            hasPassedOnce = true;
+            //hasPassedOnce = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.CompareTag("Player")){ //&& !hasPassedOnce) {
+            keyCue.SetActive(false);
+            //hasPassedOnce = true;
         }
     }
 }

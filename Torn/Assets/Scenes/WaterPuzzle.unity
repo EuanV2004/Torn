@@ -4839,7 +4839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9fad64eb84e224188b722eccafd857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 6
+  playerSpeed: 4
   stoppingDistance: 0.294
   wallLayer:
     serializedVersion: 2
