@@ -41,7 +41,10 @@ namespace Torn.Interact
             pills.AddConsumable(0);    // Player starts with 10 pills
             animator = GetComponent<Animator>();
             currentScene = SceneManager.GetActiveScene();
-            keyAnim = keyAnimation.GetComponent<Animator>();
+            if (keyAnimation != null)
+            {
+                keyAnim = keyAnimation.GetComponent<Animator>();
+            }
         }
 
         // Update is called once per frame
@@ -189,7 +192,7 @@ namespace Torn.Interact
                             if (hasKey)
                             {
                                 anim.SetTrigger("FadeOut");
-                                StartCoroutine(Transition("EndHall", 46f, -4.34f, -5f, "FadeIn"));
+                                StartCoroutine(Transition("EndHall", 500f, -4.34f, -5f, "FadeIn"));
                             }
                             break;
                         }
