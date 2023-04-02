@@ -28,6 +28,8 @@ namespace Torn.Interact
 
         [SerializeField] bool isKey;
 
+        [SerializeField] GameObject cKey;
+
         public string collectableID = "";   // ID of the collectable
 
         public bool interactedWith;
@@ -44,6 +46,10 @@ namespace Torn.Interact
             if (interactedWith)
             {
                 transform.TransformPoint(15,15,15);
+                if (cKey != null)
+                {
+                    cKey.SetActive(true);
+                }
             }
         }
 
