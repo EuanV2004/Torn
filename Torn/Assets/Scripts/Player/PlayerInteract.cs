@@ -22,12 +22,16 @@ namespace Torn.Interact
         public Animator anim;
         public float wait;
         public bool hasKey;
+        bool canMove = true;
         [SerializeField] int puzzleCount = 0;
         [SerializeField] int keyCount = 0;
         [SerializeField] bool playedAudioPuzzle;
         [SerializeField] bool playedClothesPuzzle;
         [SerializeField] bool playedLogicPuzzle;
         [SerializeField] bool playedWaterPuzzle;
+        [SerializeField] GameObject keyAnimationImage;
+        [SerializeField] GameObject keyAnimation;
+        Animator keyAnim;
         Scene currentScene;
 
         Scene scene;
@@ -37,7 +41,7 @@ namespace Torn.Interact
             pills.AddConsumable(0);    // Player starts with 10 pills
             animator = GetComponent<Animator>();
             currentScene = SceneManager.GetActiveScene();
-            
+            keyAnim = keyAnimation.GetComponent<Animator>();
         }
 
         // Update is called once per frame
@@ -273,6 +277,21 @@ namespace Torn.Interact
         public bool GetPlayedWaterPuzzle()
         {
             return playedWaterPuzzle;
+        }
+
+        public bool GetCanMove()
+        {
+            return canMove;
+        }
+
+        public void SetCanMoveTrue()
+        {
+            canMove = true;
+        }
+
+        public void SetCanMoveFalse()
+        {
+            canMove = false;
         }
     }
 }

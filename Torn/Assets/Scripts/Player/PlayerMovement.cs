@@ -14,6 +14,8 @@ namespace Torn.Player
         private float gravityScale;   
         private Animator animator;
 
+        [SerializeField] Torn.Interact.PlayerInteract player;
+
         void Start()
         {
             Cursor.lockState = CursorLockMode.Confined;
@@ -22,9 +24,18 @@ namespace Torn.Player
             rb = GetComponent<Rigidbody2D>();
             gravityScale = rb.gravityScale;
             animator = GetComponent<Animator>();
+            player = FindObjectOfType<Torn.Interact.PlayerInteract>();
         }
 
         void Update()
+        {
+            if (player.GetCanMove() == true)
+            {
+                Walk();
+            }   
+        }
+
+        void Walk()
         {
             if (Input.GetKey(KeyCode.D)) // detect while walking is the player input
             {
@@ -71,7 +82,6 @@ namespace Torn.Player
             {
                 animator.SetBool("isWalking", false);
             }
-            
         }
 
         private bool CheckIfPlayerShouldStop(Vector2 direction)
