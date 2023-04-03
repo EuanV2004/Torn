@@ -740,6 +740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 9
   isKey: 0
+  cKey: {fileID: 0}
   collectableID: 
   interactedWith: 0
   sceneName: LivingRoom
@@ -845,6 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyCue: {fileID: 702197566}
+  hidden: 0
 --- !u!1 &83426694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,6 +2027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 9
   isKey: 0
+  cKey: {fileID: 0}
   collectableID: 
   interactedWith: 0
   sceneName: Bedroom
@@ -2130,6 +2133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyCue: {fileID: 1819514086}
+  hidden: 0
 --- !u!1 &336001006
 GameObject:
   m_ObjectHideFlags: 0
@@ -3113,6 +3117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 9
   isKey: 0
+  cKey: {fileID: 0}
   collectableID: 
   interactedWith: 0
   sceneName: Bathroom
@@ -3218,6 +3223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyCue: {fileID: 216145541}
+  hidden: 0
 --- !u!1 &525994386
 GameObject:
   m_ObjectHideFlags: 0
@@ -4649,6 +4655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 9
   isKey: 0
+  cKey: {fileID: 0}
   collectableID: 
   interactedWith: 0
   sceneName: LivingRoom
@@ -4754,6 +4761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyCue: {fileID: 894470439}
+  hidden: 0
 --- !u!1 &877894255
 GameObject:
   m_ObjectHideFlags: 0
@@ -7164,6 +7172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyCue: {fileID: 2063279011}
+  hidden: 0
 --- !u!4 &1406123532 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1685325179667982043, guid: 82e48fa96cb9506428d5a0096da902c8, type: 3}
@@ -7451,6 +7460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyCue: {fileID: 1574877843}
+  hidden: 0
 --- !u!4 &1511709327 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1685325179667982043, guid: 82e48fa96cb9506428d5a0096da902c8, type: 3}
@@ -7933,6 +7943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 9
   isKey: 1
+  cKey: {fileID: 0}
   collectableID: 
   interactedWith: 0
   sceneName: Home
@@ -8038,6 +8049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyCue: {fileID: 1154589145}
+  hidden: 1
 --- !u!1 &1669104733
 GameObject:
   m_ObjectHideFlags: 0
@@ -8286,6 +8298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyCue: {fileID: 1517646004}
+  hidden: 0
 --- !u!4 &1721299071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1685325179667982043, guid: 82e48fa96cb9506428d5a0096da902c8, type: 3}
@@ -8730,6 +8743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyCue: {fileID: 1323680405}
+  hidden: 0
 --- !u!4 &1751145442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1685325179667982043, guid: 82e48fa96cb9506428d5a0096da902c8, type: 3}
