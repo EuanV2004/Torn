@@ -327,5 +327,15 @@ namespace Torn.Interact
         {
             canMove = false;
         }
+
+        public void LockMovement()
+        {
+            canMove = false;
+        }
+
+        public void UnlockMovement()
+        {
+            canMove = true;
+        }
     }
 }
