@@ -26,9 +26,26 @@ namespace Torn.Interact
     {
         public InteractType itemType;   // Type of the interactable
 
-        [SerializeField] bool isKey;
+        [Header("Keys")]
 
+        [SerializeField] bool isKey;
+        [SerializeField] bool isCoin;
+        [SerializeField] bool isSock;
+        [SerializeField] bool isToothpaste;
+        [SerializeField] bool isChicken;
+
+        [Header("EndingStuff")]
+
+        [SerializeField] bool isBear;
+        [SerializeField] bool isSoap;
+        [SerializeField] bool isCoat;
+        [SerializeField] bool isBook;
+        [SerializeField] bool isPicture;
+
+        [Header("Button")]
         [SerializeField] GameObject cKey;
+
+        [Header("Interact")]
 
         public string collectableID = "";   // ID of the collectable
 
@@ -69,7 +86,8 @@ namespace Torn.Interact
                     }
                     else if (interactedWith)
                     {
-                        gameObject.transform.position = new Vector3(500, 500, 500);                   }
+                        gameObject.transform.position = new Vector3(500, 500, 500);                   
+                    }
                 }
             }
         }
@@ -81,12 +99,63 @@ namespace Torn.Interact
                 {
                     animator.SetBool("InRange", false); // Change "ExitTrigger" to the name of the trigger parameter you added to your animation state
                 }
+
+                else if (interactedWith)
+                {
+                    gameObject.transform.position = new Vector3(500, 500, 500);                   
+                }
             }
         }
 
         public bool GetIsKey()
         {
             return isKey;
+        }
+
+        public bool GetIsSock()
+        {
+            return isSock;
+        }
+
+        public bool GetIsCoin()
+        {
+            return isCoin;
+        }
+
+        public bool GetIsChicken()
+        {
+            return isChicken;
+        }
+
+        public bool GetIsToothpaste()
+        {
+            return isToothpaste;
+        }
+
+
+        public bool GetIsBear()
+        {
+            return isBear;
+        }
+
+        public bool GetIsSoap()
+        {
+            return isSoap;
+        }
+
+        public bool GetIsCoat()
+        {
+            return isCoat;
+        }
+
+        public bool GetIsBook()
+        {
+            return isBook;
+        }
+
+        public bool GetIsPicture()
+        {
+            return isPicture;
         }
     }
 }

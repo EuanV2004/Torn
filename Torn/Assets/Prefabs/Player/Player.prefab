@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba760bbfe9a7f8468011d6a49359f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 4.5
+  movementSpeed: 5.5
   stoppingDistance: 1
   wallLayer:
     serializedVersion: 2
@@ -326,7 +326,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   wait: 2
   hasKey: 0
-  puzzleCount: 0
+  puzzleCount: 4
   keyCount: 0
   playedAudioPuzzle: 0
   playedClothesPuzzle: 0

@@ -127,6 +127,7 @@ namespace Torn.Interact
                                 anim.SetTrigger("FadeOut");
                                 StartCoroutine(Transition("AudioPuzzle", -5.61f, -2.6f, -8.0f, "FadeIn"));
                                 itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                itemCollider.gameObject.transform.position = new Vector3(500, 500, 500);
                                 playedAudioPuzzle = true;
                                 puzzleCount++;
                             }
@@ -141,6 +142,7 @@ namespace Torn.Interact
                                 anim.SetTrigger("FadeOut");
                                 StartCoroutine(Transition("ClothesPuzzle", 6.87f, -2.9f, -8f, "FadeIn"));
                                 itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                itemCollider.gameObject.transform.position = new Vector3(500, 500, 500);
                                 playedClothesPuzzle = true;
                                 puzzleCount++;
                             }
@@ -154,6 +156,7 @@ namespace Torn.Interact
                                 anim.SetTrigger("FadeOut");
                                 StartCoroutine(Transition("LogicPuzzle", 17.75f, -1, -5, "FadeIn"));
                                 itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                itemCollider.gameObject.transform.position = new Vector3(500, 500, 500);
                                 playedLogicPuzzle = true;
                                 puzzleCount++;
                             }
@@ -167,6 +170,7 @@ namespace Torn.Interact
                                 anim.SetTrigger("FadeOut");
                                 StartCoroutine(Transition("WaterPuzzle", -16.22f, 10, -5, "FadeIn"));
                                 itemCollider.GetComponent<Interactable>().interactedWith = true; 
+                                itemCollider.gameObject.transform.position = new Vector3(500, 500, 500);
                                 playedWaterPuzzle = true;
                                 puzzleCount++;
                             }
@@ -181,9 +185,36 @@ namespace Torn.Interact
                                 if (itemCollider.GetComponent<Interactable>().GetIsKey() == true)
                                 {
                                     hasKey = true;
+                                    keyAnimationImage.SetActive(true);
+                                    keyAnim.SetTrigger("Key");
+                                }
+
+                                if (itemCollider.GetComponent<Interactable>().GetIsSock() == true)
+                                {
+                                    keyAnimationImage.SetActive(true);
+                                    keyAnim.SetTrigger("Sock");
+                                }
+
+                                if (itemCollider.GetComponent<Interactable>().GetIsCoin() == true)
+                                {
+                                    keyAnimationImage.SetActive(true);
+                                    keyAnim.SetTrigger("Coins");
+                                }
+
+                                if (itemCollider.GetComponent<Interactable>().GetIsChicken() == true)
+                                {
+                                    keyAnimationImage.SetActive(true);
+                                    keyAnim.SetTrigger("Chicken");
+                                }
+
+                                if (itemCollider.GetComponent<Interactable>().GetIsToothpaste() == true)
+                                {
+                                    keyAnimationImage.SetActive(true);
+                                    keyAnim.SetTrigger("Toothpaste");
                                 }
                                 itemCollider.GetComponent<Interactable>().interactedWith = true;  
                                 keyCount++;
+                                itemCollider.gameObject.transform.position = new Vector3(500, 500, 500);
                             }
                             break;
                         }

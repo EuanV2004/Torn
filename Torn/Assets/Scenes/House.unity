@@ -740,6 +740,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 9
   isKey: 0
+  isCoin: 0
+  isSock: 0
+  isToothpaste: 0
+  isChicken: 1
   cKey: {fileID: 0}
   collectableID: 
   interactedWith: 0
@@ -2027,6 +2031,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 9
   isKey: 0
+  isCoin: 0
+  isSock: 1
+  isToothpaste: 0
+  isChicken: 0
   cKey: {fileID: 0}
   collectableID: 
   interactedWith: 0
@@ -3117,6 +3125,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 9
   isKey: 0
+  isCoin: 0
+  isSock: 0
+  isToothpaste: 1
+  isChicken: 0
   cKey: {fileID: 0}
   collectableID: 
   interactedWith: 0
@@ -4655,6 +4667,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 9
   isKey: 0
+  isCoin: 1
+  isSock: 0
+  isToothpaste: 0
+  isChicken: 0
   cKey: {fileID: 0}
   collectableID: 
   interactedWith: 0
@@ -6166,6 +6182,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 244490759}
     - target: {fileID: 820815828304810471, guid: c2de09c440764dc4cbd37fe9bb81eeca, type: 3}
+      propertyPath: puzzleCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 820815828304810471, guid: c2de09c440764dc4cbd37fe9bb81eeca, type: 3}
       propertyPath: keyAnimation
       value: 
       objectReference: {fileID: 1231731335}
@@ -6240,6 +6260,10 @@ PrefabInstance:
     - target: {fileID: 2537808861579121057, guid: c2de09c440764dc4cbd37fe9bb81eeca, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537808861579121059, guid: c2de09c440764dc4cbd37fe9bb81eeca, type: 3}
+      propertyPath: movementSpeed
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 2537808861579121059, guid: c2de09c440764dc4cbd37fe9bb81eeca, type: 3}
       propertyPath: stoppingDistance
@@ -6663,6 +6687,7 @@ GameObject:
   - component: {fileID: 1351961344}
   - component: {fileID: 1351961343}
   - component: {fileID: 1351961342}
+  - component: {fileID: 1351961345}
   m_Layer: 5
   m_Name: Hands
   m_TagString: Untagged
@@ -6748,6 +6773,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1351961340}
   m_CullTransparentMesh: 1
+--- !u!114 &1351961345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351961340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14824029d220ff948b07ebeb30a61371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1189215230}
 --- !u!1001 &1361865877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7943,6 +7981,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 9
   isKey: 1
+  isCoin: 0
+  isSock: 0
+  isToothpaste: 0
+  isChicken: 0
   cKey: {fileID: 0}
   collectableID: 
   interactedWith: 0

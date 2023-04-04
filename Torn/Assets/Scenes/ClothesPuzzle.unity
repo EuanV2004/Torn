@@ -186,6 +186,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
+  isKey: 0
+  isCoin: 0
+  isSock: 0
+  isToothpaste: 0
+  isChicken: 0
+  cKey: {fileID: 0}
   collectableID: Collected 1
   interactedWith: 0
   sceneName: 
@@ -882,6 +888,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 3
+  isKey: 0
+  isCoin: 0
+  isSock: 0
+  isToothpaste: 0
+  isChicken: 0
+  cKey: {fileID: 0}
   collectableID: 
   interactedWith: 0
   sceneName: 
@@ -1346,6 +1358,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 190747139387216513, guid: 75ac8b7802c46a049aff07e4b4e1b943, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 281241235891803985, guid: 75ac8b7802c46a049aff07e4b4e1b943, type: 3}
       propertyPath: m_Layer
       value: 9
