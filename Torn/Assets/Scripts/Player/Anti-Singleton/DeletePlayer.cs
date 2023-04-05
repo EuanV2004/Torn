@@ -7,7 +7,10 @@ public class DeletePlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(FindObjectOfType<NoLoad>().gameObject);
+        if (FindObjectOfType<NoLoad>() != null)
+        {
+            Destroy(FindObjectOfType<NoLoad>().gameObject);
+        }
     }
 
     // Update is called once per frame

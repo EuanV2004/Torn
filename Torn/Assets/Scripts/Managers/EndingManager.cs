@@ -1,26 +1,29 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Torn.Managers
 {
     public class EndingManager : MonoBehaviour
     {
         [SerializeField] private int pointsNeededForGoodEnding = 5;
-        [SerializeField] private GameObject goodEnding;
-        [SerializeField] private GameObject badEnding;
+        // [SerializeField] private GameObject goodEnding;
+        // [SerializeField] private GameObject badEnding;
 
-        private int playerScore = 0;
+        [SerializeField] private int playerScore = 0;
 
         // Making this public for debugging. It will be private in the future.
         public void ChooseEnding() {
             if (playerScore >= pointsNeededForGoodEnding) {
-                goodEnding.SetActive(true);
-                badEnding.SetActive(false);
-                print("This is the good ending.");
+                SceneManager.LoadScene("GoodEnding");
+                // goodEnding.SetActive(true);
+                // badEnding.SetActive(false);
+                // print("This is the good ending.");
             }
             else {
-                badEnding.SetActive(true);
-                goodEnding.SetActive(false);
-                print("This is the bad ending.");
+                SceneManager.LoadScene("BadEnding");
+                // badEnding.SetActive(true);
+                // goodEnding.SetActive(false);
+                // print("This is the bad ending.");
             }
         }
 

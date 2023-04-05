@@ -19,7 +19,8 @@ namespace Torn.Interact
         Water,
         Door,
         Keys,
-        EndingCollect
+        EndingCollect,
+        EndDoor
     }
 
     public class Interactable : MonoBehaviour

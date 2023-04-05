@@ -4,7 +4,7 @@ public class TEMPKeyCue : MonoBehaviour
 {
     [SerializeField] private GameObject keyCue;
     [SerializeField] private bool hidden;
-    private bool hasPassedOnce = false;
+    //private bool hasPassedOnce = false;
 
     int keyCount;
 
@@ -13,7 +13,10 @@ public class TEMPKeyCue : MonoBehaviour
             keyCue.SetActive(false);
         }
 
-        keyCount = FindObjectOfType<Torn.Interact.PlayerInteract>().GetKeyCount();
+        if (FindObjectOfType<Torn.Interact.PlayerInteract>() != null)
+        {
+            keyCount = FindObjectOfType<Torn.Interact.PlayerInteract>().GetKeyCount();
+        }
 
         if (keyCount >= 4)
         {

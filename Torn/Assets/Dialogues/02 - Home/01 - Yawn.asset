@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 01 - Yawn
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: 
+  - dialogueText: <Yawns>
     dialogueAudio: {fileID: 8300000, guid: e73ef50db191ac842b91b204782a64e5, type: 3}
   - dialogueText: I should probably get some clean clothes today.
     dialogueAudio: {fileID: 8300000, guid: 4dffc701845713149a814ddf5d9f0c3c, type: 3}

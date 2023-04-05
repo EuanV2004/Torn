@@ -96,5 +96,16 @@ namespace Torn.Player
         {
             return playerDirection;
         }
+
+        private void OnTriggerEnter2D(Collider2D other) 
+        {
+            if (other.tag == "Destroy Door")
+            {
+                if (FindObjectOfType<MovingDoor>() != null)
+                {
+                    FindObjectOfType<MovingDoor>().gameObject.SetActive(false);
+                }
+            }
+        }
     }
 }

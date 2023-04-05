@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndHall.unity
     guid: 92264fbb4fe613f4a9965b23cbd589a4
+  - enabled: 1
+    path: Assets/Scenes/BadEnding.unity
+    guid: ec3fd6f45ecc60a44b65cf8907995fc6
+  - enabled: 1
+    path: Assets/Scenes/GoodEnding.unity
+    guid: 58059efc2b408f944a26ac58cf60b7ff
   m_configObjects: {}

@@ -45,6 +45,11 @@ namespace Torn.Interact
             {
                 keyAnim = keyAnimation.GetComponent<Animator>();
             }
+
+            if (FindObjectOfType<FindFade>() != null)
+            {
+                anim = FindObjectOfType<FindFade>().GetComponent<Animator>();
+            }
         }
 
         // Update is called once per frame
@@ -255,6 +260,21 @@ namespace Torn.Interact
                                 }
                             FindObjectOfType<Torn.Managers.EndingManager>().IncreasePlayerScore();
                             itemCollider.gameObject.transform.position = new Vector3(500, 500, 500);
+                            break;
+                        }
+
+                        case InteractType.EndDoor:
+                        {
+                            if (FindObjectOfType<Torn.Managers.EndingManager>().GetPlayerScore() < 5)
+                            {
+                                anim.SetTrigger("FadeOut");
+                                StartCoroutine(Transition("BadEnding", 500f, -4.34f, -5f, "FadeIn"));
+                            }
+                            else
+                            {
+                                anim.SetTrigger("FadeOut");
+                                StartCoroutine(Transition("GoodEnding", 500f, -4.34f, -5f, "FadeIn"));
+                            }
                             break;
                         }
                         

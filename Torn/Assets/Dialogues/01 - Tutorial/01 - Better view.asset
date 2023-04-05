@@ -15,7 +15,7 @@ MonoBehaviour:
   dialogues:
   - dialogueText: Hmm... I was kinda hoping I could get a better view.
     dialogueAudio: {fileID: 8300000, guid: e22ca17426f4c214b9a6c6f29a2a3bb4, type: 3}
-  - dialogueText: 
+  - dialogueText: ...
     dialogueAudio: {fileID: 0}
   - dialogueText: Well, looks like my life is finally going somewhere
     dialogueAudio: {fileID: 8300000, guid: d508867a429ea7d41b7e3caf7e2d27a7, type: 3}

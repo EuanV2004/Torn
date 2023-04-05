@@ -41,11 +41,24 @@ namespace Torn.Dialogues {
                 currentDialogues = newDialogue.ReturnDialogueArray();
                 currentDialogueIndex = 0;
             }
+
+            if (other.CompareTag("Dialogue2")) {
+                newDialogue = other.GetComponent<DialogueTrigger>().ReturnCurrentDialogue();
+                currentDialogues = newDialogue.ReturnDialogueArray();
+                currentDialogueIndex = 0;
+                ParseDialogueObject();
+            }
         }
 
         private void OnTriggerExit2D(Collider2D other) {
             if (other.CompareTag("Dialogue")) {
                 dialogueUIManager.SetObjectInactive();
+                other.gameObject.SetActive(false);
+            }
+
+            if (other.CompareTag("Dialogue2")) {
+                dialogueUIManager.SetObjectInactive();
+                other.gameObject.SetActive(false);
             }
         }
 
