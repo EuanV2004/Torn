@@ -229,7 +229,32 @@ namespace Torn.Interact
                         }
                         case InteractType.EndingCollect:
                         {
+                            if (itemCollider.GetComponent<Interactable>().GetIsBear() == true)
+                                {
+                                    animator.SetTrigger("Bear");
+                                }
+
+                                if (itemCollider.GetComponent<Interactable>().GetIsPicture() == true)
+                                {
+                                    animator.SetTrigger("Picture");
+                                }
+
+                                if (itemCollider.GetComponent<Interactable>().GetIsBook() == true)
+                                {
+                                    animator.SetTrigger("Book");
+                                }
+
+                                if (itemCollider.GetComponent<Interactable>().GetIsSoap() == true)
+                                {
+                                    animator.SetTrigger("Soap");
+                                }
+
+                                if (itemCollider.GetComponent<Interactable>().GetIsCoat() == true)
+                                {
+                                    
+                                }
                             FindObjectOfType<Torn.Managers.EndingManager>().IncreasePlayerScore();
+                            itemCollider.gameObject.transform.position = new Vector3(500, 500, 500);
                             break;
                         }
                         
