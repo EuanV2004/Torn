@@ -19,16 +19,20 @@ namespace Torn.Puzzles
         public Vector3 location;
         int i;
         GameObject floss;
+        private NumbweCouner counter;
 
         private void Start() {
             audioManager = FindObjectOfType<AudioManager>();
-            
         }
 
         private void Update() {
+            counter = FindObjectOfType<NumbweCouner>();
+            if (counter == null) print("Sad");
+
             if (Input.GetKeyDown(KeyCode.E) && isInRange) {
                 InteractWithAudioFloss();
                 floss.GetComponent<Animator>().SetTrigger("Played");
+                counter.NumberOfClicks++;
             }
 
             if (userOrder.Count > 4) {
