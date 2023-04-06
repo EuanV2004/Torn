@@ -286,15 +286,15 @@ namespace Torn.Interact
 
                         case InteractType.EndDoor:
                         {
-                            if (FindObjectOfType<Torn.Managers.EndingManager>().GetPlayerScore() < 5)
+                            if (FindObjectOfType<Torn.Managers.EndingManager>().GetPlayerScore() == 5)
                             {
                                 anim.SetTrigger("FadeOut");
-                                StartCoroutine(Transition("BadEnding", 500f, -4.34f, -5f, "FadeIn"));
+                                StartCoroutine(Transition("GoodEnding", 500f, -4.34f, -5f, "FadeIn"));
                             }
                             else
                             {
                                 anim.SetTrigger("FadeOut");
-                                StartCoroutine(Transition("GoodEnding", 500f, -4.34f, -5f, "FadeIn"));
+                                StartCoroutine(Transition("BadEnding", 500f, -4.34f, -5f, "FadeIn"));
                             }
                             break;
                         }

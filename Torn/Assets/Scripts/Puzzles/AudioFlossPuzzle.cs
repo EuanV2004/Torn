@@ -26,6 +26,7 @@ namespace Torn.Puzzles
         }
 
         private void Update() {
+            print(userOrder.Count);
             counter = FindObjectOfType<NumbweCouner>();
             if (counter == null) print("Sad");
 
@@ -35,7 +36,7 @@ namespace Torn.Puzzles
                 counter.NumberOfClicks++;
             }
 
-            if (userOrder.Count > 4) {
+            if (userOrder.Count == 5) {
                 StartCoroutine(BeginNoteCheck());
             }
         }
@@ -97,7 +98,7 @@ namespace Torn.Puzzles
                 print("Order is correct!");
 
                 shouldStillInteract = false;
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.05f);
 
                 userOrder.Clear();
                 if (i == 0)
@@ -110,7 +111,7 @@ namespace Torn.Puzzles
             }
             else {
                 print("Order is incorrect!");
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.05f);
 
                 userOrder.Clear();
                 shouldStillInteract = true;
