@@ -29,6 +29,14 @@ namespace Torn.Interact
         [SerializeField] bool playedClothesPuzzle;
         [SerializeField] bool playedLogicPuzzle;
         [SerializeField] bool playedWaterPuzzle;
+
+        [SerializeField] public GameObject[] boxes;
+
+        [SerializeField] bool collectedBear;
+        [SerializeField] bool collectedSoap;
+        [SerializeField] bool collectedBook;
+        [SerializeField] bool collectedPicture;
+        [SerializeField] bool collectedCoat;
         [SerializeField] GameObject keyAnimationImage;
         [SerializeField] GameObject keyAnimation;
         Animator keyAnim;
@@ -44,6 +52,11 @@ namespace Torn.Interact
             if (keyAnimation != null)
             {
                 keyAnim = keyAnimation.GetComponent<Animator>();
+            }
+
+            if (FindObjectOfType<FindKeyAnim>() != null)
+            {
+                keyAnimationImage = FindObjectOfType<FindKeyAnim>().gameObject;
             }
 
             if (FindObjectOfType<FindFade>() != null)
@@ -160,6 +173,10 @@ namespace Torn.Interact
                             {
                                 anim.SetTrigger("FadeOut");
                                 StartCoroutine(Transition("LogicPuzzle", 17.75f, -1, -5, "FadeIn"));
+                                foreach (GameObject box in boxes)
+                                {
+                                    box.SetActive(false);
+                                }
                                 itemCollider.GetComponent<Interactable>().interactedWith = true; 
                                 itemCollider.gameObject.transform.position = new Vector3(500, 500, 500);
                                 playedLogicPuzzle = true;
@@ -173,6 +190,10 @@ namespace Torn.Interact
                             if (itemCollider.GetComponent<Interactable>().interactedWith == false)
                             {
                                 anim.SetTrigger("FadeOut");
+                                foreach (GameObject box in boxes)
+                                {
+                                    box.SetActive(false);
+                                }
                                 StartCoroutine(Transition("WaterPuzzle", -16.22f, 10, -5, "FadeIn"));
                                 itemCollider.GetComponent<Interactable>().interactedWith = true; 
                                 itemCollider.gameObject.transform.position = new Vector3(500, 500, 500);
@@ -356,6 +377,31 @@ namespace Torn.Interact
         public bool GetPlayedWaterPuzzle()
         {
             return playedWaterPuzzle;
+        }
+
+        public bool GetCollectedBear()
+        {
+            return collectedBear;
+        }
+
+        public bool GetCollectedSoap()
+        {
+            return collectedSoap;
+        }
+
+        public bool GetCollectedBook()
+        {
+            return collectedBook;
+        }
+
+        public bool GetCollectedPicture()
+        {
+            return collectedPicture;
+        }
+
+        public bool GetCollectedCoat()
+        {
+            return collectedCoat;
         }
 
         public bool GetCanMove()

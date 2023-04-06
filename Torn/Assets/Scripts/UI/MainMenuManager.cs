@@ -9,6 +9,8 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private float panDuration = 3f;
     [SerializeField] private DialogueSO beginningDialogue;
 
+    [SerializeField] GameObject[] boxes;
+
     private GameObject player;
     private PlayerDialogueManager playerDialogueManager;
     private Camera cam;
@@ -19,6 +21,11 @@ public class MainMenuManager : MonoBehaviour
         playerDialogueManager = player.GetComponent<PlayerDialogueManager>();
 
         player.GetComponent<PlayerMovement>().enabled = false;
+
+        foreach (GameObject box in boxes)
+        {
+            box.SetActive(false);
+        }
     }
 
     public void StartGame() {
@@ -46,7 +53,11 @@ public class MainMenuManager : MonoBehaviour
         cam.transform.position = panTarget;
         player.GetComponent<PlayerMovement>().enabled = true;
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
+        //Cursor.visible = false;
+        foreach (GameObject box in boxes)
+        {
+            box.SetActive(true);
+        }
         playerDialogueManager.SetDialogue(beginningDialogue);
     }
 }

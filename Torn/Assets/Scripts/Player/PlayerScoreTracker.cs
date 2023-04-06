@@ -18,14 +18,6 @@ namespace Torn.Player
             if (endingManager == null) return;
             
             playerScore = endingManager.GetPlayerScore();
-
-            if (Input.GetKeyDown(KeyCode.P)) {
-                endingManager.IncreasePlayerScore(); // Debugging purposes only
-            }
-
-            if (Input.GetKeyDown(KeyCode.F)) {
-                endingManager.ChooseEnding(); // Debugging puproses only
-            }
         }
     }
 }

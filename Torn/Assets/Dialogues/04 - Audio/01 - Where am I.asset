@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: 01 - Where am I
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: 
+  - dialogueText: Where the hell did this come from..? What do I do? What-- How do
+      I.. what? What's happening?
     dialogueAudio: {fileID: 8300000, guid: 94d5b93164be3b445ab95e86f1a9a3d7, type: 3}

@@ -48,7 +48,15 @@ namespace Torn.Puzzles {
             }
             if (other.CompareTag("WaterPuzzleGoal") && !wonHasRunOnce) {
                 wonHasRunOnce = true;
+                if (FindObjectOfType<Torn.Interact.PlayerInteract>() != null)
+                {
+                    foreach (GameObject box in FindObjectOfType<Torn.Interact.PlayerInteract>().boxes)
+                    {
+                        box.SetActive(true);
+                    }
+                }
                 waterBlocksManager.StartTransition();
+                
             }
         }
 
