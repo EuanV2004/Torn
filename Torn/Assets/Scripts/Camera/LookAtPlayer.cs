@@ -9,6 +9,6 @@ public class LookAtPlayer : MonoBehaviour
     [SerializeField] float posZ;
     void Update()
     {
-        transform.position = new Vector3(FindObjectOfType<Torn.Player.PlayerMovement>().transform.position.x + posX, FindObjectOfType<Torn.Player.PlayerMovement>().transform.position.y + posY, FindObjectOfType<Torn.Player.PlayerMovement>().transform.position.z + posZ);
+        transform.position = new Vector3(FindObjectOfType<Torn.Interact.PlayerInteract>().transform.position.x + posX, FindObjectOfType<Torn.Interact.PlayerInteract>().transform.position.z + posZ);
     }
 }

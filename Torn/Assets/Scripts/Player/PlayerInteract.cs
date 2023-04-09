@@ -258,26 +258,50 @@ namespace Torn.Interact
                             if (itemCollider.GetComponent<Interactable>().GetIsBear() == true)
                                 {
                                     animator.SetTrigger("Bear");
+                                    collectedBear = true;
+                                    if (FindObjectOfType<CollectableVisibility>() != null)
+                                    {
+                                        FindObjectOfType<CollectableVisibility>().EnableBearSprite();
+                                    }
                                 }
 
                                 if (itemCollider.GetComponent<Interactable>().GetIsPicture() == true)
                                 {
                                     animator.SetTrigger("Picture");
+                                    collectedPicture = true;
+                                    if (FindObjectOfType<CollectableVisibility>() != null)
+                                    {
+                                        FindObjectOfType<CollectableVisibility>().EnablePhotoSprite();
+                                    }
                                 }
 
                                 if (itemCollider.GetComponent<Interactable>().GetIsBook() == true)
                                 {
                                     animator.SetTrigger("Book");
+                                    collectedBook = true;
+                                    if (FindObjectOfType<CollectableVisibility>() != null)
+                                    {
+                                        FindObjectOfType<CollectableVisibility>().EnableBookSprite();
+                                    }
                                 }
 
                                 if (itemCollider.GetComponent<Interactable>().GetIsSoap() == true)
                                 {
                                     animator.SetTrigger("Soap");
+                                    collectedSoap = true;
+                                    if (FindObjectOfType<CollectableVisibility>() != null)
+                                    {
+                                        FindObjectOfType<CollectableVisibility>().EnableSoapSprite();
+                                    }
                                 }
 
                                 if (itemCollider.GetComponent<Interactable>().GetIsCoat() == true)
                                 {
-                                    
+                                    collectedCoat = true;
+                                    if (FindObjectOfType<CollectableVisibility>() != null)
+                                    {
+                                        FindObjectOfType<CollectableVisibility>().EnableCoatSprite();
+                                    }
                                 }
                             FindObjectOfType<Torn.Managers.EndingManager>().IncreasePlayerScore();
                             itemCollider.gameObject.transform.position = new Vector3(500, 500, 500);
